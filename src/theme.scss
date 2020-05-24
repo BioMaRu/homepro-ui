@@ -12,6 +12,9 @@
 	--color-primary-800: hsl(206, 67%, 18%);
 	--color-primary-900: hsl(206, 67%, 15%);
 
+	--color-secondary-500: #f79421;
+	--color-price-500: #ff4733;
+
 	--color-gray-100: hsl(216, 15%, 97%);
 	--color-gray-200: hsl(216, 15%, 92%);
 	--color-gray-300: hsl(216, 15%, 86%);
@@ -65,7 +68,7 @@
  *********************************************/
 :root {
 	--font-family-primary: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-	--font-family-secondary: 'Kanit', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+	--font-family-secondary: 'Prompt', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
 }
 
 /*
@@ -124,5 +127,6 @@
 
 :root {
 	--height-top-bar: 2.25rem;
-	--height-nav-bar: 4.25rem;
+	--height-nav-bar: 5.5rem;
+	--width-category-panel: 220px;
  }

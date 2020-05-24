@@ -10,6 +10,9 @@
 	pointer-events: none;
 	backface-visibility: hidden;
 
+	background: white;
+	color: var(--color-text-dark-primary);
+
 	&.-is-slide-down  {
 		transform: scaleY(0);
 		transform-origin: top center;
