@@ -1,0 +1,26 @@
+{
+	"name": "homepro-ui",
+	"version": "0.0.1",
+	"description": "Homepro UI",
+	"main": "src/homepro-ui.scss",
+	"unpkg": "dist/homepro-ui.min.css",
+	"style": "dist/homepro-ui.min.css",
+	"directories": {
+		"src": "src"
+	},
+	"scripts": {
+		"build-scss": "yarn gulp"
+	},
+	"keywords": [
+		"css"
+	],
+	"author": "BioMaRu <Bio.Color.Palette@gmail.com>",
+	"devDependencies": {
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^7.0.0",
+		"gulp-rename": "^1.4.0",
+		"gulp-sass": "^4.0.2",
+		"gulp-sync": "^0.1.4",
+		"sass-loader": "^7.3.1"
+	}
+}
