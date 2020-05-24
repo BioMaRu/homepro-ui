@@ -44,16 +44,6 @@ $atom-prefix: '_';
 	'negative-800': var(--color-negative-800),
 	'negative-900': var(--color-negative-900),
 
-	'info-100': var(--color-info-100),
-	'info-200': var(--color-info-200),
-	'info-300': var(--color-info-300),
-	'info-400': var(--color-info-400),
-	'info-500': var(--color-info-500),
-	'info-600': var(--color-info-600),
-	'info-700': var(--color-info-700),
-	'info-800': var(--color-info-800),
-	'info-900': var(--color-info-900),
-
 	'warning-100': var(--color-warning-100),
 	'warning-200': var(--color-warning-200),
 	'warning-300': var(--color-warning-300),
@@ -64,15 +54,10 @@ $atom-prefix: '_';
 	'warning-800': var(--color-warning-800),
 	'warning-900': var(--color-warning-900),
 
-	'light-primary': var(--color-light-primary),
-	'light-secondary': var(--color-light-secondary),
-	'dark-primary': var(--color-dark-primary),
-	'dark-secondary': var(--color-dark-secondary),
-
-	'golden-poppy': var(--color-golden-poppy),
-	'dark-cerulean': var(--color-dark-cerulean),
-	'bittersweet': var(--color-bittersweet),
-	'facebook': var(--color-facebook),
+	'text-light-primary': var(--color-light-primary),
+	'text-light-secondary': var(--color-light-secondary),
+	'text-dark-primary': var(--color-dark-primary),
+	'text-dark-secondary': var(--color-dark-secondary),
 
 	'shader': var(--color-shader),
 

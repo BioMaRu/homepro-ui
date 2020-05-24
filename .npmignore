@@ -1,0 +1,8 @@
+src/**/*
+node_modules/
+node_modules/**/*
+config.codekit3
+index.html
+Gulpfile.js
+yarn.lock
+Makefile

@@ -2,15 +2,15 @@
  * Color
  *********************************************/
  :root {
-	--color-primary-100: hsl(217, 85%, 95%);
-	--color-primary-200: hsl(217, 85%, 92%);
-	--color-primary-300: hsl(217, 85%, 87%);
-	--color-primary-400: hsl(217, 77%, 61%);
-	--color-primary-500: hsl(217, 77%, 56%);
-	--color-primary-600: hsl(217, 77%, 51%);
-	--color-primary-700: hsl(217, 67%, 36%);
-	--color-primary-800: hsl(217, 67%, 30%);
-	--color-primary-900: hsl(217, 67%, 25%);
+	--color-primary-100: hsl(206, 85%, 93%);
+	--color-primary-200: hsl(206, 85%, 89%);
+	--color-primary-300: hsl(206, 85%, 86%);
+	--color-primary-400: hsl(206, 91%, 39%);
+	--color-primary-500: hsl(206, 91%, 36%);
+	--color-primary-600: hsl(206, 91%, 31%);
+	--color-primary-700: hsl(206, 67%, 22%);
+	--color-primary-800: hsl(206, 67%, 18%);
+	--color-primary-900: hsl(206, 67%, 15%);
 
 	--color-gray-100: hsl(216, 15%, 97%);
 	--color-gray-200: hsl(216, 15%, 92%);
@@ -42,16 +42,6 @@
 	--color-negative-800: hsl(8, 68%, 34%);
 	--color-negative-900: hsl(8, 68%, 30%);
 
-	--color-info-100: hsl(283, 90%, 96%);
-	--color-info-283: hsl(283, 90%, 92%);
-	--color-info-300: hsl(283, 90%, 88%);
-	--color-info-400: hsl(283, 40%, 55%);
-	--color-info-500: hsl(283, 40%, 50%);
-	--color-info-600: hsl(283, 40%, 45%);
-	--color-info-700: hsl(283, 66%, 28%);
-	--color-info-800: hsl(283, 66%, 25%);
-	--color-info-900: hsl(283, 66%, 22%);
-
 	--color-warning-100: hsl(45, 80%, 95%);
 	--color-warning-200: hsl(45, 80%, 90%);
 	--color-warning-300: hsl(45, 80%, 85%);
@@ -62,16 +52,10 @@
 	--color-warning-800: hsl(45, 90%, 27%);
 	--color-warning-900: hsl(45, 90%, 27%);
 
-	--color-light-primary: hsla(0, 0%, 100%, .95);
-	--color-light-secondary: rgba(226, 226, 226, 0.95);
-	--color-dark-primary: hsla(215, 15%, 28%, 0.96);
-	--color-dark-secondary: hsla(220, 10%, 47%, 0.95);
-
-	// Secondary Palette
-	--color-golden-poppy: hsl(47, 99%, 50%);   // NOTE: star
-	--color-dark-cerulean: hsl(210, 96%, 28%); // NOTE: pro
-	--color-bittersweet: hsl(4, 96%, 67%);     // NOTE: hot
-	--color-facebook: hsl(217, 51%, 45%);
+	--color-text-light-primary: hsla(0, 0%, 100%, .95);
+	--color-text-light-secondary: rgba(226, 226, 226, 0.95);
+	--color-text-dark-primary: hsla(215, 15%, 22%, 0.98);
+	--color-text-dark-secondary: hsla(220, 10%, 40%, 0.95);
 
 	--color-shader: rgba(0, 0, 0 , 0.12);
 }
@@ -123,11 +107,11 @@
 /*
  * Timing
  *********************************************/
-:root {
-	--timing-normal: 320ms;
-	--timing-faster: 160ms;
-	--timing-fastest: 80ms;
-}
+// :root {
+// 	--timing-normal: 320ms;
+// 	--timing-faster: 160ms;
+// 	--timing-fastest: 80ms;
+// }
 
 /*
  * Breakpoint
@@ -137,3 +121,8 @@
 	--breakpoint-md: 1024px;
 	--breakpoint-lg: 1280px;
 }
+
+:root {
+	--height-top-bar: 2.25rem;
+	--height-nav-bar: 4.25rem;
+ }
