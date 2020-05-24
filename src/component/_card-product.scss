@@ -1,9 +1,15 @@
 .#{$component-prefix}card-product {
 	background: var(--color-gray-100);
-	border-radius: 4px;
+	border-radius: 2px;
+	transition: all 0.16s ease;
+	cursor: pointer;
+
+	&:hover {
+		transform: translate3d(0, -4px, 0);
+	}
 
 	.image {
-		padding: 1px;
+		// padding: 1px;
 		// border: 1px solid var(--color-gray-200);
 		border-radius: 4px;
 		overflow: hidden;
@@ -11,6 +17,14 @@
 
 	.info {
 		padding: 0.75rem;
+	}
+
+	.title {
+		word-break: break-word;
+		font-size: 13px;
+		min-height: 2rem;
+		max-height: 2rem;
+		overflow: hidden;
 	}
 
 	.price {
