@@ -7,7 +7,7 @@
 @import 'layout/all.scss';
 
 .section-product {
-	padding: 1.5rem;
+	padding: 2rem 1.5rem 2rem 1.5rem;
 	background: white;
 	border-radius: 6px;
 
@@ -37,11 +37,22 @@
 	background: white;
 	border-radius: 6px;
 
-	h2 {
-		text-align: center;
-		font-family: var(--font-family-secondary);
-		font-size: var(--font-size-900);
-		font-weight: 500;
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.section-title {
+			font-family: var(--font-family-secondary);
+			font-size: var(--font-size-800);
+			font-weight: 500;
+		}
+
+		.section-link {
+			font-family: var(--font-family-secondary);
+			font-weight: 500;
+			font-size: var(--font-size-500);
+		}
 	}
 
 	.category-container {
@@ -52,4 +63,36 @@
 	}
 }
 
+.section-service {
+	margin-top: 1.5rem;
+	padding: 4rem 1.5rem 5rem 1.5rem;
+	background: white;
 
+	.services-container {
+		margin-top: 3rem;
+	}
+
+	.section-title {
+		text-align: center;
+		font-size: var(--font-size-1000);
+		font-family: var(--font-family-secondary);
+		font-weight: 500;
+	}
+}
+
+.section-email {
+	padding: 4rem 1.5rem 5rem 1.5rem;
+	background: white;
+	border-top: 2px solid var(--color-gray-100);
+
+	.services-container {
+		margin-top: 3rem;
+	}
+
+	.section-title {
+		text-align: center;
+		font-size: var(--font-size-1000);
+		font-family: var(--font-family-secondary);
+		font-weight: 500;
+	}
+}
