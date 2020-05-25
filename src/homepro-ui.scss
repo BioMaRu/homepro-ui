@@ -5,3 +5,49 @@
 @import 'utility/all.scss';
 @import 'component/all.scss';
 @import 'layout/all.scss';
+
+.section-product {
+	padding: 1.5rem;
+	background: white;
+	border-radius: 6px;
+
+	.section-title {
+		font-size: var(--font-size-800);
+	}
+
+	h2 {
+		font-family: var(--font-family-secondary);
+		font-weight: 500;
+	}
+
+	.product-list {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		margin-top: 1rem;
+	}
+
+	.product-list > *:not(:last-child) {
+		margin-right: 0.75rem;
+	}
+}
+
+.section-categories {
+	padding: 1.5rem;
+	background: white;
+	border-radius: 6px;
+
+	h2 {
+		text-align: center;
+		font-family: var(--font-family-secondary);
+		font-size: var(--font-size-900);
+		font-weight: 500;
+	}
+
+	.category-container {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
+

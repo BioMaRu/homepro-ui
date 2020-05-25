@@ -96,7 +96,7 @@
 
 				<section class="lo-container">
 					<div class="section-product" style="margin-top: -7rem;">
-						<h2>สินค้าขายดี</h2>
+						<h2 class="section-title">สินค้าขายดี</h2>
 
 						<div class="product-list">
 							<div v-for="p in 6" class="hp-card-product">
@@ -114,9 +114,21 @@
 					</div>
 				</section>
 
+				<section class="lo-container" style="margin-top: 1.5rem;">
+					<div class="section-categories">
+					<h2>กลุ่มสินค้ายอดนิยม</h2>
+
+					<div class="category-container">
+						<div v-for="it in 12">
+							<div><img src="assets/c001.png" width="100%" alt="c"></div>
+						</div>
+					</div>
+				</div>
+				</section>
+
 				<section class="lo-container">
 					<div class="section-product" style="margin-top: 1.5rem;">
-						<h2>สินค้ายอดนิยมในหมวด โคมไฟและหลอดไฟ</h2>
+						<h2 class="section-title">สินค้ายอดนิยมในหมวด โคมไฟและหลอดไฟ</h2>
 
 						<div class="product-list">
 							<div v-for="p in 6" class="hp-card-product">
@@ -133,61 +145,18 @@
 					</div>
 				</section>
 
-				<section class="lo-container">
-					<div class="section-product" style="margin-top: 1.5rem;">
-						<h2>สินค้ายอดนิยมในหมวด วัสดุปูพื้นและผนัง</h2>
-
-						<div class="product-list">
-							<div v-for="p in 7" class="hp-card-product">
-								<div class="image">
-									<img src="https://static.homepro.co.th/product/1100000/160x160/25122019_1108743$Imagex1.jpg" width="100%" alt="">
-								</div>
-								<div class="info">
-									<div class="title">เตาบาร์บิคิว MITSUMARU AP-MC14</div>
-									<div class="price">19,900 บาท</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section class="lo-container">
-					<h2>หมวดหมู่ยอดนิยม</h2>
-
+				<div>
+					<h2></h2>
 					<div>
 
 					</div>
-				</section>
+				</div>
 
 				<br>
 				<br>
 				<br>
 			</main>
 		</div>
-
-		<style>
-			.section-product {
-				padding: 1.5rem;
-				background: white;
-				border-radius: 6px;
-			}
-
-			.section-product h2 {
-				font-family: var(--font-family-secondary);
-				font-weight: 500;
-			}
-
-			.section-product .product-list {
-				display: flex;
-				justify-content: space-between;
-				width: 100%;
-				margin-top: 1rem;
-			}
-
-			.section-product .product-list > *:not(:last-child) {
-				margin-right: 0.75rem;
-			}
-		</style>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<script>
