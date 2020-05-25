@@ -119,8 +119,11 @@
 					<h2>กลุ่มสินค้ายอดนิยม</h2>
 
 					<div class="category-container">
-						<div v-for="it in 12">
-							<div><img src="assets/c001.png" width="100%" alt="c"></div>
+						<div v-for="it in 12" class="hp-card-category">
+							<div class="image">
+								<img :src="`assets/c${it}.png`" width="100%" alt="c">
+							</div>
+							<div class="title">สว่านและดอกสว่าน</div>
 						</div>
 					</div>
 				</div>
