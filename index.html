@@ -7,13 +7,11 @@
 	<body style="background-color: var(--color-gray-100);">
 		<div id="js-app">
 			<header>
-				<!-- Top bar -->
+				<!-- ===========================================
+					Top bar
+				================================================ -->
 				<nav class="hp-top-bar lo-container">
 					<div>
-						<ul>
-							<li class="menu"><a href="#">หัวข้ออื่น</a></li>
-							<li class="menu"><a href="#">หัวข้ออื่น</a></li>
-						</ul>
 						<ul>
 							<li class="menu">
 								<span class="u-flag-th"></span>&nbsp;&nbsp;TH
@@ -30,10 +28,12 @@
 					</div>
 				</nav>
 
-				<!-- Nav bar -->
+				<!-- ===========================================
+					Nav bar
+				================================================ -->
 				<nav class="hp-nav-bar lo-container">
 					<div>
-						<img src="assets/homepro-logo.svg" alt="Hopmepro" width="120">
+						<img src="assets/homepro-logo.svg" alt="Hopmepro" height="55" width="120">
 
 						<form class="nav-bar-search">
 							<div class="hp-input -search">
@@ -47,32 +47,57 @@
 
 					<ul class="nav-bar-menu">
 						<li class="menu -active">
-							<span>สินค้าทั้งหมด <i class="far fa-chevron-down"></i></span>
+							<span>เลือกหมวดหมู่สินค้า <i class="far fa-chevron-down"></i></span>
 
 							<ul class="hp-category-panel hp-popup" :class="{ '-active': isShowCategory}">
-								<li>เครื่องใช้ไฟฟ้า</li>
-								<li>ทีวีและเครื่องเสียง</li>
-								<li>กีฬาและฟิตเนส</li>
-								<li>เฟอร์นิเจอร์และของแต่งบ้าน</li>
-								<li>ห้องครัวและอุปกรณ์</li>
-								<li>ห้องนอนและเครื่องนอน</li>
-								<li>ห้องน้ำ</li>
-								<li>วัสดุปูพื้นและผนัง</li>
-								<li>สวนและอุปกรณ์ตกแต่ง</li>
-								<li>โคมไฟและหลอดไฟ</li>
-								<li>ของใช้ภายในบ้าน</li>
-								<li>ประตูและหน้าต่าง</li>
-								<li>เครื่องมือช่างและฮาร์ดแวร์</li>
-								<li>วัสดุก่อสร้าง</li>
-								<li>งานระบบประปา</li>
-								<li>งานระบบไฟฟ้า</li>
+								<li v-for="category in categories">
+									<a href="#">
+										<div>{{ category.title }}</div>
+									</a>
+									<div v-if="category.groups" class="inner1-panel">
+										<ul class="category-inner1-panel u-scrollbar">
+											<li v-for="group in category.groups">
+												<div><a href="#">{{ group.title }}</a></div>
+												<ul>
+													<li v-for="subcategory in group.subcategories">
+														<a href="#">{{ subcategory }}</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<div class="category-promotion">
+											<img src="assets/cat-promo1.jpg" alt="Promo" width="100%">
+										</div>
+										<div class="brand-list">
+											<template v-for="b in 4">
+												<a href="#">
+													<img src="assets/brand1.png" alt="brand">
+												</a>
+												<a href="#">
+													<img src="assets/brand2.png" alt="brand">
+												</a>
+											</template>
+										</div>
+									</div>
+								</li>
 							</ul>
 						</li>
-						<li class="menu">
-							แบรนด์ยอดนิยม <i class="far fa-chevron-down"></i>
+
+						<li class="menu" @mouseover="openNavMenuPanel('BRAND')" @mouseleave="openNavMenuPanel(null)">
+							<span>ช้อปตามแบรนด์ <i class="far fa-chevron-down"></i></span>
+
+							<ul class="hp-brand-panel hp-popup" :class="{ '-active': openedNavMenu === 'BRAND'}">
+								<li v-for="b in 24">
+									<a href="#"><img src="assets/brand1.png" alt="brand"></a>
+								</li>
+							</ul>
 						</li>
-						<li class="menu">
-							ความรู้คู่บ้าน <i class="far fa-chevron-down"></i>
+						<li class="menu" @mouseover="openNavMenuPanel('ARTICLE')" @mouseleave="openNavMenuPanel(null)">
+							<span>ความรู้คู่บ้าน <i class="far fa-chevron-down"></i></span>
+
+							<div class="hp-brand-panel hp-popup" :class="{ '-active': openedNavMenu === 'ARTICLE'}">
+								a
+							</div>
 						</li>
 						<li class="menu">
 							<a href="#">บริการโฮมเซอร์วิส</a>
@@ -89,9 +114,22 @@
 
 			<main>
 				<section class="lo-container" style="background: var(--color-primary-400); padding-bottom: 8rem">
-					<div class="hp-hero-banner">
-						<img src="assets/banner5.jpg" alt="Banner 1">
-					</div>
+					<carousel class="hp-hero-banner">
+						<div class="slide">
+							<img src="assets/banner5.jpg" width="100%" alt="Banner 1">
+						</div>
+						<div class="slide">
+							<img src="assets/banner5.jpg" width="100%" alt="Banner 1">
+						</div>
+						<div class="slide">
+							<img src="assets/banner5.jpg" width="100%" alt="Banner 1">
+						</div>
+						<div class="slide">
+							<img src="assets/banner5.jpg" width="100%" alt="Banner 1">
+						</div>
+						<template slot="prevButton"><i class="fas fa-chevron-left"></i></template>
+						<template slot="nextButton"><i class="fas fa-chevron-right"></i></template>
+					</carousel>
 				</section>
 
 				<section class="lo-container">
@@ -333,13 +371,34 @@
 			</footer>
 		</div>
 
+		<!-- mock window.categories -->
+		<script src="__fixtures__/mock-categories.js"></script>
+
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue-agile@1.1.3/dist/VueAgile.umd.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-agile@1.1.3/dist/VueAgile.css">
+
 		<script>
+			Vue.use(VueAgile)
+
 			var app = new Vue({
 				el: '#js-app',
 
+				components: {
+					carousel: VueAgile,
+				},
+
 				data: {
+					categories: categories,
+					openedNavMenu: null,
 					isShowCategory: true
+				},
+
+				methods: {
+					openNavMenuPanel(menu) {
+						console.log('Hemmo')
+						this.openedNavMenu = menu
+					},
 				}
 			})
 		</script>

@@ -2,10 +2,7 @@
 	position: absolute;
 	opacity: 0;
 
-	transition: all var(--timing-faster) ease;
-
-	transform: scale(0);
-	transform-origin: top right;
+	transition: all 0.24s ease;
 
 	pointer-events: none;
 	backface-visibility: hidden;
@@ -26,7 +23,6 @@
 
 	&.-active {
 		opacity: 1;
-		transform: scale(1);
 		pointer-events: all;
 	}
 }

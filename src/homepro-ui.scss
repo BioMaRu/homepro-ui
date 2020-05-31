@@ -1,3 +1,6 @@
+$md: 1200px;
+$lg: 1330px;
+
 @import 'theme.scss';
 @import 'reset.scss';
 
@@ -5,6 +8,11 @@
 @import 'utility/all.scss';
 @import 'component/all.scss';
 @import 'layout/all.scss';
+
+
+html, body {
+	min-width: 1200px;
+}
 
 .section-product {
 	padding: 2rem 1.5rem 2rem 1.5rem;
@@ -126,3 +134,48 @@
 	font-size: var(--font-size-800);
 	font-weight: 500;
 }
+
+// carousel
+.agile {
+	.agile__actions {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+	}
+}
+
+.agile__nav-button {
+	background: transparent;
+	border: none;
+	color: #ccc;
+	cursor: pointer;
+	font-size: 24px;
+	-webkit-transition-duration: 0.3s;
+			transition-duration: 0.3s;
+}
+	.agile__nav-button:hover {
+		color: #888;
+	}
+	.agile__dot {
+		margin: 0 10px;
+	}
+
+	.agile__dot button {
+		background-color: #eee;
+		border: none;
+		border-radius: 50%;
+		cursor: pointer;
+		display: block;
+		height: 10px;
+		font-size: 0;
+		line-height: 0;
+		margin: 0;
+		padding: 0;
+		-webkit-transition-duration: 0.3s;
+				transition-duration: 0.3s;
+		width: 10px;
+	}
+
+	.agile__dot--current button, .agile__dot:hover button {
+		background-color: #888;
+	}
