@@ -5,7 +5,7 @@
 
 	margin-left: calc(var(--width-category-panel) + 0rem);
 	height: var(--image-height);
-	background-color: transparent;
+	background-color: rgba(0, 0, 0, 0.253);
 
 	img {
 		height: var(--image-height);
@@ -14,5 +14,77 @@
 
 		// border-radius: 6px;
 		overflow: hidden;
+	}
+
+	&:hover {
+		.agile__nav-button {
+			background: rgba(0, 0, 0, 0.288);
+			opacity: 1;
+		}
+	}
+
+	// override carousel
+	.agile__actions {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.agile__nav-button {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		height: 100px;
+		width: 50px;
+		background: transparent;
+		border: none;
+		color: white;
+		opacity: 0;
+		cursor: pointer;
+		font-size: 24px;
+		-webkit-transition-duration: 0.3s;
+				transition-duration: 0.3s;
+	}
+
+	.agile__nav-button--prev {
+		left: 0;
+	}
+
+	.agile__nav-button--next {
+		right: 0;
+	}
+
+	.agile__dots {
+		z-index: 1;
+		justify-content: center;
+		margin-top: -40px;
+		background-color: rgba(0, 0, 0, 0.288);
+		height: 24px;
+		border-radius: 999px;
+
+		.agile__dot {
+			margin: 0 10px;
+		}
+
+		.agile__dot button {
+			background-color:rgba(255, 255, 255, 0.356);
+			border: none;
+			border-radius: 999px;
+			cursor: pointer;
+			display: block;
+			height: 8px;
+			font-size: 0;
+			line-height: 0;
+			margin: 0;
+			padding: 0;
+			-webkit-transition-duration: 0.3s;
+					transition-duration: 0.3s;
+			width: 10px;
+		}
+
+		.agile__dot--current button, .agile__dot:hover button {
+			background-color:rgba(255, 255, 255, 0.849);
+			width: 20px;
+		}
 	}
 }

@@ -117,7 +117,7 @@ $components-colors: (
 
 	i {
 		color: var(--color-primary-500);
-
 		font-size: var(--font-size-600);
+		min-width: 20px;
 	}
 }
