@@ -92,11 +92,41 @@
 								</li>
 							</ul>
 						</li>
+
 						<li class="menu" @mouseover="openNavMenuPanel('ARTICLE')" @mouseleave="openNavMenuPanel(null)">
 							<span>ความรู้คู่บ้าน <i class="far fa-chevron-down"></i></span>
 
-							<div class="hp-brand-panel hp-popup" :class="{ '-active': openedNavMenu === 'ARTICLE'}">
-								a
+							<div class="hp-article-panel hp-popup" :class="{ '-active': openedNavMenu === 'ARTICLE'}">
+								<div class="header">
+									<div>
+										<h2 class="title">บทความเรื่องบ้าน</h2>
+										<div class="description">ค้นหาไอเดียเกี่ยวกับการแต่งบ้าน</div>
+									</div>
+									<div class="hp-fancy-link">
+										<a href="#">
+											ดูไอเดียทั้งหมด <i class="far fa-chevron-circle-right"></i>
+										</a>
+									</div>
+								</div>
+
+								<div class="article-container">
+									<div v-for="a in 4" class="article-card">
+										<a href="#">
+											<div class="image">
+												<img src="assets/article1.jpg" alt="article">
+											</div>
+
+											<div class="info">
+												<div class="tag">
+													TIPS
+												</div>
+												<p class="title">
+													จัดมุมในบ้านไม่ให้น่าเบื่อ ไว้เซลฟี่ช่วง Work from Homeด้วยไอเท็มเด็ดที่ต้องโดน!
+												</p>
+											</div>
+										</a>
+									</div>
+								</div>
 							</div>
 						</li>
 						<li class="menu">
@@ -157,7 +187,7 @@
 					<div class="hp-panel section-categories">
 						<div class="section-header">
 							<h2 class="section-title">กลุ่มสินค้ายอดนิยม</h2>
-							<a href="#" class="section-more-link">
+							<a href="#" class="hp-fancy-link">
 								ดูเพิ่มเติม  <i class="far fa-chevron-circle-right"></i>
 							</a>
 						</div>
@@ -197,7 +227,7 @@
 					<div class="lo-container">
 						<div class="section-header">
 							<h2 class="section-title">โปรโมชั่น</h2>
-							<div class="section-more-link">
+							<div class="hp-fancy-link">
 								<a href="#">
 									ดูโปรโมชั่นทั้งหมด <i class="far fa-chevron-circle-right"></i>
 								</a>

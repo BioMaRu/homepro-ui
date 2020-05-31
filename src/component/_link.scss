@@ -85,3 +85,39 @@ $components-colors: (
 		}
 	};
 }
+
+.#{$component-prefix}fancy-link {
+	position: relative;
+
+	font-family: var(--font-family-secondary);
+	color: var(--color-primary-500);
+
+	font-size: var(--font-size-600);
+
+	&:before {
+		content: '';
+		position: absolute;
+		bottom: -7px;
+		left: 0;
+		height: 3px;
+		width: 100%;
+		transform: scale(0);
+		transform-origin: center;
+		background: var(--color-primary-500);
+		border-radius: 999px;
+
+		transition: all 0.24s ease;
+	}
+
+	&:hover {
+		&:before {
+			transform: scale(1);
+		}
+	}
+
+	i {
+		color: var(--color-primary-500);
+
+		font-size: var(--font-size-600);
+	}
+}
