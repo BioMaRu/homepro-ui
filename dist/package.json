@@ -1,6 +1,6 @@
 {
 	"name": "homepro-ui",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Homepro UI",
 	"unpkg": "dist/homepro-ui.min.css",
 	"jsdelivr": "dist/homepro-ui.min.css",
