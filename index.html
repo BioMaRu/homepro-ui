@@ -11,7 +11,7 @@
 					Top bar
 				================================================ -->
 				<nav class="hp-top-bar lo-container">
-					<div>>
+					<div>
 						<ul>
 							<li class="menu">
 								<span class="u-flag-th"></span>&nbsp;&nbsp;TH
@@ -44,9 +44,22 @@
 								</button>
 							</div>
 						</form>
+
+						<div class="nav-bar-top-menus">
+							<div class="menu">
+								<span class="hp-badge">12</span>
+								<i class="fas fa-shopping-cart"></i>
+							</div>
+							<div class="menu">
+								<i class="fas fa-heart"></i>
+							</div>
+						</div>
 					</div>
 
 					<ul class="nav-bar-menu">
+						<!-- ===========================================
+							Categories
+						================================================ -->
 						<li class="menu -active">
 							<span>เลือกหมวดหมู่สินค้า <i class="far fa-chevron-down"></i></span>
 
@@ -84,6 +97,9 @@
 							</ul>
 						</li>
 
+						<!-- ===========================================
+							Brands
+						================================================ -->
 						<li class="menu" @mouseover="openNavMenuPanel('BRAND')" @mouseleave="openNavMenuPanel(null)">
 							<span>ช้อปตามแบรนด์ <i class="far fa-chevron-down"></i></span>
 
@@ -94,6 +110,9 @@
 							</ul>
 						</li>
 
+						<!-- ===========================================
+							Articles
+						================================================ -->
 						<li class="menu" @mouseover="openNavMenuPanel('ARTICLE')" @mouseleave="openNavMenuPanel(null)">
 							<span>ความรู้คู่บ้าน <i class="far fa-chevron-down"></i></span>
 
@@ -130,12 +149,15 @@
 								</div>
 							</div>
 						</li>
+
 						<li class="menu">
 							<a href="#">บริการโฮมเซอร์วิส</a>
 						</li>
+
 						<li class="menu">
 							<a href="#">โฮมการ์ด</a>
 						</li>
+
 						<li class="menu">
 							<a href="#">โปรโมชั่น</a>
 						</li>
@@ -144,6 +166,9 @@
 			</header>
 
 			<main>
+				<!-- ===========================================
+					Hero Banner
+				================================================ -->
 				<section class="lo-container" style="background: var(--color-primary-400); padding-bottom: 8rem">
 					<carousel class="hp-hero-banner">
 						<div class="slide">
@@ -160,6 +185,9 @@
 					</carousel>
 				</section>
 
+				<!-- ===========================================
+					Hot products
+				================================================ -->
 				<section class="lo-container">
 					<div class="hp-panel section-product" style="margin-top: -7rem;">
 						<h2 class="section-title">สินค้าขายดี</h2>
@@ -181,6 +209,9 @@
 					</div>
 				</section>
 
+				<!-- ===========================================
+					Popular categories
+				================================================ -->
 				<section class="lo-container" style="margin-top: 1.5rem;">
 					<div class="hp-panel section-categories">
 						<div class="section-header">
@@ -202,6 +233,9 @@
 					</div>
 				</section>
 
+				<!-- ===========================================
+					Category products
+				================================================ -->
 				<section class="lo-container">
 					<div class="hp-panel section-product" style="margin-top: 1.5rem;">
 						<h2 class="section-title">สินค้ายอดนิยมในหมวด โคมไฟและหลอดไฟ</h2>
@@ -221,6 +255,9 @@
 					</div>
 				</section>
 
+				<!-- ===========================================
+					Promotion
+				================================================ -->
 				<div class="section-promotion">
 					<div class="lo-container">
 						<div class="section-header">
@@ -258,6 +295,9 @@
 					</div>
 				</div>
 
+				<!-- ===========================================
+					Benefits
+				================================================ -->
 				<div class="section-service">
 					<div class="lo-container">
 						<h2 class="section-title">บริการครบเครื่องเรื่องบ้าน</h2>
@@ -304,6 +344,9 @@
 				</div>
 			</main>
 
+			<!-- ===========================================
+				Footer
+			================================================ -->
 			<footer class="hp-footer">
 				<div class="lo-container">
 					<div class="content-container">

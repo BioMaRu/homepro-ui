@@ -99,15 +99,6 @@
 }
 
 /*
- * Font weight
- *********************************************/
-:root {
-	--font-weight-default: 400;
-	--font-weight-bold: 600;
-	--font-weight-bolder: 700;
-}
-
-/*
  * Timing
  *********************************************/
 // :root {
@@ -129,4 +120,5 @@
 	--height-top-bar: 36px;
 	--height-nav-bar: 133px;
 	--width-category-panel: 220px;
+	--width-navbar-search-input: 700px;
  }
