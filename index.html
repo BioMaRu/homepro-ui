@@ -32,7 +32,7 @@
 				<!-- ===========================================
 					Nav bar
 				================================================ -->
-				<nav class="hp-nav-bar lo-container">
+				<nav ref="navBar" :class="{ 'is-sticky': isNavbarSticky }" class="hp-nav-bar lo-container">
 					<div>
 						<img src="assets/homepro-logo.svg" alt="Hopmepro" height="55" width="120">
 
@@ -60,10 +60,10 @@
 						<!-- ===========================================
 							Categories
 						================================================ -->
-						<li class="menu -active">
+						<li  @mouseover="openNavMenuPanel('CATEGORY')" @mouseleave="openNavMenuPanel(null)" class="menu -active">
 							<span>เลือกหมวดหมู่สินค้า <i class="far fa-chevron-down"></i></span>
 
-							<ul class="hp-category-panel hp-popup" :class="{ '-active': isShowCategory}">
+							<ul :class="{ '-active': isShowCategory || openedNavMenu === 'CATEGORY'}" class="hp-category-panel hp-popup">
 								<li v-for="category in categories">
 									<a href="#">
 										<div>{{ category.title }}</div>
@@ -130,7 +130,7 @@
 								</div>
 
 								<div class="article-container">
-									<div v-for="a in 4" class="article-card">
+									<div v-for="a in 4" class="hp-card-article">
 										<a href="#">
 											<div class="image">
 												<img src="assets/article1.jpg" alt="article">
@@ -165,12 +165,12 @@
 				</nav>
 			</header>
 
-			<main>
+			<main class="home-page-main">
 				<!-- ===========================================
 					Hero Banner
 				================================================ -->
-				<section class="lo-container" style="background: var(--color-primary-400); padding-bottom: 8rem">
-					<carousel class="hp-hero-banner">
+				<section class="section-hero hp-hero-banner lo-container">
+					<carousel class="hero-banner-carousel">
 						<div class="slide">
 							<img src="assets/banner6.jpg" width="100%" alt="Banner 1">
 						</div>
@@ -186,10 +186,21 @@
 				</section>
 
 				<!-- ===========================================
+					Sub Banner
+				================================================ -->
+				<!-- <section class="lo-container">
+					<div class="section-sub-banner">
+						<a href="#"><img src="assets/subbanner1.jpg" alt="b"></a>
+						<a href="#"><img src="assets/subbanner2.jpg" alt="b"></a>
+						<a href="#"><img src="assets/subbanner3.jpg" alt="b"></a>
+					</div>
+				</section> -->
+
+				<!-- ===========================================
 					Hot products
 				================================================ -->
 				<section class="lo-container">
-					<div class="hp-panel section-product" style="margin-top: -7rem;">
+					<div class="hp-panel section-product">
 						<h2 class="section-title">สินค้าขายดี</h2>
 
 						<div class="product-list">
@@ -291,6 +302,42 @@
 							<a href="#">
 								<img src="assets/pf.jpg" alt="pf" width="100%">
 							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- ===========================================
+					Article
+				================================================ -->
+
+				<div class="section-article">
+					<div class="lo-container">
+						<div class="section-header">
+							<h2 class="section-title">ความรู้คู่บ้าน</h2>
+							<div class="hp-fancy-link">
+								<a href="#">
+									ดูบทความทั้งหมด <i class="far fa-chevron-circle-right"></i>
+								</a>
+							</div>
+						</div>
+
+						<div class="article-container">
+							<div v-for="a in 4" class="hp-card-article">
+								<a href="#">
+									<div class="image">
+										<img src="assets/article1.jpg" alt="article">
+									</div>
+
+									<div class="info">
+										<div class="tag">
+											TIPS
+										</div>
+										<p class="title">
+											จัดมุมในบ้านไม่ให้น่าเบื่อ ไว้เซลฟี่ช่วง Work from Homeด้วยไอเท็มเด็ดที่ต้องโดน!
+										</p>
+									</div>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -462,12 +509,28 @@
 				data: {
 					categories: categories,
 					openedNavMenu: null,
-					isShowCategory: true
+					isShowCategory: true,
+					isNavbarSticky: false,
+				},
+
+				mounted () {
+					const $navbar = this.$refs.navBar
+					const pos = $navbar && $navbar.offsetTop
+					const offsetTop = 800
+
+					document.addEventListener('scroll', () => {
+						if (!this.isNavbarSticky && window.pageYOffset >= pos + offsetTop) {
+							this.isNavbarSticky = true
+							this.isShowCategory = false
+						} else if (this.isNavbarSticky && !(window.pageYOffset >= pos + offsetTop)) {
+							this.isNavbarSticky = false
+							this.isShowCategory = true
+						}
+					})
 				},
 
 				methods: {
 					openNavMenuPanel(menu) {
-						console.log('Hemmo')
 						this.openedNavMenu = menu
 					},
 				}

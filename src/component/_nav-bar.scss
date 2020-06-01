@@ -1,7 +1,8 @@
 .#{$component-prefix}nav-bar {
 	display: flex;
-	// justify-content: space-between;
 	align-items: center;
+
+	position: absolute;
 
 	min-height: var(--height-nav-bar);
 
@@ -13,6 +14,29 @@
 	box-shadow: 1px 1px 5px rgba(198,198,198,.1);
 	border-bottom: 1px solid #ddd;
 
+	&.is-sticky {
+		position: fixed;
+		z-index: 2;
+		top: 0;
+		width: 100%;
+		animation-name: navbarSlideDown;
+		animation-duration: 240ms;
+		animation-timing-function: ease-in-out;
+
+		box-shadow:
+			0 0px 3px rgba(0,0,0,0.08),
+			0 4px 8px rgba(0,0,0,0.04),
+			0 7px 10px rgba(0,0,0,0.04);
+	}
+
+	@keyframes navbarSlideDown {
+		0% {
+			transform: translate3d(0, -80%, 0);
+		}
+		100% {
+			transform: translate3d(0, 0, 0);
+		}
+	}
 	> *:first-child {
 		display: flex;
 	}
@@ -136,6 +160,15 @@
 	top: 2.25rem;
 	left: 0;
 	min-width: var(--width-category-panel);
+
+	box-shadow:
+		0 0px 3px rgba(0,0,0,0.08),
+		0 4px 8px rgba(0,0,0,0.04),
+		0 7px 10px rgba(0,0,0,0.04);
+
+	&.#{$component-prefix}popup {
+		transition: all 0s;
+	}
 
 	> li {
 		font-weight: 400;
@@ -290,7 +323,7 @@
 	left: 0;
 
 	display: grid;
-	grid-template-columns: repeat(10, 10%);
+	grid-template-columns: repeat(24, 4.16%);
 
 	width: 100%;
 	box-shadow:
@@ -299,6 +332,13 @@
 		0 7px 10px rgba(0,0,0,0.04);
 
 	cursor: default;
+	> li:nth-child(-n+16) {
+		grid-column: span 3;
+	}
+
+	> li:nth-child(n+17) {
+		grid-column: span 2;
+	}
 
 	> li {
 		padding: 1rem;
@@ -351,44 +391,6 @@
 			margin-top: 4px;
 			font-family: var(--font-family-primary);
 			color: var(--color-text-dark-secondary);
-		}
-	}
-
-	.article-card {
-		.image{
-			overflow: hidden;
-
-			img {
-				width: 100%;
-				transition: all 0.48s ease;
-
-				&:hover {
-					transform: scale(1.1);
-				}
-			}
-		}
-
-		.info {
-			padding: 12px 12px;
-			background: var(--color-gray-100);
-
-			.tag {
-				display: inline-block;
-				padding: 2px 8px;
-				margin-bottom: 8px;
-				border-radius: 2px;
-				background: var(--color-secondary-500);
-				color: white;
-				font-size: var(--font-size-200);
-			}
-
-			.title {
-				font-size: 15px;
-
-				&:hover {
-					color: var(--color-primary-500);
-				}
-			}
 		}
 	}
 }

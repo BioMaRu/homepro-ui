@@ -1,5 +1,28 @@
+.home-page-main {
+	padding-top: var(--height-nav-bar);
+}
+
+.section-hero + * {
+	margin-top: -4rem;
+}
+
+.section-sub-banner {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 16px;
+
+	img {
+		width: 100%;
+
+		box-shadow:
+			0 0px 3px rgba(0,0,0,0.08),
+			0 4px 8px rgba(0,0,0,0.04),
+			0 7px 10px rgba(0,0,0,0.04);
+	}
+}
 
 .section-product {
+	margin-top: 16px;
 	padding: 2rem 1.5rem 2rem 1.5rem;
 	background: white;
 	border-radius: 0px;
@@ -54,6 +77,23 @@
 				transition: all 0.48s ease;
 			}
 		}
+	}
+
+	.bottom-promotion {
+		margin-top: 24px;
+	}
+}
+
+.section-article {
+	margin-top: 1.5rem;
+	padding: 4rem 1.5rem 5rem 1.5rem;
+	background: white;
+
+	.article-container {
+		margin-top: 2rem;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-gap: 24px;
 	}
 
 	.bottom-promotion {
