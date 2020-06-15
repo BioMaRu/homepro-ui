@@ -1,0 +1,68 @@
+body {
+  min-width: var(--min-width-body);
+  background-color: var(--color-body-bg);
+}
+
+.checkout-page-main {
+  padding-top: 116px;
+  padding-bottom: 64px;
+}
+
+.checkout-navbar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  width: 100%;
+  background: white;
+  box-shadow: 1px 1px 5px rgba(198, 198, 198, 0.1);
+  border-bottom: 1px solid #ddd;
+}
+
+.layout-checkout {
+  display: flex;
+  padding-top: 32px;
+}
+.layout-checkout main {
+  flex: 1;
+}
+.layout-checkout main .products-panel {
+  padding: 24px 24px;
+}
+.layout-checkout main .products-panel .products-container {
+  margin-top: 24px;
+}
+.layout-checkout main .products-panel .products-container .hp-card-product-list:not(:first-child) {
+  margin-top: 48px;
+}
+.layout-checkout aside {
+  width: 320px;
+  margin-left: 24px;
+}
+.layout-checkout aside .summary-panel {
+  padding: 24px 24px;
+}
+.layout-checkout aside .summary-panel .price-summary .item,
+.layout-checkout aside .summary-panel .price-info .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-family-secondary);
+  color: var(--color-text-dark-secondary);
+}
+.layout-checkout aside .summary-panel .price-info {
+  margin-top: 16px;
+}
+.layout-checkout aside .summary-panel .price-info .item {
+  margin-bottom: 8px;
+}
+.layout-checkout aside .summary-panel hr {
+  margin-top: 24px;
+}
+.layout-checkout aside .summary-panel .price-summary {
+  margin: 16px 0;
+}
+.layout-checkout aside .summary-panel .price-summary .item > *:last-child {
+  color: var(--color-price-500);
+  font-size: var(--font-size-800);
+}

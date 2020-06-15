@@ -17,7 +17,7 @@ $components-colors: (
 	'golden-poppy': 'golden-poppy'
 );
 
-.#{$component-prefix}label {
+.hp-label {
 	@include make-badge();
 
 	@each $key, $value in $components-colors {

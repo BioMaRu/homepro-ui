@@ -14,3 +14,16 @@
 		grid-column: 2 / 3;
 	}
 }
+
+.lo-with-sidebar {
+	display: flex;
+
+	.sidebar {
+		width: var(--width-sidebar);
+		margin-right: 2rem;
+	}
+
+	.content {
+		flex: 1;
+	}
+}

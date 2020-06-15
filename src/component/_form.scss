@@ -34,24 +34,24 @@ $components-colors: ("positive", "negative", "warning", "info");
 
 	// size
 	&.-big {
-		.#{$component-prefix}input,
-		.#{$component-prefix}select:not(.-multiple) {
+		.hp-input,
+		.hp-select:not(.-multiple) {
 			height: 3rem;
 		}
-		.#{$component-prefix}input > input,
-		.#{$component-prefix}select:not(.-multiple) > select {
+		.hp-input > input,
+		.hp-select:not(.-multiple) > select {
 			font-size: 1.25rem;
 			height: 100%;
 		}
 	}
 
 	&.-small {
-		.#{$component-prefix}input,
-		.#{$component-prefix}select:not(.-multiple) {
+		.hp-input,
+		.hp-select:not(.-multiple) {
 			height: 1.875em;
 		}
-		.#{$component-prefix}input > input,
-		.#{$component-prefix}select:not(.-multiple) > select {
+		.hp-input > input,
+		.hp-select:not(.-multiple) > select {
 			font-size: 0.75rem;
 			height: 100%;
 		}
@@ -65,11 +65,10 @@ $components-colors: ("positive", "negative", "warning", "info");
 	:active {
 		border-color: var(--color-primary-400);
 		border-width: 1px;
-		box-shadow: 0 0 0 0.175rem var(--color-primary-300);
 	}
 }
 
-.#{$component-prefix}field {
+.hp-field {
 	label {
 		font-weight: 600;
 		display: inline-block;
@@ -83,54 +82,46 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 
 	// color
-	// @each $key, $value in $components-colors {
-	// 	&.-#{$key} {
-	// 		.#{$component-prefix}input input,
-	// 		.#{$component-prefix}textarea textarea,
-	// 		.#{$component-prefix}select select {
-	// 			color: var(--color-#{$key}-700);
-	// 			border-color: var(--color-#{$key}-400);
+	&.is-error {
+		.hp-input input,
+		.hp-textarea textarea,
+		.hp-select select {
+			color: var(--color-error-700);
+			border-color: var(--color-error-400);
+		}
 
-	// 			&:focus,
-	// 			:active {
-	// 				box-shadow: 0 0 0 0.175rem var(--color-#{$key}-300);
-	// 			}
-	// 		}
+		.fieldset,
+		fieldset {
+			border-color: var(--color-negative-500);
+		}
 
-	// 		.fieldset,
-	// 		fieldset {
-	// 			border-color: var(--color-negative-500);
-	// 		}
-
-	// 		small,
-	// 		i {
-	// 			color: var(--color-#{$key}-500);
-	// 		}
-	// 	}
-	// }
+		small {
+			color: var(--color-error-500);
+		}
+	}
 
 	// size
 	&.-big {
-		.#{$component-prefix}input,
-		.#{$component-prefix}select:not(.-multiple) {
+		.hp-input,
+		.hp-select:not(.-multiple) {
 			height: 3rem;
 		}
 
-		.#{$component-prefix}input input,
-		.#{$component-prefix}select:not(.-multiple) select {
+		.hp-input input,
+		.hp-select:not(.-multiple) select {
 			font-size: 1.25rem;
 			height: 100%;
 		}
 	}
 
 	&.-small {
-		.#{$component-prefix}input,
-		.#{$component-prefix}select:not(.-multiple) {
+		.hp-input,
+		.hp-select:not(.-multiple) {
 			height: 1.875em;
 		}
 
-		.#{$component-prefix}input input,
-		.#{$component-prefix}select:not(.-multiple) select {
+		.hp-input input,
+		.hp-select:not(.-multiple) select {
 			font-size: 0.75rem;
 			height: 100%;
 		}
@@ -140,9 +131,9 @@ $components-colors: ("positive", "negative", "warning", "info");
 	&.-disabled,
 	.disabled,
 	[disabled] {
-		.#{$component-prefix}input input,
-		.#{$component-prefix}textarea textarea,
-		.#{$component-prefix}select select {
+		.hp-input input,
+		.hp-textarea textarea,
+		.hp-select select {
 			cursor: not-allowed;
 			background-color: var(--color-gray-100);
 			border-color: var(--color-gray-300);
@@ -175,46 +166,19 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 }
 
-.#{$component-prefix}input,
-.#{$component-prefix}textarea,
-.#{$component-prefix}select {
+.hp-input,
+.hp-textarea,
+.hp-select {
 	border-radius: 2px;
 }
 
-.#{$component-prefix}input input,
-.#{$component-prefix}textarea textarea,
-.#{$component-prefix}select select {
+.hp-input input,
+.hp-textarea textarea,
+.hp-select select {
 	@extend %base-input;
 }
 
-.#{$component-prefix}input.-search {
-	display: flex;
-
-	input {
-		background: #eff0f5;
-		border-color: #eff0f5;
-
-		border-top-left-radius: 2px;
-		border-bottom-left-radius: 2px;
-
-		min-width: 500px;
-
-		&:focus,
-		:active {
-			box-shadow: none;
-			outline: none;
-		}
-	}
-
-	button {
-		min-height: 40px;
-		border-radius: 0;
-		border-top-right-radius: 2px;
-		border-bottom-right-radius: 2px;
-	}
-}
-
-.#{$component-prefix}select {
+.hp-select {
 	position: relative;
 
 	select {
@@ -237,17 +201,17 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 }
 
-.#{$component-prefix}textarea textarea {
+.hp-textarea textarea {
 	padding: 8px 0.75rem;
 	line-height: 1.25;
 }
 
-.#{$component-prefix}input,
-.#{$component-prefix}select {
+.hp-input,
+.hp-select {
 	height: 2.5rem;
 }
 
-.#{$component-prefix}radio {
+.hp-radio {
 	> input[type="radio"] {
 		position: absolute;
 		z-index: -1;
@@ -304,9 +268,9 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 }
 
-.#{$component-prefix}field {
+.hp-field {
 	&.-disabled {
-		.#{$component-prefix}radio {
+		.hp-radio {
 			> label {
 				cursor: not-allowed;
 				color: var(--color-gray-400);
@@ -323,7 +287,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 }
 
-.#{$component-prefix}checkbox {
+.hp-checkbox {
 	> input[type="checkbox"] {
 		position: absolute;
 		opacity: 0;
@@ -356,7 +320,6 @@ $components-colors: ("positive", "negative", "warning", "info");
 		height: 100%;
 
 		padding-left: 28px;
-		margin-left: -19px;
 		line-height: 19px;
 		cursor: pointer;
 
@@ -397,7 +360,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 }
 
-.#{$component-prefix}toggle-tag {
+.hp-toggle-tag {
 	> input[type="radio"],
 	> input[type="checkbox"] {
 		position: absolute;
@@ -457,7 +420,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 }
 
 // Switch
-// .#{$component-prefix}switch {
+// .hp-switch {
 // 	display: inline-flex;
 // 	align-items: center;
 
@@ -506,9 +469,9 @@ $components-colors: ("positive", "negative", "warning", "info");
 // 	}
 // }
 
-.#{$component-prefix}field {
+.hp-field {
 	&.-disabled {
-		.#{$component-prefix}checkbox {
+		.hp-checkbox {
 			opacity: 0.5;
 
 			> input[type="checkbox"],
@@ -530,9 +493,9 @@ $components-colors: ("positive", "negative", "warning", "info");
 }
 
 // input icon
-.#{$component-prefix}input.-has-icon-left,
-.#{$component-prefix}select.-has-icon-left,
-.#{$component-prefix}input.-has-icon-right {
+.hp-input.-has-icon-left,
+.hp-select.-has-icon-left,
+.hp-input.-has-icon-right {
 	position: relative;
 
 	> .icon {
@@ -552,7 +515,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 }
 
-.#{$component-prefix}input.-has-icon-left {
+.hp-input.-has-icon-left {
 	> input {
 		padding-left: 2.625rem;
 	}
@@ -562,7 +525,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 }
 
-.#{$component-prefix}select.-has-icon-left {
+.hp-select.-has-icon-left {
 	> select {
 		padding-left: 2.625rem;
 	}
@@ -572,7 +535,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 }
 
-.#{$component-prefix}input.-has-icon-right {
+.hp-input.-has-icon-right {
 	> input {
 		padding-right: 2.625rem;
 	}
@@ -582,8 +545,8 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 }
 
-.#{$component-prefix}field.-small {
-	.#{$component-prefix}input.-has-icon-left {
+.hp-field.-small {
+	.hp-input.-has-icon-left {
 		> input {
 			padding-left: 2rem;
 		}
@@ -596,7 +559,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 			font-size: 0.875rem;
 		}
 	}
-	.#{$component-prefix}select.-has-icon-left {
+	.hp-select.-has-icon-left {
 		> select {
 			padding-left: 2rem;
 		}
@@ -609,7 +572,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 			font-size: 0.875rem;
 		}
 	}
-	.#{$component-prefix}input.-has-icon-right {
+	.hp-input.-has-icon-right {
 		> input {
 			padding-right: 2rem;
 		}
@@ -624,8 +587,8 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 }
 
-.#{$component-prefix}field.-big {
-	.#{$component-prefix}input.-has-icon-left {
+.hp-field.-big {
+	.hp-input.-has-icon-left {
 		> input {
 			padding-left: 3rem;
 		}
@@ -638,7 +601,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 			font-size: 1.33333rem;
 		}
 	}
-	.#{$component-prefix}select.-has-icon-left {
+	.hp-select.-has-icon-left {
 		> select {
 			padding-left: 3rem;
 		}
@@ -651,7 +614,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 			font-size: 1.33333rem;
 		}
 	}
-	.#{$component-prefix}input.-has-icon-right {
+	.hp-input.-has-icon-right {
 		> input {
 			padding-right: 3rem;
 		}
@@ -663,5 +626,50 @@ $components-colors: ("positive", "negative", "warning", "info");
 
 			font-size: 1.33333rem;
 		}
+	}
+}
+// vue multi select
+.multiselect {
+	.multiselect__input,
+	.multiselect__single {
+		font-size: 15px;
+	}
+
+	.multiselect__tags {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+
+		background-color: white;
+
+		font-size: 15px;
+		vertical-align: top;
+
+		border-radius: inherit;
+		border: 1px solid hsl(216, 15%, 80%);
+
+		outline: none;
+
+		&:hover {
+			border-color: hsl(216, 15%, 65%);
+		}
+
+		&:focus,
+		:active {
+			border-color: var(--color-primary-400);
+			border-width: 1px;
+		}
+	}
+
+	.multiselect__option.multiselect__option--selected,
+	.multiselect__option.multiselect__option--highlight.multiselect__option--selected {
+		background: var(--color-gray-100);
+		color: var(--color-text-dark-primary);
+		font-weight: 500;
+	}
+
+	.multiselect__option.multiselect__option--highlight.multiselect__option--highlight {
+		background: var(--color-primary-500);
+		color: white;
 	}
 }

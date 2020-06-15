@@ -1,13 +1,13 @@
-.#{$component-prefix}card-article {
+.hp-card-article {
 	.image{
 		overflow: hidden;
 
 		img {
 			width: 100%;
-			transition: all 0.48s ease;
+			transition: all var(--timing-slow) ease;
 
 			&:hover {
-				transform: scale(1.1);
+				transform: scale(1.05);
 			}
 		}
 	}

@@ -1,0 +1,16 @@
+.hp-banner {
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		border-radius: 3px;
+		transition: all var(--timing-slow) ease;
+		backface-visibility: hidden;
+
+		object-fit: cover;
+
+		&:hover {
+			transform: scale(1.06);
+		}
+	}
+}

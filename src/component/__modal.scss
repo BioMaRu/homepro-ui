@@ -41,7 +41,7 @@
 	}
 }
 
-.#{$component-prefix}modal {
+.hp-modal {
 	position: fixed;
 	overflow-y: auto;
 	z-index: 1;
@@ -81,7 +81,7 @@
 
 	}
 
-	> .#{$component-prefix}modal-panel {
+	> .hp-modal-panel {
 		@extend %base-modal-panel;
 	}
 
@@ -90,7 +90,7 @@
 		visibility: visible;
 		opacity: 1;
 
-		.#{$component-prefix}modal-panel {
+		.hp-modal-panel {
 			transform: translate3d(0, 0, 0);
 			opacity: 1;
 		}

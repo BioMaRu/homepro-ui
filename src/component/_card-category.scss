@@ -1,15 +1,16 @@
-.#{$component-prefix}card-category {
+.hp-card-category {
 	display: flex;
 	flex-direction: column;
 
 	border-radius: 2px;
-	transition: all 0.16s ease;
+	transition: all var(--timing-normal) ease;
 	cursor: pointer;
 
 	&:hover {
 		transform: translate3d(0, -4px, 0);
 
 		.image {
+
 			img {
 				transform: scale(1.08);
 			}
@@ -21,13 +22,15 @@
 	}
 
 	.image {
+		overflow: hidden;
 		position: relative;
+		height: 178px; // placeholder height
 		padding: 1rem;
 		border-radius: 4px;
-		overflow: hidden;
 
 		img {
-			transition: all ease 0.16s;
+			width: 100%;
+			transition: all var(--timing-normal) ease;
 			position: relative;
 		}
 
@@ -48,7 +51,7 @@
 
 			background-color: var(--color-primary-100);
 			border-radius: 999px;
-			transition: all ease 0.16s;
+			transition: all var(--timing-normal) ease;
 		}
 	}
 

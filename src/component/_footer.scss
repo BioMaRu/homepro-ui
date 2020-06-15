@@ -1,5 +1,6 @@
-.#{$component-prefix}footer {
+.hp-footer {
 	padding-top: 4rem;
+	background: var(--color-gray-200);
 
 	.content-container {
 		display: grid;
@@ -47,12 +48,15 @@
 	}
 
 	.email-subscribe {
+		.hp-field {
+			margin-top: 0.5rem;
+		}
+
 		.hp-input {
 			display: flex;
-			margin-top: 0.5rem;
+			min-height: 46px;
 
 			input {
-				min-height: 46px;
 				border-top-right-radius: 0;
 				border-bottom-right-radius: 0;
 			}
@@ -67,7 +71,8 @@
 	.sub-footer {
 		margin-top: 4rem;
 		padding: 1rem 0;
-		background: var(--color-primary-900);
+		background: var(--color-primary-500);
 		color: var(--color-text-light-secondary);
+		font-weight: 500;
 	}
 }

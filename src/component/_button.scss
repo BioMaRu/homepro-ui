@@ -68,7 +68,7 @@ $components-colors: (
 	}
 }
 
-.#{$component-prefix}button {
+.hp-button {
 	@extend %base-button;
 
 	color: var(--color-text-light-primary);

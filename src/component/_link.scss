@@ -4,10 +4,10 @@ $components-colors: (
 	'negative'
 );
 
-.#{$component-prefix}link {
+.hp-link {
 	position: relative;
 
-	color: var(--color-gray-800);
+	color: var(--color-primary-500);
 
 	text-decoration: none;
 
@@ -17,7 +17,7 @@ $components-colors: (
 
 	svg, path {
 		transition: fill 160ms ease-in-out;
-		fill: var(--color-gray-800);
+		fill: var(--color-primary-500);
 	}
 
 	&:before, &:after {
@@ -86,7 +86,7 @@ $components-colors: (
 	};
 }
 
-.#{$component-prefix}fancy-link {
+.hp-fancy-link {
 	position: relative;
 
 	font-family: var(--font-family-secondary);

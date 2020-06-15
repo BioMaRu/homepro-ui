@@ -1,0 +1,579 @@
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Prompt:300,400,500,600,700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/fontawesome-pro-5.13.0/css/all.min.css">
+		<link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
+
+
+		<link rel="stylesheet" href="dist/homepro-ui.min.css">
+		<link rel="stylesheet" href="dist/page-browse.min.css">
+
+		<style>
+			[v-cloak] {
+				visibility: hidden;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="js-app">
+			<header>
+				<!-- ===========================================
+					Top bar
+				================================================ -->
+				<nav class="hp-top-bar lo-container">
+					<div>
+						<ul>
+							<li class="menu">
+								<span class="u-flag-th"></span>&nbsp;&nbsp;TH
+							</li>
+							<li>|</li>
+							<li class="menu">
+								<span class="u-flag-en"></span>&nbsp;&nbsp;EN
+							</li>
+							<li class="menu"><i class="fas fa-phone-alt"></i>&nbsp;&nbsp;1284</li>
+							<li class="menu"><a href="#">ค้นหาสาขา</a></li>
+							<li class="menu"><a href="#">ติดต่อเรา</a></li>
+							<li class="menu"><a href="#">ติดตามคำสั่งซื้อ</a></li>
+							<li class="menu"><a href="#">บัญชีของฉัน</a></li>
+						</ul>
+					</div>
+				</nav>
+
+				<!-- ===========================================
+					Nav bar
+				================================================ -->
+				<nav ref="navBar" class="hp-nav-bar lo-container">
+					<div>
+						<img src="assets/homepro-logo.svg" alt="Hopmepro" height="55" width="120">
+
+						<div class="nav-bar-search">
+							<form>
+								<div class="hp-input">
+									<input type="text" placeholder="ค้นหาสินค้าในโฮมโปร">
+									<button class="hp-button">
+										<i class="far fa-search"></i>
+									</button>
+								</div>
+							</form>
+							<ul class="popular-keywords">
+								<li><a href="#">ทีวี</a></li>
+								<li><a href="#">LG</a></li>
+								<li><a href="#">เตารีด</a></li>
+								<li><a href="#">Philips</a></li>
+								<li><a href="#">นาฬิกา</a></li>
+								<li><a href="#">Garmin</a></li>
+								<li><a href="#">สุขภัณฑ์</a></li>
+								<li><a href="#">Moya</a></li>
+							</ul>
+						</div>
+
+						<div class="nav-bar-top-menus">
+							<div class="menu">
+								<span class="hp-badge">12</span>
+								<i class="fas fa-shopping-cart"></i>
+							</div>
+							<div class="menu">
+								<i class="fas fa-heart"></i>
+							</div>
+						</div>
+
+						<div class="nav-banner">
+							<a href="#">
+								<img src="assets/nav-banner.jpg" alt="Promotion">
+							</a>
+						</div>
+					</div>
+
+					<ul class="nav-bar-menu">
+						<!-- ===========================================
+							Categories
+						================================================ -->
+						<li  @mouseover="openNavMenuPanel('CATEGORY')" @mouseleave="openNavMenuPanel(null)" class="menu">
+							<span>เลือกหมวดหมู่สินค้า <i class="far fa-chevron-down"></i></span>
+
+							<ul :class="{ '-active': openedNavMenu === 'CATEGORY'}" class="hp-category-panel hp-popup">
+								<li v-for="category in categories">
+									<a href="#">
+										<div>{{ category.title }}</div>
+									</a>
+									<div v-if="category.groups" class="inner1-panel">
+										<ul class="category-inner1-panel u-scrollbar">
+											<li v-for="group in category.groups">
+												<div><a href="#">{{ group.title }}</a></div>
+												<ul>
+													<li v-for="subcategory in group.subcategories">
+														<a href="#">{{ subcategory }}</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<div class="category-promotion">
+											<img src="assets/cat-promo1.jpg" alt="Promo" width="100%">
+										</div>
+										<div class="brand-list">
+											<template v-for="b in 4">
+												<a href="#">
+													<img src="assets/brand1.png" alt="brand">
+												</a>
+												<a href="#">
+													<img src="assets/brand2.png" alt="brand">
+												</a>
+											</template>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</li>
+
+						<!-- ===========================================
+							Brands
+						================================================ -->
+						<li class="menu" @mouseover="openNavMenuPanel('BRAND')" @mouseleave="openNavMenuPanel(null)">
+							<span>ช้อปตามแบรนด์ <i class="far fa-chevron-down"></i></span>
+
+							<ul class="hp-brand-panel hp-popup" :class="{ '-active': openedNavMenu === 'BRAND'}">
+								<li v-for="b in 24">
+									<a href="#"><img src="assets/brand1.png" alt="brand"></a>
+								</li>
+							</ul>
+						</li>
+
+						<!-- ===========================================
+							Articles
+						================================================ -->
+						<li class="menu" @mouseover="openNavMenuPanel('ARTICLE')" @mouseleave="openNavMenuPanel(null)">
+							<span>ความรู้คู่บ้าน <i class="far fa-chevron-down"></i></span>
+
+							<div class="hp-article-panel hp-popup" :class="{ '-active': openedNavMenu === 'ARTICLE'}">
+								<div class="header">
+									<div>
+										<h2 class="title">บทความเรื่องบ้าน</h2>
+										<div class="description">ค้นหาไอเดียเกี่ยวกับการแต่งบ้าน</div>
+									</div>
+									<div class="hp-fancy-link">
+										<a href="#">
+											ดูไอเดียทั้งหมด <i class="far fa-chevron-circle-right"></i>
+										</a>
+									</div>
+								</div>
+
+								<div class="article-container">
+									<div v-for="a in 4" class="hp-card-article">
+										<a href="#">
+											<div class="image">
+												<img src="assets/article1.jpg" alt="article">
+											</div>
+
+											<div class="info">
+												<div class="tag">
+													TIPS
+												</div>
+												<p class="title">
+													จัดมุมในบ้านไม่ให้น่าเบื่อ ไว้เซลฟี่ช่วง Work from Homeด้วยไอเท็มเด็ดที่ต้องโดน!
+												</p>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</li>
+
+						<li class="menu">
+							<a href="#">บริการโฮมเซอร์วิส</a>
+						</li>
+
+						<li class="menu">
+							<a href="#">โฮมการ์ด</a>
+						</li>
+
+						<li class="menu">
+							<a href="#">โปรโมชั่น</a>
+						</li>
+					</ul>
+				</nav>
+			</header>
+
+			<main class="browse-page-main lo-container">
+				<section class="layout-breadcrumb">
+					<ul class="hp-breadcrumb">
+						<li><a href="#" class="hp-link">สินค้าทั้งหมด</a></li>
+						<li><a href="#" class="hp-link">เครื่องใช้ไฟฟ้า</a></li>
+						<li>เตารีด</li>
+					</ul>
+				</section>
+
+				<section class="section-browse lo-with-sidebar">
+					<!--========================================
+						Aside
+					==========================================-->
+					<form class="sidebar group-container lo-12">
+						<div class="group lo-12">
+							<strong class="u-font-fancy">หมวดสินค้า</strong>
+							<div class="hp-checkbox">
+								<input id="เครื่องรีดผ้าไอน้ำ" type="checkbox">
+								<label for="เครื่องรีดผ้าไอน้ำ">เครื่องรีดผ้าไอน้ำ</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="เตารีดแรงดันไอน้ำ" type="checkbox">
+								<label for="เตารีดแรงดันไอน้ำ">เตารีดแรงดันไอน้ำ</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="เตารีดไอน้ำ" type="checkbox">
+								<label for="เตารีดไอน้ำ">เตารีดไอน้ำ</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="เตารีดแห้ง" type="checkbox">
+								<label for="เตารีดแห้ง">เตารีดแห้ง</label>
+							</div>
+						</div>
+
+						<div class="group lo-12">
+							<strong class="u-font-fancy">แบรนด์</strong>
+							<div class="hp-checkbox">
+								<input id="PHILIPS" type="checkbox">
+								<label for="PHILIPS">PHILIPS</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="PANASONIC" type="checkbox">
+								<label for="PANASONIC">PANASONIC</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="SHARP" type="checkbox">
+								<label for="SHARP">SHARP</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="SHARP" type="checkbox">
+								<label for="SHARP">SHARP</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="HISENSE" type="checkbox">
+								<label for="HISENSE">HISENSE</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="SKYWORTH" type="checkbox">
+								<label for="SKYWORTH">SKYWORTH</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="TCL" type="checkbox">
+								<label for="TCL">TCL</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="TOSHIBA" type="checkbox">
+								<label for="TOSHIBA">TOSHIBA</label>
+							</div>
+						</div>
+						<div class="group lo-12">
+							<strong class="u-font-fancy">แบรนด์</strong>
+							<div class="hp-checkbox">
+								<input id="3M" type="checkbox">
+								<label for="3M">3M</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="ACCA" type="checkbox">
+								<label for="ACCA">ACCA</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="ACCO" type="checkbox">
+								<label for="ACCO">ACCO</label>
+							</div>
+							<div class="hp-checkbox">
+								<input id="AMERICAN STANDARD" type="checkbox">
+								<label for="AMERICAN STANDARD">AMERICAN STANDARD</label>
+							</div>
+						</div>
+
+						<div class="group lo-12">
+							<strong class="u-font-fancy">ช่วงราคา</strong>
+							<div class="price-range">
+								<div class="hp-field -small">
+									<div class="hp-input">
+										<input type="number" placeholder="ต่ำสุด">
+									</div>
+								</div>
+								<span class="u-font-fancy"><small>ถึง</small></span>
+								<div class="hp-field -small">
+									<div class="hp-input">
+										<input type="number" placeholder="สูงสุด">
+									</div>
+								</div>
+							</div>
+							<button class="hp-button -small">
+								ตกลง
+							</button>
+						</div>
+
+						<div class="group lo-12">
+							<button type="reset" class="hp-button -small -secondary u-fluid">
+								ล้างทั้งหมด
+							</button>
+						</div>
+					</form>
+
+					<div class="content layout-product">
+
+						<!--========================================
+							Top Information
+						==========================================-->
+						<div class="product-list-info">
+							<div class="header">
+								<h1 class="u-font-fancy">เตารีด</h1>
+								<small>พบสินค้าจำนวน 38 รายการ</small>
+							</div>
+						</div>
+
+						<!--========================================
+							Promotion
+						==========================================-->
+						<div class="product-list-promotion">
+							<a href="#">
+								<div class="hp-banner u-raised-2"><img src="assets/sub-banner1.jpg" alt="sub-banner"></div>
+							</a>
+							<a href="#">
+								<div class="hp-banner u-raised-2"><img src="assets/sub-banner2.jpg" alt="sub-banner"></div>
+							</a>
+							<a href="#">
+								<div class="hp-banner u-raised-2"><img src="assets/sub-banner3.jpg" alt="sub-banner"></div>
+							</a>
+						</div>
+
+						<!--========================================
+							Top Toolbar
+						==========================================-->
+						<div class="product-list-top-toolbar">
+							<div class="select-container">
+								<strong>เรียงโดย</strong>
+								<vue-multiselect
+									@input="onSortChange"
+									v-model="sortingValue"
+									:options="sortingOptions"
+									select-label=''
+									selected-label=''
+									deselect-label=''
+									:show-labels="false"
+									:searchable="false"
+									:allow-empty="false"
+									class="sort-select">
+								</vue-multiselect>
+							</div>
+							<div class="page-container">
+								<span class="page-number">หน้า 1/18</span>
+								<div class="page-navigation">
+									<button disabled class="page-button-prev">
+										<i class="far fa-chevron-left"></i>
+									</button>
+									<button class="page-button-next">
+										<i class="far fa-chevron-right"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<!--========================================
+							Product List
+						==========================================-->
+						<div v-cloak class="product-list">
+							<div v-for="product in products" class="hp-card-product">
+								<div class="image">
+									<img :src="product.photo">
+								</div>
+								<div class="info">
+									<div v-if="product.discount" class="discount">{{ product.discount }}</div>
+									<div class="brand">{{ product.brand }}</div>
+									<div class="title">{{ product.title }}</div>
+									<div class="price">{{ product.price }} บาท</div>
+									<div v-if="product.originalPrice" class="original-price">{{ product.originalPrice }} บาท</div>
+								</div>
+								<div v-if="product.promotion" class="promotion">
+									{{ product.promotion }}
+								</div>
+							</div>
+						</div>
+
+						<!--========================================
+							Bottom Pagination
+						==========================================-->
+						<div class="layout-pagination">
+							<ul class="hp-pagination">
+								<li class="item disabled"><a href="#" class="link"><i class="far fa-chevron-left"></i></a></li>
+								<li class="item"><a href="#" class="link">1</a></li>
+								<li class="item"><a href="#" class="link">2</a></li>
+								<li class="item"><span class="link">...</span></li>
+								<li class="item active"><a href="#" class="link">8</a></li>
+								<li class="item"><span class="link">...</span></li>
+								<li class="item"><a href="#" class="link">10</a></li>
+								<li class="item"><a href="#" class="link">11</a></li>
+								<li class="item"><a href="#" class="link"><i class="far fa-chevron-right"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</main>
+
+			<div class="layout-footer-content lo-container">
+				<div>
+					<p style="font-size: 12px;">
+						<strong>เตารีด (Iron)</strong><br>
+						<span>
+							เตารีด เป็นเครื่องใช้ไฟฟ้าที่ช่วยให้การรีดผ้าสามารถทำได้ง่ายและประหยัดเวลามากกว่าเดิม และเชื่อว่าทุกบ้านจะต้องมีเตารีดไฟฟ้าไว้ใช้งานอย่างแน่นอน เพราะการรีดผ้าเป็นสิ่งที่เราทำกันเป็นกิจวัตรในชีวิตประจำวัน การสวมใส่เสื้อผ้าที่เรียบสวย จะยิ่งเสริมบุคลิกภาพให้ดูดีและเนี้ยบมากยิ่งขึ้น ดังนั้นการเลือกเตารีดที่ดีและมีคุณภาพ จะสามารถช่วยทุ่นแรงในการรีดผ้าได้เป็นอย่างดี
+							โดยท้องตลาดเครื่องใช้ไฟฟ้าปัจจุบัน ก็มีเตารีดให้เลือกใช้งานกันอยู่ 2 ประเภทหลักๆ ได้แก่ เตารีดแห้ง และ เตารีดไอน้ำ ซึ่งเตารีดทั้ง 2 รูปแบบก็มีคุณสมบัติและข้อดีที่แตกต่างกัน โดยเตารีดที่มีวางจำหน่ายอยู่ตามห้างสรรพสินค้าเช่น HomePro คัดสรรมาจากหลายแบรนด์คุณภาพ ไม่ว่าจะเป็น Philips, Panasonic, Tefal, Electrolux เป็นต้น ดังนั้นก่อนตัดสินใจเลือกเตารีดมาใช้งานภายในบ้าน จะต้องดูรายละเอียดต่างๆเสียก่อน เพื่อที่จะเลือกเตารีดที่มีความคุ้มค่า และสามารถใช้งานคู่บ้านได้อย่างยาวนานมากที่สุด
+						</span>
+						<br>
+						<br>
+						<strong>เตารีดแห้ง</strong><br>
+						เตารีดแห้ง คือเตารีดแบบดั้งเดิมที่มีใช้งานตามบ้านทั่วไปมาอย่างยาวนาน การทำงานก็ไม่ซับซ้อนเพียงแค่ทำการเสียบปลั๊กไฟแล้วปรับอุณภูมิตามต้องการ กระแสไฟฟ้าจะทำให้ขดลวดด้านในเตารีดเกิดความร้อน ส่งผลให้เราสามารถรีดผ้าได้เรียบกริบอย่างรวดเร็ว และที่สำคัญคือเตารีดแห้งมีความแข็งแรงอึดทนทาน ใช้งานไม่ค่อยมีปัญหาเท่าไหร่ แต่ระหว่างการรีดจำเป็นต้องฉีดสเปรย์พรมน้ำให้เสื้อผ้าชื้นเสียก่อนถึงจะรีดเสื้อผ้าได้เรียบ และต้องใช้แรงกดพอสมควรในการใช้งาน ต่างจากเตารีดระบบไอน้ำที่สามารถรีดผ้าได้เรียบและลื่นมากกว่า
+						<br>
+						<br>
+						<strong>เตารีดไอน้ำ</strong><br>
+						เตารีดไอน้ำ เป็นเตารีดอีกประเภทที่ได้รับความนิยมอย่างมากในปัจจุบัน เนื่องจากสามารถรีดผ้าได้เรียบลื่นไม่ต้องใช้แรงกดมากเหมือนกับเตารีดแบบแห้ง ลักษณะของเตารีดไอน้ำจะมีการเพิ่มส่วนของหม้อต้มเข้าไว้ในตัวเตารีดด้วย เมื่อต้องการใช้งานให้เติมน้ำลงไปในเตารีดและเสียบปลั๊กไฟสักครู่ เพื่อต้มน้ำให้ร้อนเสียก่อนจึงสามารถใช้งานได้ โดยการทำงานก็จะมีความคล้ายกับเตารีดแบบแห้ง คือกระแสไฟวิ่งเข้าขดลวดก่อให้เกิดความร้อน แต่สิ่งที่แตกต่างคือสามารถกดปุ่มเพื่อปล่อยไอน้ำออกมาจากในหม้อต้มฉีดลงผ้าได้โดยตรงทำให้ผ้าเรียบเร็วขึ้น ในบางรุ่นมีหัวสเปรย์ในตัวด้วย ทำให้สามารถฉีดพรมน้ำลงไปบนผ้าได้ทันที ไม่ต้องเตรียมสเปรย์ฉีดน้ำไว้ข้างๆตัว แต่สิ่งที่ต้องคอยระวังคือ อย่าให้น้ำขังอยู่ในหม้อต้มเป็นเวลานานเนื่องจากจะทำให้เกิดตะกรัน และหากนำมาใช้งานก็จะทำให้ตะกรันถูกพ่นลงไปบนผ้า ทำให้ผ้านั้นเลอะเทอะได้
+						<br>
+						<br>
+						<strong>เตารีดแรงดันไอน้ำ</strong><br>
+						เตารีดแรงดันไอน้ำ คือเตารีดที่อัพเกรดขึ้นมาจากเตารีดไอน้ำที่แต่เดิมหม้อต้มจะอยู่ที่ตัวเตารีดเลย แต่เตารีดแรงดันไอน้ำจะเป็นหม้อต้มขนาดใหญ่แยกจากตัวเตารีดออกมา มีลักษณะเป็นเหมือนกับแท่นวาง สามารถเติมน้ำได้ในขณะรีดโดยไม่ทำให้เกิดอันตราย ที่สำคัญคือเตารีดแรงดันไอน้ำรีดเนื้อผ้าทุกประเภทตั้งแต่ผ้ายีนส์ถึงผ้าไหม โดยไม่ต้องปรับอุณหภูมิและไม่มีการเกิดรอยไหม้ พลังไอน้ำช่วยทำให้ผ้าเรียบเร็ว แม้กระทั่งรอยยับที่รีดยากหรือผ้าเนื้อหนาก็เรียบได้อย่างง่ายดายและรวดเร็ว มีฟังก์ชันการตัดไฟอัตโนมัติช่วยปิดเตารีดหากไม่ได้ใช้งานเกิน 2 – 3 นาที ช่วยให้ปลอดภัยและประหยัดพลังงาน
+						<br>
+						<br>
+						<strong>เครื่องรีดผ้าไอน้ำ</strong><br>
+						เครื่องรีดผ้าไอน้ำ เป็นอีกนวัตกรรมความทันสมัยที่ช่วยทำให้การรีดผ้ากลายเป็นเรื่องแสนง่ายดาย โดยรูปลักษณ์ภายนอกอาจจะไม่เหมือนกับเตารีดทั่วไปสักเท่าไหร่ เพราะเครื่องรีดผ้าไอน้ำจะมีลักษณะเป็นทรงตั้งสูง ส่วนฐานจะเป็นเหมือนกับหม้อต้มไอน้ำที่ส่งแรงดันไปน้ำผ่านสายลำเลียงจนถึงส่วนบนซึ่งเป็นส่วนหัวพ่นไอน้ำที่ใช้สำหรับรีดเสื้อผ้า ด้วยการออกแบบเครื่องรีดผ้าไอน้ำที่มีรูปลักษณ์แนวตั้งสูง จึงทำให้สามารถใช้รีดผ้าที่แขวนอยู่ในแนวตั้งได้อย่างง่ายดาย ใช้ระยะเวลาในการรีดที่สั้นลงแต่เสื้อผ้าเรียบเร็วมากขึ้น เหมาะมากสำหรับใครที่รีดผ้าเป็นกิจวัตรประจำวันอย่างสม่ำเสมอ เช่น แม่บ้าน ร้านซักรีด ร้านเสื้อผ้า เป็นต้น
+						<br>
+						<br>
+						<strong>การเลือกเตารีดเบื้องต้น</strong><br>
+						เทคนิคการเลือกเตารีดไว้ใช้งานนั้น ก็ขึ้นอยู่กับงบประมาณเป็นหลัก หากคุณมีงบประมาณมากก็เลือกเตารีดรุ่นสูงๆไว้ใช้งานไปเลยคุ้มค่าและใช้งานสะดวกมากกว่าแน่นอน แต่หากมีงบประมาณจำกัดก็ควรเลือกเตารีดแห้งจากแบรนด์ดังๆรุ่นสูงๆแทน นอกจากนี้ควรพิจารณาในเรื่องของความปลอดภัยในการใช้งานด้วย ควรเลือกเตารีดที่มีปลั๊กเป็นปลั๊ก 3 ตาที่มีสายดินให้พร้อมใช้งานดูปลอดภัยได้มาตรฐาน ในกรณีที่เป็นเตารีดไอน้ำควรมีระบบป้องกันกระแสไฟฟ้ารั่วเพิ่มเติมเข้ามาด้วยหรือมีคุณสมบัติในการต้านทานแรงดันไฟฟ้า และที่สำคัญมากที่สุดคือให้เลือกเตารีดที่มีฉลากประหยัดไฟเบอร์ 5 ที่เป็นตัวการันตีว่าเตารีดดังกล่าวผ่านมาตรฐานการทดสอบในเรื่องของความประหยัดพลังงาน ใช้แล้วประหยัดค่าไฟอย่างแน่นอน
+						<br>
+						<br>
+						<strong>เตารีดไอน้ำ HomePro</strong><br>
+						เตารีดแห้งและเตารีดไอน้ำ เป็นเครื่องใช้ไฟฟ้าคู่บ้านที่เราใช้งานกันอยู่เป็นประจำ ดังนั้นการเลือกเตารีดที่มีคุณภาพและตอบโจทย์การใช้งานมากที่สุด จะสามารถช่วยให้การรีดผ้ากลายเป็นเรื่องที่ง่ายมากกว่าเดิม ยิ่งหากเราเลือกเป็นเตารีดแรงดันไอน้ำหรือเครื่องรีดผ้ามาใช้งาน จะยิ่งช่วยอำนวยความสะดวกในการรีดผ้าและประหยัดเวลาได้มากยิ่งขึ้น คุณสามารถเลือกซื้อเตารีดคุณภาพได้ที่โฮมโปรทุกสาขาใกล้บ้าน หรือเลือกช้อปปิ้งสินค้าผ่านช่องทางออนไลน์ที่ www.homepro.co.th ที่มาพร้อมกับบริการจัดส่งถึงบ้าน อำนวยความสะดวกลูกค้าทุกท่านด้วยความใส่ใจ สอบถามรายละเอียดสินค้าเพิ่มเติมได้ที่ 1284
+					</p>
+				</div>
+			</div>
+			<!-- ===========================================
+				Footer
+			================================================ -->
+			<footer class="hp-footer">
+				<div class="lo-container">
+					<div class="content-container">
+						<div>
+							<h3 class="title">ศูนย์ช่วยเหลือ</h3>
+							<ul class="menus">
+								<li><a href="#">วิธีการช้อปออนไลน์</a></li>
+								<li><a href="#">คำถามที่พบบ่อย</a></li>
+								<li><a href="#">ติดตามสินค้า</a></li>
+								<li><a href="#">ติดต่อเรา</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3 class="title">ช้อปปิ้งกับเรา</h3>
+							<ul class="menus">
+								<li><a href="#">สมาชิก Home Card</a></li>
+								<li><a href="#">สาขาโฮมโปร</a></li>
+								<li><a href="#">ความรู้คู่บ้าน</a></li>
+								<li><a href="#">งานบริการ</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3 class="title">เกี่ยวกับเรา</h3>
+							<ul class="menus">
+								<li><a href="#">ประวัติโฮมโปร</a></li>
+								<li><a href="#">นักลงทุนสัมพันธ์</a></li>
+								<li><a href="#">ข่าวสารและกิจกรรม</a></li>
+								<li><a href="#">ร่วมงานกับเรา</a></li>
+								<li><a href="#">เสนอสินค้า</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3 class="title">นโยบาย</h3>
+							<ul class="menus">
+								<li><a href="#">เงื่อนไขการใช้งาน</a></li>
+								<li><a href="#">การคืนและยกเลิกคำสั่งซื้อ</a></li>
+								<li><a href="#">ความเป็นส่วนตัว</a></li>
+								<li><a href="#">การส่งสินค้า</a></li>
+							</ul>
+						</div>
+						<div>
+							<div class="email-subscribe">
+								<label for="email_subscribe" class="title">รับโปรโมชั่นและดีลพิเศษก่อนใคร</label>
+								<div class="hp-input">
+									<input id="email_subscribe" name="email_subscribe" placeholder="กรอกอีเมลของคุณ">
+									<button class="hp-button">
+										<i class="far fa fa-envelope"></i>
+									</button>
+								</div>
+							</div>
+
+							<div class="social-channel">
+								<h3 class="title">ติดตามเรา</h3>
+								<ul class="socials">
+									<li>
+										<a href="#">
+											<i class="fab fa-facebook-square fa-2x"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fab fa-instagram-square fa-2x"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fab fa-youtube-square fa-2x"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fab fa-twitter-square fa-2x"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fab fa-line fa-2x"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="sub-footer">
+					<div class="lo-container">
+						<small>
+							Copyright 2001-2020 Home Product Center Public Company Limited. All rights reserved.
+						</small>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- mock window.categories -->
+		<script src="__fixtures__/mock-categories.js"></script>
+		<script src="__fixtures__/mock-products.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-agile@1.1.3/dist/VueAgile.css">
+
+		<script>
+			Vue.component('vue-multiselect', window.VueMultiselect.default)
+
+			var app = new Vue({
+				el: '#js-app',
+
+				data: {
+					products: [...products, ...products, ...products.filter((it, i) => i < 6)],
+					openedNavMenu: null,
+					sortingValue: 'เรียงตามความนิยม',
+					sortingOptions: ['เรียงตามความนิยม', 'ราคาน้อยไปมาก', 'ราคามากไปน้อย', 'เรียงตามตัวอักษร']
+				},
+
+				methods: {
+					openNavMenuPanel(m) {
+						this.openedNavMenu = m
+					},
+					onSortChange(v) {
+						// NOTE: Do something when sort change
+						console.log('SORT CHANGE', v)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

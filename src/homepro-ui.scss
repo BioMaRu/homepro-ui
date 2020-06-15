@@ -4,11 +4,8 @@ $lg: 1330px;
 @import 'theme.scss';
 @import 'reset.scss';
 
+@import 'mixins/all.scss';
 @import 'utility/all.scss';
 @import 'component/all.scss';
 @import 'layout/all.scss';
 
-
-html, body {
-	min-width: 1200px;
-}

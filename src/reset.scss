@@ -37,12 +37,12 @@ a {
 	color: inherit;
 }
 
-b, strong {
-	font-weight: var(--font-weight-bolder);
-}
-
 small {
 	font-size: 80%;
+}
+
+strong {
+	font-weight: 500;
 }
 
 button, input, select, textarea {

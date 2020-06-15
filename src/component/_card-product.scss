@@ -1,13 +1,14 @@
-.#{$component-prefix}card-product {
+.hp-card-product {
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 
 	background: var(--color-gray-100);
-	border-radius: 2px;
-	transition: all 0.24s ease;
+	border-radius: 4px;
+	transition: all var(--timing-normal) ease;
 	cursor: pointer;
 
-	border: 1px solid var(--color-gray-300);
+	border: 1px solid var(--color-gray-200);
 
 	&:hover {
 		transform: translate3d(0, -4px, 0);
@@ -16,8 +17,13 @@
 	.image {
 		padding: 0.5rem;
 		background-color: white;
-		border-radius: 4px;
+		border-top-right-radius: 4px;
+		border-top-left-radius: 4px;
 		overflow: hidden;
+
+		img {
+			width: 100%;
+		}
 	}
 
 	.info {
@@ -50,10 +56,10 @@
 		font-weight: 600;
 
 		color: white;
-		background-color: var(--color-price-500);
+		background-color: var(--color-secondary-500);
 
-		border-bottom-right-radius: 8px;
-		transform: translateY(calc(-100% - 8px));
+		border-top-right-radius: 8px;
+		transform: translateY(calc(-100% - 0px));
 	}
 
 	.title {
@@ -81,5 +87,91 @@
 		font-size: var(--font-size-200);
 		text-decoration: line-through;
 		opacity: 0.7;
+	}
+
+	.promotion {
+		text-align: center;
+		font-size: var(--font-size-200);
+		font-family: var(--font-family-secondary);
+		font-weight: 500;
+		padding: 0.25rem 0.5rem;
+		background: var(--color-price-500);
+		color: white;
+	}
+}
+
+.hp-card-product-list-cart {
+	display: flex;
+
+	.photo {
+		margin-right: 12px;
+
+		img {
+			width: 40px;
+			height: 40px;
+			border: 1px solid var(--color-gray-200);
+		}
+	}
+
+	.info {
+		flex: 1;
+
+		.title {
+			word-break: break-word;
+			min-height: 2rem;
+			max-height: 2rem;
+			overflow: hidden;
+
+			font-weight: 500;
+			font-size: var(--font-size-300);
+		}
+
+		.amount {
+			margin-top: 4px;
+			color: var(--color-text-dark-secondary);
+			font-size: var(--font-size-200);
+		}
+	}
+
+	.price {
+		font-weight: 600;
+		font-size: var(--font-size-300);
+		font-family: var(--font-family-secondary);
+	}
+}
+
+.hp-card-product-list {
+	display: flex;
+
+	.photo {
+		margin-right: 12px;
+
+		img {
+			width: 48px;
+			height: 48px;
+			border: 1px solid var(--color-gray-200);
+		}
+	}
+
+	.info {
+		flex: 1;
+
+		.title {
+
+		}
+
+		.sku {
+			color: var(--color-text-dark-secondary);
+			font-size: var(--font-size-300);
+		}
+
+		.option {
+			margin-top: 8px;
+
+			label {
+				color: var(--color-text-dark-secondary);
+				margin-bottom: 0;
+			}
+		}
 	}
 }

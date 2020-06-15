@@ -16,6 +16,7 @@
 	--color-price-500: #ff1a31;
 
 	--color-gray-100: hsl(216, 15%, 97%);
+	--color-gray-150: hsl(216, 15%, 95%);
 	--color-gray-200: hsl(216, 15%, 92%);
 	--color-gray-300: hsl(216, 15%, 86%);
 	--color-gray-400: hsl(216, 15%, 66%);
@@ -25,25 +26,25 @@
 	--color-gray-800: hsl(216, 15%, 26%);
 	--color-gray-900: hsl(216, 15%, 20%);
 
-	--color-positive-100: hsl(168, 75%, 95%);
-	--color-positive-200: hsl(168, 75%, 90%);
-	--color-positive-300: hsl(168, 75%, 83%);
-	--color-positive-400: hsl(168, 76%, 48%);
-	--color-positive-500: hsl(168, 76%, 45%);
-	--color-positive-600: hsl(168, 76%, 41%);
-	--color-positive-700: hsl(168, 66%, 25%);
-	--color-positive-800: hsl(168, 66%, 20%);
-	--color-positive-900: hsl(163, 80%, 15%);
+	--color-success-100: hsl(168, 75%, 95%);
+	--color-success-200: hsl(168, 75%, 90%);
+	--color-success-300: hsl(168, 75%, 83%);
+	--color-success-400: hsl(168, 76%, 48%);
+	--color-success-500: hsl(168, 76%, 45%);
+	--color-success-600: hsl(168, 76%, 41%);
+	--color-success-700: hsl(168, 66%, 25%);
+	--color-success-800: hsl(168, 66%, 20%);
+	--color-success-900: hsl(163, 80%, 15%);
 
-	--color-negative-100: hsl(8, 85%, 97%);
-	--color-negative-200: hsl(8, 85%, 93%);
-	--color-negative-300: hsl(8, 85%, 89%);
-	--color-negative-400: hsl(8, 78%, 67%);
-	--color-negative-500: hsl(8, 78%, 61%);
-	--color-negative-600: hsl(8, 78%, 55%);
-	--color-negative-700: hsl(8, 68%, 38%);
-	--color-negative-800: hsl(8, 68%, 34%);
-	--color-negative-900: hsl(8, 68%, 30%);
+	--color-error-100: hsl(8, 85%, 97%);
+	--color-error-200: hsl(8, 85%, 93%);
+	--color-error-300: hsl(8, 85%, 89%);
+	--color-error-400: hsl(8, 78%, 67%);
+	--color-error-500: hsl(8, 78%, 61%);
+	--color-error-600: hsl(8, 78%, 55%);
+	--color-error-700: hsl(8, 68%, 38%);
+	--color-error-800: hsl(8, 68%, 34%);
+	--color-error-900: hsl(8, 68%, 30%);
 
 	--color-warning-100: hsl(45, 80%, 95%);
 	--color-warning-200: hsl(45, 80%, 90%);
@@ -61,6 +62,8 @@
 	--color-text-dark-secondary: hsla(220, 10%, 40%, 0.95);
 
 	--color-shader: rgba(0, 0, 0 , 0.12);
+
+	--color-body-bg: #F2F3F7;
 }
 
 /*
@@ -101,11 +104,12 @@
 /*
  * Timing
  *********************************************/
-// :root {
-// 	--timing-normal: 320ms;
-// 	--timing-faster: 160ms;
-// 	--timing-fastest: 80ms;
-// }
+:root {
+	--timing-slow: 640ms;
+	--timing-normal: 320ms;
+	--timing-faster: 160ms;
+	--timing-fastest: 80ms;
+}
 
 /*
  * Breakpoint
@@ -116,9 +120,25 @@
 	--breakpoint-lg: 1280px;
 }
 
+// page-home
 :root {
+	--popular-category-item: 7;
+ }
+
+// page-browse
+:root {
+	--width-sidebar: 200px;
+	--browse-product-column: 5;
+ }
+
+ // general
+:root {
+	--min-width-body: 1200px;
+
+	--height-hero-banner: 380px;
+
 	--height-top-bar: 36px;
 	--height-nav-bar: 133px;
 	--width-category-panel: 220px;
-	--width-navbar-search-input: 700px;
+	--width-navbar-search-input: 500px;
  }
