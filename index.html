@@ -605,13 +605,11 @@
 					carousel: VueAgile,
 				},
 
-				data: function () {
-					return {
-						products: products, // assign with mock product
-						categories: categories, // assign with mock category
-						openedNavMenu: null,
-						isNavbarSticky: false
-					}
+				data: {
+					products: products, // assign with mock product
+					categories: categories, // assign with mock category
+					openedNavMenu: null,
+					isNavbarSticky: false
 				},
 
 				mounted: function () {
@@ -620,7 +618,7 @@
 					const pos = $navbar && $navbar.offsetTop
 					const offsetTop = 800
 
-					document.addEventListener('scroll', () => {
+					document.addEventListener('scroll', function () {
 						if (!this.isNavbarSticky && window.pageYOffset >= pos + offsetTop) {
 							this.isNavbarSticky = true
 							this.isShowCategory = false
