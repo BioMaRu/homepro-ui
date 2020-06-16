@@ -615,6 +615,7 @@
 				},
 
 				mounted () {
+					// when mount: init navbar scroll sticky behavior
 					const $navbar = this.$refs.navBar
 					const pos = $navbar && $navbar.offsetTop
 					const offsetTop = 800
@@ -648,7 +649,7 @@
 						} else {
 							this.$refs[ref].$refs.nextButton.classList.remove('disabled')
 						}
-					}
+					},
 				},
 			})
 		</script>
