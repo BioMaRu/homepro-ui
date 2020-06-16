@@ -618,7 +618,8 @@
 					const pos = $navbar && $navbar.offsetTop
 					const offsetTop = 800
 
-					document.addEventListener('scroll', function () {
+					document.addEventListener('scroll', (function () {
+						console.log('kello', this.isNavbarSticky)
 						if (!this.isNavbarSticky && window.pageYOffset >= pos + offsetTop) {
 							this.isNavbarSticky = true
 							this.isShowCategory = false
@@ -626,16 +627,16 @@
 							this.isNavbarSticky = false
 							this.isShowCategory = true
 						}
-					})
+					}).bind(this))
 				},
 
 				methods: {
 					// handle open navbar dropdown menu when mouseover and leave
-					openNavMenuPanel(menu) {
+					openNavMenuPanel: function (menu) {
 						this.openedNavMenu = menu
 					},
 					// check ig caeousel should disable next/prev button
-					checkSlide({ currentSlide }, ref) {
+					checkSlide: function ({ currentSlide }, ref) {
 						if (currentSlide === 0) {
 							this.$refs[ref].$refs.prevButton.classList.add('disabled')
 						} else {
