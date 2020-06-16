@@ -636,14 +636,14 @@
 						this.openedNavMenu = menu
 					},
 					// check ig caeousel should disable next/prev button
-					checkSlide: function ({ currentSlide }, ref) {
-						if (currentSlide === 0) {
+					checkSlide: function (carousel, ref) {
+						if (carousel.currentSlide === 0) {
 							this.$refs[ref].$refs.prevButton.classList.add('disabled')
 						} else {
 							this.$refs[ref].$refs.prevButton.classList.remove('disabled')
 						}
 
-						if (currentSlide === 6) {
+						if (carousel.currentSlide === 6) {
 							this.$refs[ref].$refs.nextButton.classList.add('disabled')
 						} else {
 							this.$refs[ref].$refs.nextButton.classList.remove('disabled')
