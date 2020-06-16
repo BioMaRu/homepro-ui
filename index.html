@@ -605,7 +605,7 @@
 					carousel: VueAgile,
 				},
 
-				data: () => {
+				data: function () {
 					return {
 						products: products, // assign with mock product
 						categories: categories, // assign with mock category
@@ -614,7 +614,7 @@
 					}
 				},
 
-				mounted: () => {
+				mounted: function () {
 					// when mount: init navbar scroll sticky behavior
 					const $navbar = this.$refs.navBar
 					const pos = $navbar && $navbar.offsetTop
