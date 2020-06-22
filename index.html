@@ -236,7 +236,7 @@
 					Hero Banner
 				================================================ -->
 				<section v-cloak class="layout-hero-banner">
-					<hooper :settings="hooperSettings" class="hero-banner-carousel">
+					<hooper :settings="heroSliderSettings" class="hero-banner-carousel">
 						<slide>
 							<a href="#"><img src="assets/banner-long1.jpg" width="100%" alt="Banner 1"></a>
 						</slide>
@@ -331,7 +331,30 @@
 							<h2 class="section-title">สินค้ายอดนิยมในหมวด ผลิตภัณฑ์ดูแลเส้นผม</h2>
 
 							<div class="layout-product-carousel">
-								<carousel
+								<hooper :settings="productSliderSettings" class="hero-banner-carousel">
+									<slide v-for="(product, i) in products" :key="i">
+										<div>
+											<div class="hp-card-product">
+												<div class="image">
+													<img :src="product.photo">
+												</div>
+												<div class="info">
+													<div v-if="product.discount" class="discount">{{ product.discount }}</div>
+													<div class="brand">{{ product.brand }}</div>
+													<div class="title">{{ product.title }}</div>
+													<div class="price">{{ product.price }} บาท</div>
+													<div v-if="product.originalPrice" class="original-price">{{ product.originalPrice }} บาท</div>
+												</div>
+												<div v-if="product.promotion" class="promotion">
+													{{ product.promotion }}
+												</div>
+											</div>
+										</div>
+									</slide>
+									<hooper-navigation slot="hooper-addons"></hooper-navigation>
+									<hooper-pagination slot="hooper-addons"></hooper-pagination>
+								</hooper>
+								<!-- <carousel
 									ref="POPULAR1"
 									@after-change="function (payload) {checkSlide(payload, 'POPULAR1')}"
 									:slides-to-show="6"
@@ -357,7 +380,7 @@
 									</div>
 									<template slot="prevButton"><i class="fas fa-chevron-left"></i></template>
 									<template slot="nextButton"><i class="fas fa-chevron-right"></i></template>
-								</carousel>
+								</carousel> -->
 							</div>
 						</div>
 					</section>
@@ -643,12 +666,19 @@
 					openedNavMenu: null,
 					isNavbarSticky: false,
 					cartTimeout: null,
-					hooperSettings: {
+					heroSliderSettings: {
 						infiniteScroll: true,
 						wheelControl: false,
 						touchDrag: false,
 						mouseDrag: false,
 						autoPlay: true
+					},
+					productSliderSettings: {
+						itemsToShow: 6,
+						itemsToSlide: 1,
+						wheelControl: false,
+						touchDrag: false,
+						mouseDrag: false,
 					}
 				},
 
