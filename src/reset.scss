@@ -1,7 +1,7 @@
 html {
 	font-size: 16px;
-	font-family: var(--font-family-primary);
-	line-height: var(--line-height-default);
+	font-family: $font-family-primary;
+	line-height: $line-height-default;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
@@ -11,7 +11,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	color: var(--color-dark-primary);
+	color: $color-text-dark-primary;
 }
 
 *, *:before, *:after {
@@ -21,14 +21,14 @@ html, body {
 p {
 	margin: 0;
 	padding: 0;
-	font-family: var(--font-family-primary);
-	line-height: var(--line-height-paragraph);
+	font-family: $font-family-primary;
+	line-height: $line-height-paragraph;
 }
 
 body, h1, h2, h3, h4, h4, h5, h6 {
 	margin: 0;
 	padding: 0;
-	line-height: var(--line-height-default);
+	line-height: $line-height-default;
 }
 
 a {
@@ -126,5 +126,5 @@ hr {
 	margin: 0;
 
 	border: none;
-	background: var(--color-gray-200);
+	background: $color-gray-200;
 }

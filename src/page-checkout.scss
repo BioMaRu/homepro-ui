@@ -1,3 +1,5 @@
+@import 'theme';
+
 body {
 	min-width: var(--min-width-body);
 	background-color: var(--color-body-bg);
@@ -59,7 +61,7 @@ body {
 					align-items: baseline;
 
 					font-family: var(--font-family-secondary);
-					color: var(--color-text-dark-secondary);
+					color: $color-text-dark-secondary;
 				}
 			}
 
@@ -80,7 +82,7 @@ body {
 
 				.item > *:last-child {
 					color: var(--color-price-500);
-					font-size: var(--font-size-800);
+					font-size: $font-size-800;
 				}
 			}
 		}

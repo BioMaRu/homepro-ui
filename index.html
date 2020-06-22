@@ -74,11 +74,13 @@
 
 						<div class="nav-bar-top-menus">
 							<div
-								@mouseover="$refs.cartPopup.classList.add('-active')"
-								@mouseleave="$refs.cartPopup.classList.remove('-active')"
+								@mouseover="openCartPopup"
+								@mouseleave="closeCartPopup"
 								class="menu"
 							>
-								<span class="hp-badge">12</span>
+								<span class="hp-badge">
+									12
+								</span>
 								<i class="fas fa-shopping-cart"></i>
 
 								<div ref="cartPopup" class="hp-popup cart-popup">
@@ -129,18 +131,22 @@
 										<div>{{ category.title }}</div>
 									</a>
 									<div v-if="category.groups" class="inner1-panel">
-										<ul class="category-inner1-panel u-scrollbar">
-											<li v-for="group in category.groups">
-												<div><a href="#">{{ group.title }}</a></div>
-												<ul>
-													<li v-for="subcategory in group.subcategories">
-														<a href="#">{{ subcategory }}</a>
-													</li>
-												</ul>
-											</li>
-										</ul>
-										<div class="category-promotion">
-											<img src="assets/cat-promo1.jpg" alt="Promo" width="100%">
+										<div class="menu-list">
+											<ul class="category-inner1-panel u-scrollbar">
+												<li v-for="group in category.groups">
+													<div>
+														<a href="#">{{ group.title }}</a>
+													</div>
+													<ul>
+														<li v-for="subcategory in group.subcategories">
+															<a href="#">{{ subcategory }}</a>
+														</li>
+													</ul>
+												</li>
+											</ul>
+											<div class="category-promotion">
+												<img src="assets/cat-promo1.jpg" alt="Promo" width="100%">
+											</div>
 										</div>
 										<div class="brand-list">
 											<template v-for="b in 4">
@@ -226,11 +232,26 @@
 			</header>
 
 			<main class="home-page-main">
+				<section v-cloak class="layout-hero-banner">
+					<hooper :settings="hooperSettings" class="hero-banner-carousel">
+						<slide>
+							<a href="#"><img src="assets/banner-long1.jpg" width="100%" alt="Banner 1"></a>
+						</slide>
+						<slide>
+							<a href="#"><img src="assets/banner-long2.jpg" width="100%" alt="Banner 2"></a>
+						</slide>
+						<slide>
+							<a href="#"><img src="assets/banner-long3.jpg" width="100%" alt="Banner 3"></a>
+						</slide>
+						<hooper-navigation slot="hooper-addons"></hooper-navigation>
+						<hooper-pagination slot="hooper-addons"></hooper-pagination>
+					</hooper>
+				</section>
 				<!-- ===========================================
 					Hero Banner
 				================================================ -->
-				<section v-cloak class="layout-hero-banner">
-					<carousel autoplay class="hero-banner-carousel">
+				<!-- <section v-cloak class="layout-hero-banner">
+					<carousel :center-mode="true" class="hero-banner-carousel">
 						<div class="slide">
 							<a href="#"><img src="assets/banner-long1.jpg" width="100%" alt="Banner 1"></a>
 						</div>
@@ -243,7 +264,7 @@
 						<template slot="prevButton"><i class="fas fa-chevron-left"></i></template>
 						<template slot="nextButton"><i class="fas fa-chevron-right"></i></template>
 					</carousel>
-				</section>
+				</section> -->
 
 				<div class="main-layout">
 					<!-- ===========================================
@@ -273,9 +294,8 @@
 					</section>
 
 					<!-- ===========================================
-						Poppular subcategory
+						Popular subcategory
 					================================================ -->
-
 					<section class="lo-container">
 						<div class="hp-panel layout-categories">
 							<div class="section-header">
@@ -304,7 +324,13 @@
 							<h2 class="section-title">สินค้ายอดนิยมในหมวด ผลิตภัณฑ์ดูแลเส้นผม</h2>
 
 							<div class="layout-product-carousel">
-								<carousel ref="popular2" :slides-to-show="6" :infinite="false" :dots="false" @after-change="(payload) => checkSlide(payload, 'popular2')">
+								<carousel
+									ref="POPULAR1"
+									@after-change="function (payload) {checkSlide(payload, 'POPULAR1')}"
+									:slides-to-show="6"
+									:infinite="false"
+									:dots="false"
+								>
 									<div v-for="(product, i) in products" :key="i">
 										<div class="hp-card-product">
 											<div class="image">
@@ -332,53 +358,47 @@
 					<!-- ===========================================
 						Promotion
 					================================================ -->
-					<section class="layout-promotion">
+					<section class="section-promotion">
 						<div class="lo-container">
-							<div class="section-header">
-								<h2 class="section-title">โปรโมชั่น</h2>
-								<div class="hp-fancy-link">
-									<a href="#">
-										ดูโปรโมชั่นทั้งหมด <i class="far fa-chevron-circle-right"></i>
+							<div class="layout-promotion">
+								<div class="section-header">
+									<h2 class="section-title">โปรโมชั่น</h2>
+									<div class="hp-fancy-link">
+										<a href="#">
+											ดูโปรโมชั่นทั้งหมด <i class="far fa-chevron-circle-right"></i>
+										</a>
+									</div>
+								</div>
+
+								<div class="promotion-container">
+									<a href="#" class="image">
+										<img src="assets/p1.jpg">
+									</a>
+									<a href="#" class="image">
+										<img src="assets/p2.jpg">
+									</a>
+									<a href="#" class="image">
+										<img src="assets/p3.jpg">
+									</a>
+									<a href="#" class="image">
+										<img src="assets/p3.jpg">
 									</a>
 								</div>
-							</div>
 
-							<div class="promotion-container">
-								<a href="#">
-									<div class="image">
-										<img src="assets/p1.jpg">
-									</div>
-								</a>
-								<a href="#">
-									<div class="image">
-										<img src="assets/p2.jpg">
-									</div>
-								</a>
-								<a href="#">
-									<div class="image">
-										<img src="assets/p3.jpg">
-									</div>
-								</a>
-								<a href="#">
-									<div class="image">
-										<img src="assets/p3.jpg">
-									</div>
-								</a>
-							</div>
-
-							<div class="bottom-promotion">
-								<a href="#">
-									<img src="assets/pf.jpg">
-								</a>
+								<div class="bottom-promotion">
+									<a href="#">
+										<img src="assets/pf.jpg">
+									</a>
+								</div>
 							</div>
 						</div>
 					</section>
 
-					<div>
+					<section>
 						<!-- ===========================================
 							Feature item
 						================================================ -->
-						<section class="layout-feature">
+						<!-- <section class="layout-feature">
 							<div class="lo-container">
 								<div class="section-header">
 									<h2 class="section-title">ความรู้คู่บ้าน</h2>
@@ -404,12 +424,12 @@
 									</div>
 								</a>
 							</div>
-						</section>
+						</section> -->
 
 						<!-- ===========================================
 							Article
 						================================================ -->
-						<section class="layout-article">
+						<!-- <section class="layout-article">
 							<div class="lo-container">
 								<div class="article-container">
 									<div v-for="a in 4" class="hp-card-article">
@@ -430,13 +450,13 @@
 									</div>
 								</div>
 							</div>
-						</section>
-					</div>
+						</section> -->
+					</section>
 
 					<!-- ===========================================
 						Services
 					================================================ -->
-					<section class="layout-service">
+					<!-- <section class="layout-service">
 						<div class="lo-container">
 							<h2 class="section-title">บริการครบเครื่องเรื่องบ้าน</h2>
 
@@ -479,14 +499,14 @@
 								</a>
 							</div>
 						</div>
-					</section>
+					</section> -->
 				</div>
 			</main>
 
 			<!-- ===========================================
 				Footer
 			================================================ -->
-			<footer class="hp-footer">
+			<!-- <footer class="hp-footer">
 				<div class="lo-container">
 					<div class="content-container">
 						<div>
@@ -583,12 +603,13 @@
 						</small>
 					</div>
 				</div>
-			</footer>
+			</footer> -->
 		</div>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue-agile@1.1.3/dist/VueAgile.umd.min.js"></script>
-
+		<script src="https://cdn.jsdelivr.net/npm/hooper@0.3.4/dist/hooper.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hooper@0.3.4/dist/hooper.css">
 		<!-- set mock categories -->
 		<script src="__fixtures__/mock-categories.js"></script>
 		<!-- set mock products -->
@@ -603,13 +624,25 @@
 
 				components: {
 					carousel: VueAgile,
+					Hooper: window.Hooper.Hooper,
+            		Slide: window.Hooper.Slide,
+            		HooperNavigation: window.Hooper.Navigation,
+            		HooperPagination: window.Hooper.Pagination
 				},
 
 				data: {
-					products: products, // assign with mock product
-					categories: categories, // assign with mock category
+					products: products, // assign with mock products
+					categories: categories, // assign with mock categories
 					openedNavMenu: null,
-					isNavbarSticky: false
+					isNavbarSticky: false,
+					cartTimeout: null,
+					hooperSettings: {
+						infiniteScroll: true,
+						wheelControl: false,
+						touchDrag: false,
+						mouseDrag: false,
+						autoPlay: true
+					}
 				},
 
 				mounted: function () {
@@ -619,7 +652,6 @@
 					const offsetTop = 800
 
 					document.addEventListener('scroll', (function () {
-						console.log('kello', this.isNavbarSticky)
 						if (!this.isNavbarSticky && window.pageYOffset >= pos + offsetTop) {
 							this.isNavbarSticky = true
 							this.isShowCategory = false
@@ -631,12 +663,23 @@
 				},
 
 				methods: {
-					// handle open navbar dropdown menu when mouseover and leave
 					openNavMenuPanel: function (menu) {
 						this.openedNavMenu = menu
 					},
-					// check ig caeousel should disable next/prev button
+					openCartPopup: function () {
+						if (this.cartTimeout) {
+							clearTimeout(this.cartTimeout)
+						}
+						this.$refs.cartPopup.classList.add('-active')
+					},
+					closeCartPopup: function () {
+						this.cartTimeout = setTimeout((function () {
+							this.$refs.cartPopup.classList.remove('-active')
+						}).bind(this), 500)
+					},
+					// check if carousel should disable next/prev button
 					checkSlide: function (carousel, ref) {
+						console.log(carousel, ref)
 						if (carousel.currentSlide === 0) {
 							this.$refs[ref].$refs.prevButton.classList.add('disabled')
 						} else {

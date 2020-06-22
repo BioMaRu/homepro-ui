@@ -63,7 +63,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 
 	&:focus,
 	:active {
-		border-color: var(--color-primary-400);
+		border-color: $color-primary-400;
 		border-width: 1px;
 	}
 }
@@ -135,12 +135,12 @@ $components-colors: ("positive", "negative", "warning", "info");
 		.hp-textarea textarea,
 		.hp-select select {
 			cursor: not-allowed;
-			background-color: var(--color-gray-100);
-			border-color: var(--color-gray-300);
-			color: var(--color-gray-400);
+			background-color: $color-gray-100;
+			border-color: $color-gray-300;
+			color: $color-gray-400;
 
 			&:hover {
-				border-color: var(--color-gray-300);
+				border-color: $color-gray-300;
 			}
 		}
 
@@ -188,14 +188,14 @@ $components-colors: ("positive", "negative", "warning", "info");
 
 	&:after {
 		content: "";
-		border-left: 2px solid var(--color-gray-400);
-		border-bottom: 2px solid var(--color-gray-400);
+		border-left: 2px solid $color-gray-400;
+		border-bottom: 2px solid $color-gray-400;
 		height: 0.5rem;
 		width: 0.5rem;
 		position: absolute;
 		right: 0.5rem;
 		top: 50%;
-		border-color: var(--color-gray-400);
+		border-color: $color-gray-400;
 		transform: rotate(-45deg) translate(0, calc(-50% - 4px));
 		pointer-events: none;
 	}
@@ -226,7 +226,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 
 		&:focus {
 			+ label:before {
-				box-shadow: 0 0 0 0.175rem var(--color-primary-200);
+				box-shadow: 0 0 0 0.175rem $color-primary-200;
 			}
 		}
 	}
@@ -251,7 +251,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 			width: 22px;
 			height: 22px;
 			left: 0px;
-			border: 2px solid var(--color-primary-500);
+			border: 2px solid $color-primary-500;
 			border-radius: 50%;
 			background-color: white;
 		}
@@ -262,7 +262,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 			width: 0.75rem;
 			top: 5px;
 			left: 5px;
-			background-color: var(--color-primary-500);
+			background-color: $color-primary-500;
 			border-radius: 50%;
 		}
 	}
@@ -273,14 +273,14 @@ $components-colors: ("positive", "negative", "warning", "info");
 		.hp-radio {
 			> label {
 				cursor: not-allowed;
-				color: var(--color-gray-400);
+				color: $color-gray-400;
 
 				&:before {
-					border: 2px solid var(--color-gray-300);
+					border: 2px solid $color-gray-300;
 				}
 
 				&:after {
-					background-color: var(--color-gray-300);
+					background-color: $color-gray-300;
 				}
 			}
 		}
@@ -297,8 +297,8 @@ $components-colors: ("positive", "negative", "warning", "info");
 
 		&:checked {
 			+ label:before {
-				background: var(--color-primary-500);
-				border: 1px solid var(--color-primary-500);
+				background: $color-primary-500;
+				border: 1px solid $color-primary-500;
 			}
 
 			+ label:after {
@@ -308,7 +308,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 
 		&:focus {
 			+ label:before {
-				box-shadow: 0 0 0 0.175rem var(--color-primary-200);
+				box-shadow: 0 0 0 0.175rem $color-primary-200;
 			}
 		}
 	}
@@ -335,7 +335,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 			height: 20px;
 			left: 0px;
 			background-color: var(--color-text-light-primary);
-			border: 1px solid var(--color-gray-300);
+			border: 1px solid $color-gray-300;
 			border-radius: 4px;
 			box-sizing: border-box;
 		}
@@ -355,7 +355,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 		}
 
 		&:hover:before {
-			border: 1px solid var(--color-gray-400);
+			border: 1px solid $color-gray-400;
 		}
 	}
 }
@@ -376,7 +376,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 
 		&:focus {
 			+ label:before {
-				box-shadow: 0 0 0 0.175rem var(--color-primary-200);
+				box-shadow: 0 0 0 0.175rem $color-primary-200;
 			}
 		}
 	}
@@ -392,7 +392,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 		color: var(--color-dark-secondary);
 		background: white;
 
-		border: 1px solid var(--color-gray-300);
+		border: 1px solid $color-gray-300;
 		border-radius: 4px;
 
 		font-family: var(--font-family-secondary);
@@ -401,16 +401,16 @@ $components-colors: ("positive", "negative", "warning", "info");
 		cursor: pointer;
 
 		&:hover {
-			background: var(--color-gray-100);
+			background: $color-gray-100;
 		}
 	}
 
 	> input[type="radio"]:checked + label,
 	> input[type="checkbox"]:checked + label {
-		color: var(--color-primary-500);
-		background: var(--color-primary-100);
+		color: $color-primary-500;
+		background: $color-primary-100;
 
-		border: 1px solid var(--color-primary-500);
+		border: 1px solid $color-primary-500;
 		border-radius: 4px;
 
 		font-family: var(--font-family-secondary);
@@ -437,12 +437,12 @@ $components-colors: ("positive", "negative", "warning", "info");
 // 		height: 26px;
 // 		border-radius: 999px;
 
-// 		transition: all var(--timing-normal) ease-in-out;
+// 		transition: all $timing-normal ease-in-out;
 // 		cursor: pointer;
 // 		outline: none;
 
 // 		&:checked {
-// 			background-color: var(--color-primary-500);
+// 			background-color: $color-primary-500;
 // 		}
 
 // 		&:after {
@@ -456,7 +456,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 // 			top: -3px;
 // 			box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
 // 			transform: scale(0.64);
-// 			transition: all var(--timing-faster) ease-in-out;
+// 			transition: all $timing-faster ease-in-out;
 // 		}
 
 // 		&:checked:after {
@@ -509,7 +509,7 @@ $components-colors: ("positive", "negative", "warning", "info");
 		width: 2.625rem;
 		height: 100%;
 
-		color: var(--color-gray-400);
+		color: $color-gray-400;
 
 		font-size: 1rem;
 	}
@@ -656,20 +656,20 @@ $components-colors: ("positive", "negative", "warning", "info");
 
 		&:focus,
 		:active {
-			border-color: var(--color-primary-400);
+			border-color: $color-primary-400;
 			border-width: 1px;
 		}
 	}
 
 	.multiselect__option.multiselect__option--selected,
 	.multiselect__option.multiselect__option--highlight.multiselect__option--selected {
-		background: var(--color-gray-100);
-		color: var(--color-text-dark-primary);
+		background: $color-gray-100;
+		color: $color-text-dark-primary;
 		font-weight: 500;
 	}
 
 	.multiselect__option.multiselect__option--highlight.multiselect__option--highlight {
-		background: var(--color-primary-500);
+		background: $color-primary-500;
 		color: white;
 	}
 }

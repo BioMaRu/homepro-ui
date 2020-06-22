@@ -12,9 +12,11 @@
 	border-radius: 999px;
 	min-width: 24px;
 	min-height: 24px;
-	background-color: var(--color-price-500);
+	line-height: 24px;
+
+	background-color: $color-price-500;
 	color: white;
-	font-family: var(--font-family-secondary);
-	font-size: var(--font-size-300);
+	font-family: $font-family-secondary;
+	font-size: $font-size-300;
 	font-weight: 500;
 }

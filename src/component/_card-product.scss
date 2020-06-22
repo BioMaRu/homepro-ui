@@ -3,12 +3,12 @@
 	flex-direction: column;
 	overflow: hidden;
 
-	background: var(--color-gray-100);
+	background: $color-gray-100;
 	border-radius: 4px;
-	transition: all var(--timing-normal) ease;
+	transition: all $timing-normal ease;
 	cursor: pointer;
 
-	border: 1px solid var(--color-gray-200);
+	border: 1px solid $color-gray-200;
 
 	&:hover {
 		transform: translate3d(0, -4px, 0);
@@ -38,10 +38,10 @@
 
 	.brand {
 		margin-bottom: 4px;
-		font-size: var(--font-size-200);
+		font-size: $font-size-200;
 		font-weight: 500;
-		font-family: var(--font-family-secondary);
-		color: var(--color-text-dark-secondary);
+		font-family: $font-family-secondary;
+		color: $color-text-dark-secondary;
 	}
 
 	.discount {
@@ -51,12 +51,13 @@
 		padding: 0.25rem 0.375rem;
 
 		display: inline-flex;
+		vertical-align: top;
 
-		font-size: var(--font-size-300);
+		font-size: $font-size-300;
 		font-weight: 600;
 
 		color: white;
-		background-color: var(--color-secondary-500);
+		background-color: $color-secondary-500;
 
 		border-top-right-radius: 8px;
 		transform: translateY(calc(-100% - 0px));
@@ -72,30 +73,31 @@
 
 	.price {
 		display: inline-flex;
+		vertical-align: top;
 		align-items: flex-end;
 
 		margin-top: 0.5rem;
-		font-family: var(--font-family-secondary);
-		font-size: var(--font-size-500);
+		font-family: $font-family-secondary;
+		font-size: $font-size-500;
 		font-weight: 600;
-		color: var(--color-price-500);
+		color: $color-price-500;
 	}
 
 	.original-price {
 		display: inline-block;
-		font-family: var(--font-family-secondary);
-		font-size: var(--font-size-200);
+		font-family: $font-family-secondary;
+		font-size: $font-size-200;
 		text-decoration: line-through;
 		opacity: 0.7;
 	}
 
 	.promotion {
 		text-align: center;
-		font-size: var(--font-size-100);
-		font-family: var(--font-family-secondary);
+		font-size: $font-size-100;
+		font-family: $font-family-secondary;
 		font-weight: 500;
 		padding: 0.25rem 0.5rem;
-		background: var(--color-price-500);
+		background: $color-price-500;
 		color: white;
 	}
 }
@@ -109,7 +111,7 @@
 		img {
 			width: 40px;
 			height: 40px;
-			border: 1px solid var(--color-gray-200);
+			border: 1px solid $color-gray-200;
 		}
 	}
 
@@ -123,20 +125,20 @@
 			overflow: hidden;
 
 			font-weight: 500;
-			font-size: var(--font-size-300);
+			font-size: $font-size-300;
 		}
 
 		.amount {
 			margin-top: 4px;
-			color: var(--color-text-dark-secondary);
-			font-size: var(--font-size-200);
+			color: $color-text-dark-secondary;
+			font-size: $font-size-200;
 		}
 	}
 
 	.price {
 		font-weight: 600;
-		font-size: var(--font-size-300);
-		font-family: var(--font-family-secondary);
+		font-size: $font-size-300;
+		font-family: $font-family-secondary;
 	}
 }
 
@@ -149,7 +151,7 @@
 		img {
 			width: 48px;
 			height: 48px;
-			border: 1px solid var(--color-gray-200);
+			border: 1px solid $color-gray-200;
 		}
 	}
 
@@ -161,15 +163,15 @@
 		}
 
 		.sku {
-			color: var(--color-text-dark-secondary);
-			font-size: var(--font-size-300);
+			color: $color-text-dark-secondary;
+			font-size: $font-size-300;
 		}
 
 		.option {
 			margin-top: 8px;
 
 			label {
-				color: var(--color-text-dark-secondary);
+				color: $color-text-dark-secondary;
 				margin-bottom: 0;
 			}
 		}

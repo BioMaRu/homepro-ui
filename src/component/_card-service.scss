@@ -11,7 +11,7 @@
 
 	&:hover {
 		&:before {
-			background: var(--color-primary-100);
+			background: $color-primary-100;
 			opacity: 1;
 			transform: rotateY(0deg);
 		}
@@ -45,8 +45,8 @@
 
 		.title {
 			margin-top: 1rem;
-			color: var(--color-primary-500);
-			font-size: var(--font-size-600);
+			color: $color-primary-500;
+			font-size: $font-size-600;
 			font-family: var(--font-family-secondary);
 			font-weight: 500;
 		}

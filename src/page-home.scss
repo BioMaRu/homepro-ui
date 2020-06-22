@@ -1,11 +1,20 @@
+@import 'theme';
+
+// page-home
+$popular-category-item: 7;
+$height-hero-banner: 320px;
+
 body {
-	min-width: var(--min-width-body);
-	background-color: var(--color-body-bg);
+	min-width: $min-width-body;
+	background-color: $color-body-bg;
 }
 
+main, nav, section {
+	display: block;
+}
 
 .home-page-main {
-	padding-top: var(--height-nav-bar);
+	margin-top: $height-nav-bar;
 }
 
 .main-layout {
@@ -25,14 +34,18 @@ body {
 	padding: 2rem 1.5rem 2rem 1.5rem;
 
 	.product-list {
-		display: grid;
-		grid-template-columns: repeat(6, 1fr);
-		grid-gap: 8px;
-
-		padding: 0 8px;
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0 8px 0 0;
 
 		width: 100%;
 		margin-top: 1.5rem;
+
+		> * {
+			margin-top: 8px;
+			margin-left: 8px;
+			width: calc((100% / 6) - 8px);
+		}
 	}
 
 	.layout-product-carousel {
@@ -130,43 +143,48 @@ body {
 
 	.category-container {
 		display: grid;
-		grid-template-columns: repeat(var(--popular-category-item), 1fr);
+		grid-template-columns: repeat($popular-category-item, 1fr);
 		grid-row-gap: 1rem;
 	}
 }
 
-.layout-promotion {
-	margin-top: 24px;
-	padding: 4rem 1.5rem 5rem 1.5rem;
+.section-promotion {
 	background: white;
+	margin-top: 24px;
 
-	.promotion-container {
-		margin-top: 2rem;
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		grid-gap: 24px;
+	.layout-promotion {
+		padding: 4rem 1.5rem 5rem 1.5rem;
 
-		.image {
-			overflow: hidden;
+		.promotion-container {
+			margin-top: 2rem;
+			display: flex;
 
-			&:hover {
+			.image {
+				overflow: hidden;
+
+				&:not(:first-child) {
+					margin-left: 24px;
+				}
+
+				&:hover {
+					img {
+						transform: scale(1.04);
+					}
+				}
+
 				img {
-					transform: scale(1.04);
+					width: 100%;
+					transition: all $timing-slow ease;
 				}
 			}
+		}
+
+		.bottom-promotion {
+			margin-top: 24px;
 
 			img {
 				width: 100%;
-				transition: all var(--timing-slow) ease;
 			}
-		}
-	}
-
-	.bottom-promotion {
-		margin-top: 24px;
-
-		img {
-			width: 100%;
 		}
 	}
 }
@@ -177,11 +195,11 @@ body {
 	background: white;
 
 	.feature-container {
-		--height: 400px;
+		$height: 400px;
 
-		background: var(--color-primary-400);
+		background: $color-primary-400;
 		border-radius: 8px;
-		height: var(--height);
+		height: $height;
 		display: flex;
 		margin-top: 50px;
 
@@ -189,7 +207,7 @@ body {
 			transform: translate3d(-20px, -40px, 0);
 
 			img {
-				height: calc(var(--height) + 40px);
+				height: calc($height + 40px);
 			}
 		}
 
@@ -204,14 +222,14 @@ body {
 			.title {
 				font-weight: 400;
 				font-size: 24px;
-				font-family: var(--font-family-secondary);
+				font-family: $font-family-secondary;
 			}
 
 			.description {
 				margin-top: 12px;
 				font-size: 36px;
 				font-weight: 600;
-				font-family: var(--font-family-secondary);
+				font-family: $font-family-secondary;
 			}
 		}
 
@@ -224,12 +242,12 @@ body {
 			&:before {
 				content: '';
 				position: absolute;
-				height: var(--height);
+				height: $height;
 				left: 0;
 				top: 0;
 				bottom: 0;
-				border-left: 100px solid var(--color-primary-400);
-				border-bottom: var(--height) solid transparent;
+				border-left: 100px solid $color-primary-400;
+				border-bottom: $height solid transparent;
 			}
 
 			img {
@@ -266,7 +284,7 @@ body {
 
 	.section-title {
 		text-align: center;
-		font-size: var(--font-size-1000);
+		font-size: $font-size-1000;
 	}
 
 	.services-container {
@@ -283,37 +301,27 @@ body {
 }
 
 .section-title {
-	font-family: var(--font-family-secondary);
-	font-size: var(--font-size-800);
+	font-family: $font-family-secondary;
+	font-size: $font-size-800;
 	font-weight: 500;
 }
 
 .layout-hero-banner {
+	// .hero-banner-carousel {
+	// 	height: $height-hero-banner;
+	// 	max-height: $height-hero-banner;
+	// 	min-height: $height-hero-banner;
+	// 	overflow-y: hidden;
+	// 	background-color: rgba(0, 0, 0, 0.253);
+
 	.hero-banner-carousel {
-		height: var(--height-hero-banner);
-		max-height: var(--height-hero-banner);
-		min-height: var(--height-hero-banner);
-		overflow-y: hidden;
+		height: $height-hero-banner;
+		max-height: $height-hero-banner;
+		min-height: $height-hero-banner;
 		background-color: rgba(0, 0, 0, 0.253);
 
-		img {
-			height: var(--height-hero-banner);
-			object-fit: cover;
-			object-position: center;
-			overflow: hidden;
-		}
-
-		// override carousel
-		.agile__actions {
-			width: 100%;
-			justify-content: center;
-		}
-
-		.agile__nav-button {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			margin: auto;
+		.hooper-next,
+		.hooper-prev {
 			height: 100px;
 			width: 50px;
 			background: rgba(0, 0, 0, 0.288);
@@ -322,50 +330,128 @@ body {
 			color: white;
 			cursor: pointer;
 			font-size: 24px;
+			padding: 0;
+			outline: none;
 			-webkit-transition-duration: 0.3s;
 					transition-duration: 0.3s;
+
+			svg {
+				fill: white;
+				width: 36px;
+				height: 36px;
+			}
+
 		}
 
-		.agile__nav-button--prev {
-			left: 0;
-		}
-
-		.agile__nav-button--next {
-			right: 0;
-		}
-
-		.agile__dots {
-			z-index: 1;
-			justify-content: center;
-			margin-top: -40px;
+		.hooper-pagination {
 			background-color: rgba(0, 0, 0, 0.288);
-			height: 24px;
+			height: 18px;
 			border-radius: 999px;
+			margin-bottom: 12px;
+			padding-left: 4px;
+			padding-right: 4px;
 
-			.agile__dot {
-				margin: 0 10px;
-			}
+			.hooper-indicators {
+				li {
+					margin: 0 4px;
 
-			.agile__dot button {
-				background-color:rgba(255, 255, 255, 0.356);
-				border: none;
-				border-radius: 999px;
-				cursor: pointer;
-				display: block;
-				height: 8px;
-				font-size: 0;
-				line-height: 0;
-				margin: 0;
-				padding: 0;
-				-webkit-transition-duration: 0.3s;
-						transition-duration: 0.3s;
-				width: 10px;
-			}
+					button {
+						background-color:rgba(255, 255, 255, 0.356);
+						border: none;
+						border-radius: 999px;
+						cursor: pointer;
+						display: block;
+						height: 8px;
+						font-size: 0;
+						line-height: 0;
+						margin: 0;
+						padding: 0;
+						outline: none;
+						-webkit-transition-duration: 0.3s;
+								transition-duration: 0.3s;
+						width: 10px;
 
-			.agile__dot--current button, .agile__dot:hover button {
-				background-color:rgba(255, 255, 255, 0.849);
-				width: 20px;
+						&.is-active,
+						&:hover {
+							background-color:rgba(255, 255, 255, 0.849);
+							width: 20px;
+						}
+					}
+				}
 			}
 		}
 	}
+
+	img {
+		height: $height-hero-banner;
+		object-fit: cover;
+		object-position: center;
+		overflow: hidden;
+	}
+
+	// 	override carousel
+	// 	.agile__actions {
+	// 		width: 100%;
+	// 		justify-content: center;
+	// 	}
+
+	// 	.agile__nav-button {
+	// 		position: absolute;
+	// 		top: 0;
+	// 		bottom: 0;
+	// 		margin: auto;
+	// 		height: 100px;
+	// 		width: 50px;
+	// 		background: rgba(0, 0, 0, 0.288);
+	// 		opacity: 1;
+	// 		border: none;
+	// 		color: white;
+	// 		cursor: pointer;
+	// 		font-size: 24px;
+	// 		-webkit-transition-duration: 0.3s;
+	// 				transition-duration: 0.3s;
+	// 	}
+
+	// 	.agile__nav-button--prev {
+	// 		left: 0;
+	// 	}
+
+	// 	.agile__nav-button--next {
+	// 		right: 0;
+	// 	}
+
+	// 	.agile__dots {
+	// 		z-index: 1;
+	// 		justify-content: center;
+	// 		margin-top: -40px;
+	// 		background-color: rgba(0, 0, 0, 0.288);
+	// 		height: 24px;
+	// 		border-radius: 999px;
+
+	// 		.agile__dot {
+	// 			margin: 0 10px;
+	// 		}
+
+	// 		.agile__dot button {
+	// 			background-color:rgba(255, 255, 255, 0.356);
+	// 			border: none;
+	// 			border-radius: 999px;
+	// 			cursor: pointer;
+	// 			display: block;
+	// 			height: 8px;
+	// 			font-size: 0;
+	// 			line-height: 0;
+	// 			margin: 0;
+	// 			padding: 0;
+	// 			-webkit-transition-duration: 0.3s;
+	// 					transition-duration: 0.3s;
+	// 			width: 10px;
+	// 		}
+
+	// 		.agile__dot--current button, .agile__dot:hover button {
+	// 			background-color:rgba(255, 255, 255, 0.849);
+	// 			width: 20px;
+	// 		}
+	// 	}
+	// }
 }

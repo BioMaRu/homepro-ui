@@ -4,7 +4,7 @@
 	img {
 		width: 100%;
 		border-radius: 3px;
-		transition: all var(--timing-slow) ease;
+		transition: all $timing-slow ease;
 		backface-visibility: hidden;
 
 		object-fit: cover;

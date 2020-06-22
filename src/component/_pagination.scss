@@ -33,7 +33,7 @@ $item-gap: .5rem;
 
 		padding: 0 .5rem;
 
-		color: var(--color-gray-500);
+		color: $color-gray-500;
 		background-color: transparent;
 
 		font-size: 18px;
@@ -47,7 +47,7 @@ $item-gap: .5rem;
 		cursor: pointer;
 
 		&:hover {
-			background-color: var(--color-gray-200);
+			background-color: $color-gray-200;
 		}
 	}
 
@@ -57,7 +57,7 @@ $item-gap: .5rem;
 		.link {
 			color: white;
 			fill: white;
-			background-color: var(--color-primary-500);
+			background-color: $color-primary-500;
 		}
 	}
 
