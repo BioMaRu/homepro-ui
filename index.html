@@ -232,6 +232,9 @@
 			</header>
 
 			<main class="home-page-main">
+				<!-- ===========================================
+					Hero Banner
+				================================================ -->
 				<section v-cloak class="layout-hero-banner">
 					<hooper :settings="hooperSettings" class="hero-banner-carousel">
 						<slide>
@@ -247,32 +250,36 @@
 						<hooper-pagination slot="hooper-addons"></hooper-pagination>
 					</hooper>
 				</section>
-				<!-- ===========================================
-					Hero Banner
-				================================================ -->
-				<!-- <section v-cloak class="layout-hero-banner">
-					<carousel :center-mode="true" class="hero-banner-carousel">
-						<div class="slide">
-							<a href="#"><img src="assets/banner-long1.jpg" width="100%" alt="Banner 1"></a>
-						</div>
-						<div class="slide">
-							<a href="#"><img src="assets/banner-long2.jpg" width="100%" alt="Banner 2"></a>
-						</div>
-						<div class="slide">
-							<a href="#"><img src="assets/banner-long3.jpg" width="100%" alt="Banner 3"></a>
-						</div>
-						<template slot="prevButton"><i class="fas fa-chevron-left"></i></template>
-						<template slot="nextButton"><i class="fas fa-chevron-right"></i></template>
-					</carousel>
-				</section> -->
 
 				<div class="main-layout">
 					<!-- ===========================================
-						Product grid
+						Sub banner
+					================================================ -->
+					<section class="lo-container">
+						<div class="layout-sub-banner">
+							<a href="#">
+								<div class="hp-banner u-raised-2"><img src="assets/sub-banner1.jpg" alt="sub-banner"></div>
+							</a>
+							<a href="#">
+								<div class="hp-banner u-raised-2"><img src="assets/sub-banner2.jpg" alt="sub-banner"></div>
+							</a>
+							<a href="#">
+								<div class="hp-banner u-raised-2"><img src="assets/sub-banner3.jpg" alt="sub-banner"></div>
+							</a>
+						</div>
+					</section>
+
+					<!-- ===========================================
+						Popular Product grid
 					================================================ -->
 					<section class="lo-container">
 						<div class="hp-panel layout-product">
-							<h2 class="section-title">สินค้าขายดี</h2>
+							<div class="section-header">
+								<h2 class="section-title">สินค้าขายดี</h2>
+								<a href="#" class="hp-fancy-link">
+									ดูเพิ่มเติม  <i class="far fa-chevron-circle-right"></i>
+								</a>
+							</div>
 							<div class="product-list">
 								<div v-for="product in products" class="hp-card-product">
 									<div class="image">

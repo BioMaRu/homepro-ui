@@ -18,16 +18,22 @@ main, nav, section {
 }
 
 .main-layout {
-	display: grid;
-	grid-gap: 24px;
-	margin-top: 24px;
+	> * {
+		margin-top: 24px;
+	}
 }
 
 .layout-sub-banner {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 16px;
+	display: flex;
 	height: 118px; // placeholder height
+
+	> * {
+		width: calc(33.3%);
+
+		&:not(:last-child) {
+			margin-right: 24px;
+		}
+	}
 }
 
 .layout-product {
@@ -39,12 +45,12 @@ main, nav, section {
 		padding: 0 8px 0 0;
 
 		width: 100%;
-		margin-top: 1.5rem;
+		margin-top: 1rem;
 
 		> * {
 			margin-top: 8px;
 			margin-left: 8px;
-			width: calc((100% / 6) - 8px);
+			width: calc((100% / 6) - 8.01px);
 		}
 	}
 
@@ -142,9 +148,13 @@ main, nav, section {
 	padding: 2rem 1.5rem 2rem 1.5rem;
 
 	.category-container {
-		display: grid;
-		grid-template-columns: repeat($popular-category-item, 1fr);
-		grid-row-gap: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+
+		> * {
+			margin-top: 8px;
+			width: calc((100% / #{$popular-category-item}) - 0.01px);
+		}
 	}
 }
 
