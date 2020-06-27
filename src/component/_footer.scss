@@ -3,12 +3,19 @@
 	background: $color-gray-200;
 
 	.content-container {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+		display: flex;
+
+		> * {
+			flex-grow: 1;
+
+			&:last-child {
+				flex-grow: 2;
+			}
+		}
 	}
 
 	.title {
-		font-family: var(--font-family-secondary);
+		font-family: $font-family-secondary;
 		font-weight: 500;
 		font-size: $font-size-500;
 	}
@@ -31,15 +38,15 @@
 		margin-top: 1.5rem;
 
 		.socials {
-			display: grid;
-			grid-auto-flow: column;
-			grid-gap: 1rem;
+			display: flex;
 			justify-content: start;
 			margin-top: 0.5rem;
 
 			> li {
 				color: $color-gray-500;
 				transition: all 0.16s ease;
+				margin-right: 16px;
+
 				&:hover {
 					transform: translateY(-3px);
 				}
@@ -72,7 +79,7 @@
 		margin-top: 4rem;
 		padding: 1rem 0;
 		background: $color-primary-500;
-		color: var(--color-text-light-secondary);
+		color: $color-text-light-secondary;
 		font-weight: 500;
 	}
 }

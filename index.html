@@ -196,7 +196,7 @@
 								</div>
 
 								<div class="article-container">
-									<div v-for="a in 4" class="hp-card-article">
+									<div v-for="a in 3" class="hp-card-article">
 										<a href="#">
 											<div class="image">
 												<img src="assets/article1.jpg" alt="article">
@@ -238,13 +238,19 @@
 				<section v-cloak class="layout-hero-banner">
 					<hooper :settings="heroSliderSettings" class="hero-banner-carousel">
 						<slide>
-							<a href="#"><img src="assets/banner-long1.jpg" width="100%" alt="Banner 1"></a>
+							<a href="#">
+								<div class="hero-image" style="background-image: url('assets/banner-long1.jpg');"></div>
+							</a>
 						</slide>
 						<slide>
-							<a href="#"><img src="assets/banner-long2.jpg" width="100%" alt="Banner 2"></a>
+							<a href="#">
+								<div class="hero-image" style="background-image: url('assets/banner-long2.jpg');"></div>
+							</a>
 						</slide>
 						<slide>
-							<a href="#"><img src="assets/banner-long3.jpg" width="100%" alt="Banner 3"></a>
+							<a href="#">
+								<div class="hero-image" style="background-image: url('assets/banner-long3.jpg');"></div>
+							</a>
 						</slide>
 						<hooper-navigation slot="hooper-addons"></hooper-navigation>
 						<hooper-pagination slot="hooper-addons"></hooper-pagination>
@@ -328,40 +334,20 @@
 					================================================ -->
 					<section class="lo-container">
 						<div class="hp-panel layout-product">
-							<h2 class="section-title">สินค้ายอดนิยมในหมวด ผลิตภัณฑ์ดูแลเส้นผม</h2>
+							<div class="section-header">
+								<h2 class="section-title">สินค้ายอดนิยมในหมวด ผลิตภัณฑ์ดูแลเส้นผม</h2>
+								<a href="#" class="hp-fancy-link">
+									ดูเพิ่มเติม  <i class="far fa-chevron-circle-right"></i>
+								</a>
+							</div>
 
 							<div class="layout-product-carousel">
-								<hooper :settings="productSliderSettings" class="hero-banner-carousel">
-									<slide v-for="(product, i) in products" :key="i">
-										<div>
-											<div class="hp-card-product">
-												<div class="image">
-													<img :src="product.photo">
-												</div>
-												<div class="info">
-													<div v-if="product.discount" class="discount">{{ product.discount }}</div>
-													<div class="brand">{{ product.brand }}</div>
-													<div class="title">{{ product.title }}</div>
-													<div class="price">{{ product.price }} บาท</div>
-													<div v-if="product.originalPrice" class="original-price">{{ product.originalPrice }} บาท</div>
-												</div>
-												<div v-if="product.promotion" class="promotion">
-													{{ product.promotion }}
-												</div>
-											</div>
-										</div>
-									</slide>
-									<hooper-navigation slot="hooper-addons"></hooper-navigation>
-									<hooper-pagination slot="hooper-addons"></hooper-pagination>
-								</hooper>
-								<!-- <carousel
+								<hooper
 									ref="POPULAR1"
-									@after-change="function (payload) {checkSlide(payload, 'POPULAR1')}"
-									:slides-to-show="6"
-									:infinite="false"
-									:dots="false"
+									:settings="productSliderSettings"
+									@slide="function (payload) {checkSlide(payload, 'POPULAR1')}"
 								>
-									<div v-for="(product, i) in products" :key="i">
+									<slide v-for="(product, i) in products" :key="i">
 										<div class="hp-card-product">
 											<div class="image">
 												<img :src="product.photo">
@@ -377,10 +363,46 @@
 												{{ product.promotion }}
 											</div>
 										</div>
-									</div>
-									<template slot="prevButton"><i class="fas fa-chevron-left"></i></template>
-									<template slot="nextButton"><i class="fas fa-chevron-right"></i></template>
-								</carousel> -->
+									</slide>
+									<hooper-navigation slot="hooper-addons"></hooper-navigation>
+								</hooper>
+							</div>
+						</div>
+					</section>
+					<section class="lo-container">
+						<div class="hp-panel layout-product">
+							<div class="section-header">
+								<h2 class="section-title">สินค้ายอดนิยมในหมวด เครื่องปรับอากาศ</h2>
+								<a href="#" class="hp-fancy-link">
+									ดูเพิ่มเติม  <i class="far fa-chevron-circle-right"></i>
+								</a>
+							</div>
+
+							<div class="layout-product-carousel">
+								<hooper
+									ref="POPULAR2"
+									:settings="productSliderSettings"
+									@slide="function (payload) {checkSlide(payload, 'POPULAR2')}"
+								>
+									<slide v-for="(product, i) in products" :key="i">
+										<div class="hp-card-product">
+											<div class="image">
+												<img :src="product.photo">
+											</div>
+											<div class="info">
+												<div v-if="product.discount" class="discount">{{ product.discount }}</div>
+												<div class="brand">{{ product.brand }}</div>
+												<div class="title">{{ product.title }}</div>
+												<div class="price">{{ product.price }} บาท</div>
+												<div v-if="product.originalPrice" class="original-price">{{ product.originalPrice }} บาท</div>
+											</div>
+											<div v-if="product.promotion" class="promotion">
+												{{ product.promotion }}
+											</div>
+										</div>
+									</slide>
+									<hooper-navigation slot="hooper-addons"></hooper-navigation>
+								</hooper>
 							</div>
 						</div>
 					</section>
@@ -428,115 +450,121 @@
 						<!-- ===========================================
 							Feature item
 						================================================ -->
-						<!-- <section class="layout-feature">
+						<section class="section-feature">
 							<div class="lo-container">
-								<div class="section-header">
-									<h2 class="section-title">ความรู้คู่บ้าน</h2>
-									<div class="hp-fancy-link">
-										<a href="#">
-											ดูบทความทั้งหมด <i class="far fa-chevron-circle-right"></i>
-										</a>
+								<div class="layout-feature">
+									<div class="section-header">
+										<h2 class="section-title">ความรู้คู่บ้าน</h2>
+										<div class="hp-fancy-link">
+											<a href="#">
+												ดูบทความทั้งหมด <i class="far fa-chevron-circle-right"></i>
+											</a>
+										</div>
 									</div>
-								</div>
 
-								<a href="#">
-									<div class="feature-container">
-										<div class="feature-person">
-											<img src="https://static.homepro.co.th/ambassador/f002.png">
+									<a href="#">
+										<div class="feature-container">
+											<div class="feature-person">
+												<img src="https://static.homepro.co.th/ambassador/f002.png">
+											</div>
+											<div class="feature-info">
+												<h2 class="title">เรื่องบ้านน่ารู้</h2>
+												<p class="description">ตู้อบฆ่าเชื้อโรค และเชื้อไวรัส</p>
+											</div>
+											<div class="feature-image">
+												<img src="https://static.homepro.co.th/homeinspire/menuhomeinspire/2020060-homepage-Position-01.jpg">
+											</div>
 										</div>
-										<div class="feature-info">
-											<h2 class="title">เรื่องบ้านน่ารู้</h2>
-											<p class="description">ตู้อบฆ่าเชื้อโรค และเชื้อไวรัส</p>
-										</div>
-										<div class="feature-image">
-											<img src="https://static.homepro.co.th/homeinspire/menuhomeinspire/2020060-homepage-Position-01.jpg">
-										</div>
-									</div>
-								</a>
+									</a>
+								</div>
 							</div>
-						</section> -->
+						</section>
 
 						<!-- ===========================================
 							Article
 						================================================ -->
-						<!-- <section class="layout-article">
+						<section class="section-article">
 							<div class="lo-container">
-								<div class="article-container">
-									<div v-for="a in 4" class="hp-card-article">
-										<a href="#">
-											<div class="image">
-												<img src="assets/article1.jpg" alt="article">
-											</div>
-
-											<div class="info">
-												<div class="tag">
-													HOME IDEA
+								<div class="layout-article">
+									<div class="article-container">
+										<div v-for="a in 4" class="hp-card-article">
+											<a href="#">
+												<div class="image">
+													<img src="assets/article1.jpg" alt="article">
 												</div>
-												<p class="title">
-													จัดมุมในบ้านไม่ให้น่าเบื่อ ไว้เซลฟี่ช่วง Work from Homeด้วยไอเท็มเด็ดที่ต้องโดน!
-												</p>
-											</div>
-										</a>
+
+												<div class="info">
+													<div class="tag">
+														HOME IDEA
+													</div>
+													<p class="title">
+														จัดมุมในบ้านไม่ให้น่าเบื่อ ไว้เซลฟี่ช่วง Work from Homeด้วยไอเท็มเด็ดที่ต้องโดน!
+													</p>
+												</div>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</section> -->
+						</section>
 					</section>
 
 					<!-- ===========================================
 						Services
 					================================================ -->
-					<!-- <section class="layout-service">
+					<section class="section-service">
 						<div class="lo-container">
-							<h2 class="section-title">บริการครบเครื่องเรื่องบ้าน</h2>
+							<div class="layout-service">
+								<h2 class="section-title">บริการครบเครื่องเรื่องบ้าน</h2>
 
-							<div class="services-container">
-								<a href="#" class="hp-card-service">
-									<div class="image">
-										<img src="assets/s1.png" alt="s1">
-									</div>
-									<div class="info">
-										<div class="title">บริการปรับปรุงบ้านและคอนโด</div>
-										<p class="description">พลิกโฉมบ้านให้สวยกว่าเดิมด้วยบริการปรับปรุง ต่อเติม ตกแต่งจากมืออาชีพ ที่ปฏิบัติงานครบจบทีเดียว</p>
-									</div>
-								</a>
-								<a href="#" class="hp-card-service">
-									<div class="image">
-										<img src="assets/s2.png" alt="s1">
-									</div>
-									<div class="info">
-										<div class="title">บริการติดตั้ง ปรับเปลี่ยน ย้ายจุด</div>
-										<p class="description">บริการงานติดตั้ง เปลี่ยน ย้าย ด้วยช่างผู้เชี่ยวชาญงานติดตั้ง พร้อมรับประกันงาน 180 วัน</p>
-									</div>
-								</a>
-								<a href="#" class="hp-card-service">
-									<div class="image">
-										<img src="assets/s3.png" alt="s1">
-									</div>
-									<div class="info">
-										<div class="title">บริการล้าง-ทำความสะอาด</div>
-										<p class="description">เพิ่มสุขอนามัย ด้วยบริการทำความสะอาดครบวงจร กับผลิตภัณฑ์ไร้สารเคมีตกค้าง พร้อมยืดอายุการใช้งานเครื่องใช้ของท่าน รับประกัน 30 วัน</p>
-									</div>
-								</a>
-								<a href="#" class="hp-card-service">
-									<div class="image">
-										<img src="assets/s4.png" alt="s1">
-									</div>
-									<div class="info">
-										<div class="title">บริการออกแบบ 3 มิติ</div>
-										<p class="description">ออกแบบบ้านจากไลฟ์สไตล์คุณ ให้บ้านคุณถูกต้องตรงใจ มีความสุขในการอาศัยตลอดไป พร้อมคำแนะนำจากมัณฑนากรมีออาชีพ</p>
-									</div>
-								</a>
+								<div class="services-container">
+									<a href="#" class="hp-card-service">
+										<div class="image">
+											<img src="assets/s1.png" alt="s1">
+										</div>
+										<div class="info">
+											<div class="title">บริการปรับปรุงบ้านและคอนโด</div>
+											<p class="description">พลิกโฉมบ้านให้สวยกว่าเดิมด้วยบริการปรับปรุง ต่อเติม ตกแต่งจากมืออาชีพ ที่ปฏิบัติงานครบจบทีเดียว</p>
+										</div>
+									</a>
+									<a href="#" class="hp-card-service">
+										<div class="image">
+											<img src="assets/s2.png" alt="s1">
+										</div>
+										<div class="info">
+											<div class="title">บริการติดตั้ง ปรับเปลี่ยน ย้ายจุด</div>
+											<p class="description">บริการงานติดตั้ง เปลี่ยน ย้าย ด้วยช่างผู้เชี่ยวชาญงานติดตั้ง พร้อมรับประกันงาน 180 วัน</p>
+										</div>
+									</a>
+									<a href="#" class="hp-card-service">
+										<div class="image">
+											<img src="assets/s3.png" alt="s1">
+										</div>
+										<div class="info">
+											<div class="title">บริการล้าง-ทำความสะอาด</div>
+											<p class="description">เพิ่มสุขอนามัย ด้วยบริการทำความสะอาดครบวงจร กับผลิตภัณฑ์ไร้สารเคมีตกค้าง พร้อมยืดอายุการใช้งานเครื่องใช้ของท่าน รับประกัน 30 วัน</p>
+										</div>
+									</a>
+									<a href="#" class="hp-card-service">
+										<div class="image">
+											<img src="assets/s4.png" alt="s1">
+										</div>
+										<div class="info">
+											<div class="title">บริการออกแบบ 3 มิติ</div>
+											<p class="description">ออกแบบบ้านจากไลฟ์สไตล์คุณ ให้บ้านคุณถูกต้องตรงใจ มีความสุขในการอาศัยตลอดไป พร้อมคำแนะนำจากมัณฑนากรมีออาชีพ</p>
+										</div>
+									</a>
+								</div>
 							</div>
 						</div>
-					</section> -->
+					</section>
 				</div>
 			</main>
 
 			<!-- ===========================================
 				Footer
 			================================================ -->
-			<!-- <footer class="hp-footer">
+			<footer class="hp-footer">
 				<div class="lo-container">
 					<div class="content-container">
 						<div>
@@ -633,7 +661,7 @@
 						</small>
 					</div>
 				</div>
-			</footer> -->
+			</footer>
 		</div>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -676,6 +704,7 @@
 					productSliderSettings: {
 						itemsToShow: 6,
 						itemsToSlide: 1,
+						infiniteScroll: false,
 						wheelControl: false,
 						touchDrag: false,
 						mouseDrag: false,
@@ -714,19 +743,21 @@
 							this.$refs.cartPopup.classList.remove('-active')
 						}).bind(this), 500)
 					},
-					// check if carousel should disable next/prev button
+					// check if [ref] carousel should disable next/prev button when slide
 					checkSlide: function (carousel, ref) {
-						console.log(carousel, ref)
+						console.log('Hello', carousel, ref)
+
 						if (carousel.currentSlide === 0) {
-							this.$refs[ref].$refs.prevButton.classList.add('disabled')
+							console.log('A')
+							this.$refs[ref].$refs.list.querySelector('.hooper-prev').classList.add('disabled')
 						} else {
-							this.$refs[ref].$refs.prevButton.classList.remove('disabled')
+							this.$refs[ref].$refs.list.querySelector('.hooper-prev').classList.remove('disabled')
 						}
 
 						if (carousel.currentSlide === 6) {
-							this.$refs[ref].$refs.nextButton.classList.add('disabled')
+							this.$refs[ref].$refs.list.querySelector('.hooper-next').classList.add('disabled')
 						} else {
-							this.$refs[ref].$refs.nextButton.classList.remove('disabled')
+							this.$refs[ref].$refs.list.querySelector('.hooper-next').classList.remove('disabled')
 						}
 					},
 				},

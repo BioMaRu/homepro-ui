@@ -471,10 +471,12 @@
 	cursor: default;
 
 	.article-container {
+		margin: 0 -6px;
 		display: flex;
 
-		.hp-card-article:not(:last-child) {
-			margin-right: 24px;
+		> .hp-card-article {
+			width: calc(25%);
+			margin: 0 6px;
 		}
 	}
 
