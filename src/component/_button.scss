@@ -1,6 +1,6 @@
 $components-colors: (
-	'positive',
-	'negative',
+	'success': $color-success-500,
+	'error': $color-error-500,
 );
 
 %base-button {
@@ -19,7 +19,7 @@ $components-colors: (
 	min-height: 2.875rem;
 	padding: 0.5rem 1.5rem;
 
-	font-family: var(--font-family-secondary);
+	font-family: $font-family-secondary;
 	font-weight: 500;
 	font-size: 1rem;
 	line-height: 100%;
@@ -71,104 +71,104 @@ $components-colors: (
 .hp-button {
 	@extend %base-button;
 
-	color: var(--color-text-light-primary);
-	background-color: var(--color-primary-500);
+	color: $color-text-light-primary;
+	background-color: $color-primary-500;
 
 	&:focus {
-		box-shadow: 0 0 0 .175rem var(--color-primary-300);
+		box-shadow: 0 0 0 .175rem $color-primary-300;
 	}
 
 	&:hover {
-		background-color: var(--color-primary-600);
+		background-color: $color-primary-600;
 	}
 
 	&.-loading {
 		color: transparent;
 
 		&:after {
-			border-right-color: var(--color-text-light-primary);
-			border-top-color: var(--color-text-light-primary);
+			border-right-color: $color-text-light-primary;
+			border-top-color: $color-text-light-primary;
 		}
 	}
 
 	@each $key, $value in $components-colors {
 		&.-#{$key} {
-			color: var(--color-text-light-primary);
-			background-color: var(--color-#{$key}-500);
+			color: $color-text-light-primary;
+			background-color: $value;
 
 			&:focus {
-				box-shadow: 0 0 0 .175rem var(--color-#{$key}-200);
+				box-shadow: 0 0 0 .175rem lighten($value, 8%);
 			}
 
 			&:hover {
-				background-color: var(--color-#{$key}-600);
+				background-color: lighten($value, 8%);
 			}
 
 			&.-loading {
 				color: transparent;
 
 				&:after {
-					border-right-color: var(--color-text-light-primary);
-					border-top-color: var(--color-text-light-primary);
+					border-right-color: $color-text-light-primary;
+					border-top-color: $color-text-light-primary;
 				}
 			}
 
 			&.-secondary {
-				color: var(--color-#{$key}-600);
+				color: $value;
 				background: transparent;
 
 				&:hover {
-					background-color: var(--color-#{$key}-100);
+					background-color: transparentize($value, 0.9);
 				}
 
 				&.-loading {
 					color: transparent;
 
 					&:after {
-						border-right-color: var(--color-#{$key}-600);
-						border-top-color: var(--color-#{$key}-600);
+						border-right-color: $value;
+						border-top-color: $value;
 					}
 				}
 			}
 
 			&.-tertiary {
-				color: var(--color-#{$key}-600);
+				color: $value;
 				border: none;
 				background: transparent;
 
 				&:hover {
-					background-color: var(--color-#{$key}-100);
+					background-color: transparentize($value, 0.9);
 				}
 
 				&.-loading {
 					color: transparent;
 
 					&:after {
-						border-right-color: var(--color-#{$key}-600);
-						border-top-color: var(--color-#{$key}-600);
+						border-right-color: $value;
+						border-top-color: $value;
 					}
 				}
 			}
 		}
 
 		&.-white {
-			color: var(--color-primary-600);
+			color: $color-primary-600;
 			background-color: white;
 
 			&:focus {
-				box-shadow: 0 0 0 .175rem var(--color-primary-200);
+				box-shadow: 0 0 0 .175rem $color-primary-200;
 			}
 
 			&:hover {
-				background-color: var(--color-gray-100);
+				background-color: $color-gray-100;
 			}
 
 			&.-loading {
 				color: transparent;
 
 				&:after {
-					border-right-color: var(--color-primary-600);
-					border-top-color: var(--color-primary-600);
+					border-right-color: $color-primary-600;
+					border-top-color: $color-primary-600;
 				}
 			}
 
@@ -182,7 +182,7 @@ $components-colors: (
 				}
 
 				&:focus {
-					box-shadow: 0 0 0 .175rem var(--color-primary-200);
+					box-shadow: 0 0 0 .175rem $color-primary-200;
 				}
 
 				&.-loading {
@@ -196,20 +196,20 @@ $components-colors: (
 			}
 
 			&.-tertiary {
-				color: var(--color-primary-600);
+				color: $color-primary-600;
 				border: none;
 				background: transparent;
 
 				&:hover {
-					background-color: var(--color-gray-100);
+					background-color: $color-gray-100;
 				}
 
 				&.-loading {
 					color: transparent;
 
 					&:after {
-						border-right-color: var(--color-primary-600);
-						border-top-color: var(--color-primary-600);
+						border-right-color: $color-primary-600;
+						border-top-color: $color-primary-600;
 					}
 				}
 			}
@@ -217,17 +217,17 @@ $components-colors: (
 	}
 
 	&.-secondary {
-		color: var(--color-primary-500);
-		border: 1px solid var(--color-gray-300);
+		color: $color-primary-500;
+		border: 1px solid $color-gray-300;
 		background: transparent;
 
 		&:hover {
-			background-color: var(--color-gray-100);
+			background-color: $color-gray-100;
 		}
 
 		&.-disabled {
-			color: var(--color-gray-400);
-			border: 1px solid var(--color-gray-300);
+			color: $color-gray-400;
+			border: 1px solid $color-gray-300;
 			background-color: transparent;
 
 			&:hover {
@@ -239,38 +239,38 @@ $components-colors: (
 			color: transparent;
 
 			&:after {
-				border-right-color: var(--color-primary-600);
-				border-top-color: var(--color-primary-600);
+				border-right-color: $color-primary-600;
+				border-top-color: $color-primary-600;
 			}
 		}
 
 		&.-disabled {
 			&.-loading {
 				&:after {
-					border-right-color: var(--color-gray-500);
-					border-top-color: var(--color-gray-500);
+					border-right-color: $color-gray-500;
+					border-top-color: $color-gray-500;
 				}
 			}
 		}
 	}
 
 	&.-disabled {
-		background-color: var(--color-gray-200);
+		background-color: $color-gray-200;
 		cursor: not-allowed;
 
 		&:not(.-loading) {
-			color: var(--color-gray-500);
+			color: $color-gray-500;
 		}
 
 		&.-loading {
 			&:after {
-				border-right-color: var(--color-gray-500);
-				border-top-color: var(--color-gray-500);
+				border-right-color: $color-gray-500;
+				border-top-color: $color-gray-500;
 			}
 		}
 
 		&:hover {
-			background-color: var(--color-gray-300);
+			background-color: $color-gray-300;
 		}
 	}
 }

@@ -8,7 +8,7 @@
 	backface-visibility: hidden;
 
 	background: white;
-	color: var(--color-text-dark-primary);
+	color: $color-text-dark-primary;
 
 	&.-is-slide-down  {
 		transform: scaleY(0);

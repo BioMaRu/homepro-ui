@@ -1,13 +1,7 @@
-$components-colors: (
-	'primary',
-	'positive',
-	'negative'
-);
-
 .hp-link {
 	position: relative;
 
-	color: var(--color-primary-500);
+	color: $color-primary-500;
 
 	text-decoration: none;
 
@@ -17,7 +11,7 @@ $components-colors: (
 
 	svg, path {
 		transition: fill 160ms ease-in-out;
-		fill: var(--color-primary-500);
+		fill: $color-primary-500;
 	}
 
 	&:before, &:after {
@@ -26,10 +20,10 @@ $components-colors: (
 	}
 
 	&:hover, &:focus, &.-active {
-		color: var(--color-primary-600);
+		color: $color-primary-600;
 
 		svg, path {
-			fill: var(--color-primary-600);
+			fill: $color-primary-600;
 		}
 	}
 
@@ -50,12 +44,12 @@ $components-colors: (
 			width: 100%;
 			height: 1px;
 
-			background-color: var(--color-primary-400);
+			background-color: $color-primary-400;
 			transition: all 160ms ease-in-out;
 		}
 
 		&:hover, &:focus, &.-active {
-			background-color: var(--color-primary-100);
+			background-color: $color-primary-100;
 
 			&:after {
 				opacity: 1;
@@ -66,33 +60,15 @@ $components-colors: (
 	&:not(.-fancy):focus {
 		text-decoration: underline;
 	}
-
-	@each $key in $components-colors {
-		&.-#{$key} {
-			color: var(--color-#{$key}-500);
-
-			svg, path {
-				fill: var(--color-#{$key}-500);
-			}
-
-			&:hover, &:focus, &.-active {
-				color: var(--color-#{$key}-600);
-
-				svg, path {
-					fill: var(--color-#{$key}-600);
-				}
-			}
-		}
-	};
 }
 
 .hp-fancy-link {
 	position: relative;
 
-	font-family: var(--font-family-secondary);
-	color: var(--color-primary-500);
+	font-family: $font-family-secondary;
+	color: $color-primary-500;
 
-	font-size: var(--font-size-600);
+	font-size: $font-size-600;
 
 	&:before {
 		content: '';
@@ -103,7 +79,7 @@ $components-colors: (
 		width: 100%;
 		transform: scale(0);
 		transform-origin: center;
-		background: var(--color-primary-500);
+		background: $color-primary-500;
 		border-radius: 999px;
 
 		transition: all 0.24s ease;
@@ -116,8 +92,8 @@ $components-colors: (
 	}
 
 	i {
-		color: var(--color-primary-500);
-		font-size: var(--font-size-600);
+		color: $color-primary-500;
+		font-size: $font-size-600;
 		min-width: 20px;
 	}
 }

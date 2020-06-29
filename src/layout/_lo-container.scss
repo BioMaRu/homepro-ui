@@ -1,17 +1,24 @@
 .lo-container {
-	display: grid;
+	display: flex;
 	width: 100%;
-	grid-template-columns: 12px minmax(0px, auto) 12px;
-	grid-template-rows: auto;
+	padding: 0 12px;
+
+	> * {
+		width: 100%;
+		max-width: $breakpoint-md - 40px;
+		min-width: $breakpoint-md - 40px;
+		margin: auto;
+	}
 
 	@each $breakpointName, $breakpointSize in $breakpoints {
 		@media (min-width: $breakpointSize) {
-			grid-template-columns: 1fr $breakpointSize - 40px 1fr;
+			> * {
+				width: 100%;
+				max-width: $breakpointSize - 40px;
+				min-width: $breakpointSize - 40px;
+				margin: auto;
+			}
 		}
-	};
-
-	>* {
-		grid-column: 2 / 3;
 	}
 }
 

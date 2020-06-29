@@ -1,16 +1,23 @@
 .hp-footer {
 	padding-top: 4rem;
-	background: var(--color-gray-200);
+	background: $color-gray-200;
 
 	.content-container {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+		display: flex;
+
+		> * {
+			flex-grow: 1;
+
+			&:last-child {
+				flex-grow: 2;
+			}
+		}
 	}
 
 	.title {
-		font-family: var(--font-family-secondary);
+		font-family: $font-family-secondary;
 		font-weight: 500;
-		font-size: var(--font-size-500);
+		font-size: $font-size-500;
 	}
 
 	ul.menus {
@@ -18,11 +25,11 @@
 
 		> li {
 			margin-bottom: 0.5rem;
-			font-size: var(--font-size-300);
-			color: var(--color-text-dark-secondary);
+			font-size: $font-size-300;
+			color: $color-text-dark-secondary;
 
 			&:hover {
-				color: var(--color-text-dark-primary);
+				color: $color-text-dark-primary;
 			}
 		}
 	}
@@ -31,15 +38,15 @@
 		margin-top: 1.5rem;
 
 		.socials {
-			display: grid;
-			grid-auto-flow: column;
-			grid-gap: 1rem;
+			display: flex;
 			justify-content: start;
 			margin-top: 0.5rem;
 
 			> li {
-				color: var(--color-gray-500);
+				color: $color-gray-500;
 				transition: all 0.16s ease;
+				margin-right: 16px;
+
 				&:hover {
 					transform: translateY(-3px);
 				}
@@ -71,8 +78,8 @@
 	.sub-footer {
 		margin-top: 4rem;
 		padding: 1rem 0;
-		background: var(--color-primary-500);
-		color: var(--color-text-light-secondary);
+		background: $color-primary-500;
+		color: $color-text-light-secondary;
 		font-weight: 500;
 	}
 }

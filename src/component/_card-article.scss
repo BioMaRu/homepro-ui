@@ -4,7 +4,7 @@
 
 		img {
 			width: 100%;
-			transition: all var(--timing-slow) ease;
+			transition: all $timing-slow ease;
 
 			&:hover {
 				transform: scale(1.05);
@@ -14,23 +14,23 @@
 
 	.info {
 		padding: 12px 12px;
-		background: var(--color-gray-100);
+		background: $color-gray-100;
 
 		.tag {
 			display: inline-block;
 			padding: 2px 8px;
 			margin-bottom: 8px;
 			border-radius: 2px;
-			background: var(--color-secondary-500);
+			background: $color-secondary-500;
 			color: white;
-			font-size: var(--font-size-200);
+			font-size: $font-size-200;
 		}
 
 		.title {
 			font-size: 15px;
 
 			&:hover {
-				color: var(--color-primary-500);
+				color: $color-primary-500;
 			}
 		}
 	}
