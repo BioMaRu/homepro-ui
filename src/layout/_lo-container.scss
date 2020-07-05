@@ -24,9 +24,10 @@
 
 .lo-with-sidebar {
 	display: flex;
+	align-items: flex-start;
 
 	.sidebar {
-		width: var(--width-sidebar);
+		width: 220px;
 		margin-right: 2rem;
 	}
 

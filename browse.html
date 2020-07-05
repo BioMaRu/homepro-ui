@@ -42,7 +42,7 @@
 				<!-- ===========================================
 					Nav bar
 				================================================ -->
-				<nav ref="navBar" class="hp-nav-bar lo-container">
+				<nav ref="navBar" :class="{ 'is-sticky': isNavbarSticky }" class="hp-nav-bar lo-container">
 					<div>
 						<img src="assets/homepro-logo.svg" alt="Hopmepro" height="55" width="120">
 
@@ -68,9 +68,38 @@
 						</div>
 
 						<div class="nav-bar-top-menus">
-							<div class="menu">
-								<span class="hp-badge">12</span>
+							<div
+								@mouseover="openCartPopup"
+								@mouseleave="closeCartPopup"
+								class="menu"
+							>
+								<span class="hp-badge">
+									12
+								</span>
 								<i class="fas fa-shopping-cart"></i>
+
+								<div ref="cartPopup" class="hp-popup cart-popup">
+									<div class="hp-panel u-raised-2">
+										<div class="header">รายการสินค้า (12)</div>
+										<div class="items">
+											<div v-for="p in 10" class="hp-card-product-list-cart">
+												<div class="photo">
+													<img src="https://static.homepro.co.th/product/200000/160x160/22122019_221847$Imagex1.jpg" />
+												</div>
+												<div class="info">
+													<div class="title">WALL AIR CONDITIONER MITSUBISHI MS-GK36VA 34120BTU</div>
+													<div class="amount">จำนวน: 4</div>
+												</div>
+												<div class="price">120,000 บาท</div>
+											</div>
+										</div>
+										<div class="actions">
+											<button class="hp-button -small">
+												ชำระเงิน
+											</button>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div class="menu">
 								<i class="fas fa-heart"></i>
@@ -88,7 +117,7 @@
 						<!-- ===========================================
 							Categories
 						================================================ -->
-						<li  @mouseover="openNavMenuPanel('CATEGORY')" @mouseleave="openNavMenuPanel(null)" class="menu">
+						<li @mouseover="openNavMenuPanel('CATEGORY')" @mouseleave="openNavMenuPanel(null)" class="menu">
 							<span>เลือกหมวดหมู่สินค้า <i class="far fa-chevron-down"></i></span>
 
 							<ul :class="{ '-active': openedNavMenu === 'CATEGORY'}" class="hp-category-panel hp-popup">
@@ -97,18 +126,22 @@
 										<div>{{ category.title }}</div>
 									</a>
 									<div v-if="category.groups" class="inner1-panel">
-										<ul class="category-inner1-panel u-scrollbar">
-											<li v-for="group in category.groups">
-												<div><a href="#">{{ group.title }}</a></div>
-												<ul>
-													<li v-for="subcategory in group.subcategories">
-														<a href="#">{{ subcategory }}</a>
-													</li>
-												</ul>
-											</li>
-										</ul>
-										<div class="category-promotion">
-											<img src="assets/cat-promo1.jpg" alt="Promo" width="100%">
+										<div class="menu-list">
+											<ul class="category-inner1-panel u-scrollbar">
+												<li v-for="group in category.groups">
+													<div>
+														<a href="#">{{ group.title }}</a>
+													</div>
+													<ul>
+														<li v-for="subcategory in group.subcategories">
+															<a href="#">{{ subcategory }}</a>
+														</li>
+													</ul>
+												</li>
+											</ul>
+											<div class="category-promotion">
+												<img src="assets/cat-promo1.jpg" alt="Promo" width="100%">
+											</div>
 										</div>
 										<div class="brand-list">
 											<template v-for="b in 4">
@@ -158,7 +191,7 @@
 								</div>
 
 								<div class="article-container">
-									<div v-for="a in 4" class="hp-card-article">
+									<div v-for="a in 3" class="hp-card-article">
 										<a href="#">
 											<div class="image">
 												<img src="assets/article1.jpg" alt="article">
@@ -193,222 +226,223 @@
 				</nav>
 			</header>
 
-			<main class="browse-page-main lo-container">
-				<section class="layout-breadcrumb">
-					<ul class="hp-breadcrumb">
-						<li><a href="#" class="hp-link">สินค้าทั้งหมด</a></li>
-						<li><a href="#" class="hp-link">เครื่องใช้ไฟฟ้า</a></li>
-						<li>เตารีด</li>
-					</ul>
-				</section>
+			<div class="lo-container">
+				<main class="browse-page-main">
+					<section class="layout-breadcrumb">
+						<ul class="hp-breadcrumb">
+							<li><a href="#" class="hp-link">สินค้าทั้งหมด</a></li>
+							<li><a href="#" class="hp-link">เครื่องใช้ไฟฟ้า</a></li>
+							<li>เตารีด</li>
+						</ul>
+					</section>
 
-				<section class="section-browse lo-with-sidebar">
-					<!--========================================
-						Aside
-					==========================================-->
-					<form class="sidebar group-container lo-12">
-						<div class="group lo-12">
-							<strong class="u-font-fancy">หมวดสินค้า</strong>
-							<div class="hp-checkbox">
-								<input id="เครื่องรีดผ้าไอน้ำ" type="checkbox">
-								<label for="เครื่องรีดผ้าไอน้ำ">เครื่องรีดผ้าไอน้ำ</label>
+					<section class="section-browse lo-with-sidebar">
+						<!--========================================
+							Aside
+						==========================================-->
+						<form class="sidebar group-container">
+							<div class="group">
+								<strong class="title u-font-fancy">หมวดสินค้า</strong>
+								<div class="hp-checkbox">
+									<input id="เครื่องรีดผ้าไอน้ำ" type="checkbox">
+									<label for="เครื่องรีดผ้าไอน้ำ">เครื่องรีดผ้าไอน้ำ</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="เตารีดแรงดันไอน้ำ" type="checkbox">
+									<label for="เตารีดแรงดันไอน้ำ">เตารีดแรงดันไอน้ำ</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="เตารีดไอน้ำ" type="checkbox">
+									<label for="เตารีดไอน้ำ">เตารีดไอน้ำ</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="เตารีดแห้ง" type="checkbox">
+									<label for="เตารีดแห้ง">เตารีดแห้ง</label>
+								</div>
 							</div>
-							<div class="hp-checkbox">
-								<input id="เตารีดแรงดันไอน้ำ" type="checkbox">
-								<label for="เตารีดแรงดันไอน้ำ">เตารีดแรงดันไอน้ำ</label>
-							</div>
-							<div class="hp-checkbox">
-								<input id="เตารีดไอน้ำ" type="checkbox">
-								<label for="เตารีดไอน้ำ">เตารีดไอน้ำ</label>
-							</div>
-							<div class="hp-checkbox">
-								<input id="เตารีดแห้ง" type="checkbox">
-								<label for="เตารีดแห้ง">เตารีดแห้ง</label>
-							</div>
-						</div>
 
-						<div class="group lo-12">
-							<strong class="u-font-fancy">แบรนด์</strong>
-							<div class="hp-checkbox">
-								<input id="PHILIPS" type="checkbox">
-								<label for="PHILIPS">PHILIPS</label>
+							<div class="group">
+								<strong class="title u-font-fancy">แบรนด์</strong>
+								<div class="hp-checkbox">
+									<input id="PHILIPS" type="checkbox">
+									<label for="PHILIPS">PHILIPS</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="PANASONIC" type="checkbox">
+									<label for="PANASONIC">PANASONIC</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="SHARP" type="checkbox">
+									<label for="SHARP">SHARP</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="SHARP" type="checkbox">
+									<label for="SHARP">SHARP</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="HISENSE" type="checkbox">
+									<label for="HISENSE">HISENSE</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="SKYWORTH" type="checkbox">
+									<label for="SKYWORTH">SKYWORTH</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="TCL" type="checkbox">
+									<label for="TCL">TCL</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="TOSHIBA" type="checkbox">
+									<label for="TOSHIBA">TOSHIBA</label>
+								</div>
 							</div>
-							<div class="hp-checkbox">
-								<input id="PANASONIC" type="checkbox">
-								<label for="PANASONIC">PANASONIC</label>
+							<div class="group">
+								<strong class="title u-font-fancy">แบรนด์</strong>
+								<div class="hp-checkbox">
+									<input id="3M" type="checkbox">
+									<label for="3M">3M</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="ACCA" type="checkbox">
+									<label for="ACCA">ACCA</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="ACCO" type="checkbox">
+									<label for="ACCO">ACCO</label>
+								</div>
+								<div class="hp-checkbox">
+									<input id="AMERICAN STANDARD" type="checkbox">
+									<label for="AMERICAN STANDARD">AMERICAN STANDARD</label>
+								</div>
 							</div>
-							<div class="hp-checkbox">
-								<input id="SHARP" type="checkbox">
-								<label for="SHARP">SHARP</label>
-							</div>
-							<div class="hp-checkbox">
-								<input id="SHARP" type="checkbox">
-								<label for="SHARP">SHARP</label>
-							</div>
-							<div class="hp-checkbox">
-								<input id="HISENSE" type="checkbox">
-								<label for="HISENSE">HISENSE</label>
-							</div>
-							<div class="hp-checkbox">
-								<input id="SKYWORTH" type="checkbox">
-								<label for="SKYWORTH">SKYWORTH</label>
-							</div>
-							<div class="hp-checkbox">
-								<input id="TCL" type="checkbox">
-								<label for="TCL">TCL</label>
-							</div>
-							<div class="hp-checkbox">
-								<input id="TOSHIBA" type="checkbox">
-								<label for="TOSHIBA">TOSHIBA</label>
-							</div>
-						</div>
-						<div class="group lo-12">
-							<strong class="u-font-fancy">แบรนด์</strong>
-							<div class="hp-checkbox">
-								<input id="3M" type="checkbox">
-								<label for="3M">3M</label>
-							</div>
-							<div class="hp-checkbox">
-								<input id="ACCA" type="checkbox">
-								<label for="ACCA">ACCA</label>
-							</div>
-							<div class="hp-checkbox">
-								<input id="ACCO" type="checkbox">
-								<label for="ACCO">ACCO</label>
-							</div>
-							<div class="hp-checkbox">
-								<input id="AMERICAN STANDARD" type="checkbox">
-								<label for="AMERICAN STANDARD">AMERICAN STANDARD</label>
-							</div>
-						</div>
 
-						<div class="group lo-12">
-							<strong class="u-font-fancy">ช่วงราคา</strong>
-							<div class="price-range">
-								<div class="hp-field -small">
-									<div class="hp-input">
-										<input type="number" placeholder="ต่ำสุด">
+							<div class="group price-range-group">
+								<strong class="title u-font-fancy">ช่วงราคา</strong>
+								<div class="price-range">
+									<div class="hp-field -small">
+										<div class="hp-input">
+											<input type="number" placeholder="ต่ำสุด">
+										</div>
+									</div>
+									<span class="center-text u-font-fancy"><small>ถึง</small></span>
+									<div class="hp-field -small">
+										<div class="hp-input">
+											<input type="number" placeholder="สูงสุด">
+										</div>
 									</div>
 								</div>
-								<span class="u-font-fancy"><small>ถึง</small></span>
-								<div class="hp-field -small">
-									<div class="hp-input">
-										<input type="number" placeholder="สูงสุด">
+								<button class="hp-button -small">
+									ตกลง
+								</button>
+							</div>
+
+							<div class="group">
+								<button type="reset" class="hp-button -small -secondary u-fluid">
+									ล้างทั้งหมด
+								</button>
+							</div>
+						</form>
+
+						<div class="content layout-product">
+
+							<!--========================================
+								Top Information
+							==========================================-->
+							<div class="product-list-info">
+								<div class="header">
+									<h1 class="u-font-fancy">เตารีด</h1>
+									<small>พบสินค้าจำนวน 38 รายการ</small>
+								</div>
+							</div>
+
+							<!--========================================
+								Promotion
+							==========================================-->
+							<div class="product-list-promotion">
+								<a href="#">
+									<div class="hp-banner u-raised-2"><img src="assets/sub-banner1.jpg" alt="sub-banner"></div>
+								</a>
+								<a href="#">
+									<div class="hp-banner u-raised-2"><img src="assets/sub-banner2.jpg" alt="sub-banner"></div>
+								</a>
+								<a href="#">
+									<div class="hp-banner u-raised-2"><img src="assets/sub-banner3.jpg" alt="sub-banner"></div>
+								</a>
+							</div>
+
+							<!--========================================
+								Top Toolbar
+							==========================================-->
+							<div class="product-list-top-toolbar">
+								<div class="select-container">
+									<strong>เรียงโดย</strong>
+									<vue-multiselect
+										@input="onSortChange"
+										v-model="sortingValue"
+										:options="sortingOptions"
+										select-label=''
+										selected-label=''
+										deselect-label=''
+										:show-labels="false"
+										:searchable="false"
+										:allow-empty="false"
+										class="sort-select">
+									</vue-multiselect>
+								</div>
+								<div class="page-container">
+									<span class="page-number">หน้า 1/18</span>
+									<div class="page-navigation">
+										<button disabled class="page-button-prev">
+											<i class="far fa-chevron-left"></i>
+										</button>
+										<button class="page-button-next">
+											<i class="far fa-chevron-right"></i>
+										</button>
 									</div>
 								</div>
 							</div>
-							<button class="hp-button -small">
-								ตกลง
-							</button>
-						</div>
 
-						<div class="group lo-12">
-							<button type="reset" class="hp-button -small -secondary u-fluid">
-								ล้างทั้งหมด
-							</button>
-						</div>
-					</form>
-
-					<div class="content layout-product">
-
-						<!--========================================
-							Top Information
-						==========================================-->
-						<div class="product-list-info">
-							<div class="header">
-								<h1 class="u-font-fancy">เตารีด</h1>
-								<small>พบสินค้าจำนวน 38 รายการ</small>
-							</div>
-						</div>
-
-						<!--========================================
-							Promotion
-						==========================================-->
-						<div class="product-list-promotion">
-							<a href="#">
-								<div class="hp-banner u-raised-2"><img src="assets/sub-banner1.jpg" alt="sub-banner"></div>
-							</a>
-							<a href="#">
-								<div class="hp-banner u-raised-2"><img src="assets/sub-banner2.jpg" alt="sub-banner"></div>
-							</a>
-							<a href="#">
-								<div class="hp-banner u-raised-2"><img src="assets/sub-banner3.jpg" alt="sub-banner"></div>
-							</a>
-						</div>
-
-						<!--========================================
-							Top Toolbar
-						==========================================-->
-						<div class="product-list-top-toolbar">
-							<div class="select-container">
-								<strong>เรียงโดย</strong>
-								<vue-multiselect
-									@input="onSortChange"
-									v-model="sortingValue"
-									:options="sortingOptions"
-									select-label=''
-									selected-label=''
-									deselect-label=''
-									:show-labels="false"
-									:searchable="false"
-									:allow-empty="false"
-									class="sort-select">
-								</vue-multiselect>
-							</div>
-							<div class="page-container">
-								<span class="page-number">หน้า 1/18</span>
-								<div class="page-navigation">
-									<button disabled class="page-button-prev">
-										<i class="far fa-chevron-left"></i>
-									</button>
-									<button class="page-button-next">
-										<i class="far fa-chevron-right"></i>
-									</button>
+							<!--========================================
+								Product List
+							==========================================-->
+							<div v-cloak class="product-list">
+								<div v-for="product in products" class="hp-card-product">
+									<div class="image">
+										<img :src="product.photo">
+									</div>
+									<div class="info">
+										<div v-if="product.discount" class="discount">{{ product.discount }}</div>
+										<div class="brand">{{ product.brand }}</div>
+										<div class="title">{{ product.title }}</div>
+										<div class="price">{{ product.price }} บาท</div>
+										<div v-if="product.originalPrice" class="original-price">{{ product.originalPrice }} บาท</div>
+									</div>
+									<div v-if="product.promotion" class="promotion">
+										{{ product.promotion }}
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<!--========================================
-							Product List
-						==========================================-->
-						<div v-cloak class="product-list">
-							<div v-for="product in products" class="hp-card-product">
-								<div class="image">
-									<img :src="product.photo">
-								</div>
-								<div class="info">
-									<div v-if="product.discount" class="discount">{{ product.discount }}</div>
-									<div class="brand">{{ product.brand }}</div>
-									<div class="title">{{ product.title }}</div>
-									<div class="price">{{ product.price }} บาท</div>
-									<div v-if="product.originalPrice" class="original-price">{{ product.originalPrice }} บาท</div>
-								</div>
-								<div v-if="product.promotion" class="promotion">
-									{{ product.promotion }}
-								</div>
+							<!--========================================
+								Bottom Pagination
+							==========================================-->
+							<div class="layout-pagination">
+								<ul class="hp-pagination">
+									<li class="item disabled"><a href="#" class="link"><i class="far fa-chevron-left"></i></a></li>
+									<li class="item"><a href="#" class="link">1</a></li>
+									<li class="item"><a href="#" class="link">2</a></li>
+									<li class="item"><span class="link">...</span></li>
+									<li class="item active"><a href="#" class="link">8</a></li>
+									<li class="item"><span class="link">...</span></li>
+									<li class="item"><a href="#" class="link">10</a></li>
+									<li class="item"><a href="#" class="link">11</a></li>
+									<li class="item"><a href="#" class="link"><i class="far fa-chevron-right"></i></a></li>
+								</ul>
 							</div>
 						</div>
-
-						<!--========================================
-							Bottom Pagination
-						==========================================-->
-						<div class="layout-pagination">
-							<ul class="hp-pagination">
-								<li class="item disabled"><a href="#" class="link"><i class="far fa-chevron-left"></i></a></li>
-								<li class="item"><a href="#" class="link">1</a></li>
-								<li class="item"><a href="#" class="link">2</a></li>
-								<li class="item"><span class="link">...</span></li>
-								<li class="item active"><a href="#" class="link">8</a></li>
-								<li class="item"><span class="link">...</span></li>
-								<li class="item"><a href="#" class="link">10</a></li>
-								<li class="item"><a href="#" class="link">11</a></li>
-								<li class="item"><a href="#" class="link"><i class="far fa-chevron-right"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</section>
-			</main>
-
+					</section>
+				</main>
+		</div>
 			<div class="layout-footer-content lo-container">
 				<div>
 					<p style="font-size: 12px;">
@@ -542,8 +576,9 @@
 			</footer>
 		</div>
 
-		<!-- mock window.categories -->
+		<!-- set mock categories -->
 		<script src="__fixtures__/mock-categories.js"></script>
+		<!-- set mock products -->
 		<script src="__fixtures__/mock-products.js"></script>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -558,8 +593,12 @@
 				data: {
 					products: products,
 					openedNavMenu: null,
+					cartTimeout: null,
+
 					sortingValue: 'เรียงตามความนิยม',
-					sortingOptions: ['เรียงตามความนิยม', 'ราคาน้อยไปมาก', 'ราคามากไปน้อย', 'เรียงตามตัวอักษร']
+					sortingOptions: ['เรียงตามความนิยม', 'ราคาน้อยไปมาก', 'ราคามากไปน้อย', 'เรียงตามตัวอักษร'],
+
+					isNavbarSticky: false,
 				},
 
 				methods: {
@@ -567,8 +606,19 @@
 						this.openedNavMenu = m
 					},
 					onSortChange: function (v) {
-						console.log('SORT CHANGE', v)
-					}
+						console.log('Sorting change to ' + v)
+					},
+					openCartPopup: function () {
+						if (this.cartTimeout) {
+							clearTimeout(this.cartTimeout)
+						}
+						this.$refs.cartPopup.classList.add('-active')
+					},
+					closeCartPopup: function () {
+						this.cartTimeout = setTimeout((function () {
+							this.$refs.cartPopup.classList.remove('-active')
+						}).bind(this), 500)
+					},
 				}
 			})
 		</script>
