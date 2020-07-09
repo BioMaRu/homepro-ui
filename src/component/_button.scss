@@ -16,7 +16,7 @@ $components-colors: (
 	align-items: center;
 	justify-content: center;
 
-	min-height: 2.875rem;
+	height: 2.875rem;
 	padding: 0.5rem 1.5rem;
 
 	font-family: $font-family-secondary;
@@ -37,12 +37,12 @@ $components-colors: (
 	}
 
 	&.-small {
-		min-height: $height-button-small;
+		height: $height-button-small;
 		font-size: $font-size-button-small;
 	}
 
 	&.-big {
-		min-height: $height-button-big;
+		height: $height-button-big;
 		font-size: $font-size-button-big;
 	}
 
@@ -74,9 +74,9 @@ $components-colors: (
 	color: $color-text-light-primary;
 	background-color: $color-primary-500;
 
-	&:focus {
-		box-shadow: 0 0 0 .175rem $color-primary-300;
-	}
+	// &:focus {
+	// 	box-shadow: 0 0 0 .175rem $color-primary-300;
+	// }
 
 	&:hover {
 		background-color: $color-primary-600;

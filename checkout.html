@@ -44,81 +44,463 @@
 				================================================ -->
 				<nav class="checkout-navbar">
 					<div class="lo-container">
-						<img src="assets/homepro-logo.svg" alt="Hopmepro" height="55" width="120">
+						<div class="navbar-container">
+							<a href="#" class="logo">
+								<img src="assets/homepro-logo.svg" alt="Hopmepro" height="55" width="120">
+							</a>
+						</div>
 					</div>
 				</nav>
 			</header>
 
-			<main class="checkout-page-main">
+			<div class="checkout-page-main">
 				<div class="lo-container">
-					<h2 class="u-font-fancy u-font-bold">หมายเลขคำสั่งซื้อ: 1053454</h2>
-					<div class="layout-checkout">
-						<main>
-							<div class="products-panel hp-panel">
-								<h4>รายการสินค้า</h4>
-								<div class="products-container">
-									<div v-for="i in 3" class="hp-card-product-list">
-										<div class="photo">
-											<img src="https://static.homepro.co.th/product/200000/160x160/22122019_221847$Imagex1.jpg">
-										</div>
-										<div class="info">
-											<div class="title">น้ำยาทำความสะอาดห้องน้ำ เป็ด 3.5ลิตร</div>
-											<div class="sku">SKU: 1050726</div>
-											<div class="option hp-field">
-												<div class="hp-checkbox">
-													<input id="1" type="checkbox">
-													<label for="1">Option 1</label>
+					<div>
+						<h2 class="u-font-fancy u-font-bold">หมายเลขคำสั่งซื้อ: 1053454</h2>
+						<div class="layout-checkout">
+							<div class="main">
+								<!-- ===================
+									Address Panel
+								=====================-->
+								<div class="address-panel hp-panel is-success">
+									<div class="success-check">
+										<i class="far fa-check"></i>
+									</div>
+
+									<div class="error-check">
+										<i class="far fa-exclamation-triangle"></i>
+									</div>
+
+									<h2 class="panel-title"><span class="title-bullet">1</span> วิธีจัดส่ง และเอกสาร</h2>
+
+									<div class="address-container">
+										<!-- ===================
+											Delivery Address
+										=====================-->
+										<div>
+											<div class="hp-toggle-tag-container">
+												<div class="hp-toggle-tag">
+													<input v-model="deliveryType" id="delivery-pickup" type="radio" name="delivery" value="PICKUP">
+													<label for="delivery-pickup">
+														<i class="far fa-store"></i>
+														<span>&nbsp;รับเองที่สาขา</span>
+													</label>
+												</div>
+												<div class="hp-toggle-tag">
+													<input v-model="deliveryType" id="delivery-deliver" type="radio" name="delivery" value="DELIVER" >
+													<label for="delivery-deliver">
+														<i class="far fa-home"></i>
+														<span>&nbsp;จัดส่งปลายทาง</span>
+													</label>
 												</div>
 											</div>
-											<div class="option hp-field">
-												<div class="hp-checkbox">
-													<input id="2" type="checkbox">
-													<label for="2">Option 2</label>
+
+											<div class="delivery-section">
+												<div v-if="deliveryType === 'PICKUP'" class="delivery-address">
+													<p class="address-text">
+														<strong>โฮมโปร S เกตเวย์ เอกมัย (Phone: 02-030-0002 )</strong> <br>
+														982/22 ถ.สุขุมวิท, พระโขนง, คลองเตย, กรุงเทพมหานคร, 10110
+														Office Hours: ทุกวัน 10:00 - 22:00 น.
+													</p>
+													<button class="hp-button -small -fluid">
+														<i class="far fa-search"></i>&nbsp;เลือกสาขาที่รับสินค้า
+													</button>
+												</div>
+												<div v-else-if="deliveryType === 'DELIVER'" class="delivery-address">
+													<p class="address-text">
+														กรุณาเลือกที่อยู่ปลายทาง
+													</p>
+													<button class="hp-button -small -fluid">
+														<i class="far fa-search"></i>&nbsp;เลือกรายการที่อยู่
+													</button>
 												</div>
 											</div>
 										</div>
-										<div class="quantity">
-											Quantity
+
+										<!-- ===================
+											Invoice Address
+										=====================-->
+										<div class="invoice-section">
+											<div class="hp-checkbox">
+												<input v-model="isInvoice" type="checkbox" name="invoice" id="invioce">
+												<label for="invioce">ต้องการให้ออกใบกำกับภาษี</label>
+											</div>
+											<div v-if="isInvoice" class="invoice-address">
+												<p class="address-text">
+													กรุณาเลือกที่อยู่ออกใบกำกับภาษี
+												</p>
+												<button class="hp-button -small -fluid">
+													<i class="far fa-search"></i>&nbsp;เลือกรายการที่อยู่ออกใบกำกับภาษี
+												</button>
+											</div>
 										</div>
-										<div class="price">
-											12,000
+									</div>
+								</div>
+
+								<!-- ===================
+									Payment Panel
+								=====================-->
+								<div class="payment-panel hp-panel">
+									<div class="success-check">
+										<i class="far fa-check"></i>
+									</div>
+
+									<div class="error-check">
+										<i class="far fa-exclamation-triangle"></i>
+									</div>
+
+									<h2 class="panel-title"><span class="title-bullet">2</span> เลือกวิธีชำระเงิน</h2>
+
+									<div class="hp-toggle-tag-container">
+										<div class="hp-toggle-tag">
+											<input v-model="paymentType" id="paument-credit" type="radio" name="payment-type" value="CREDIT">
+											<label for="paument-credit">
+												<img src="https://static.homepro.co.th/assets/images/payment/CREDIT_DEBIT.svg" alt="CREDIT" height="24">
+												<span>&nbsp;บัตรเครดิต/เดบิต</span>
+											</label>
+										</div>
+										<div class="hp-toggle-tag">
+											<input v-model="paymentType" id="payment-installment" type="radio" name="payment-type" value="INSTALLMENT" >
+											<label for="payment-installment">
+												<img src="https://static.homepro.co.th/assets/images/payment/BANK_INSTALLMENT.svg" alt="INSTALLMENT" height="24">
+												<span>&nbsp;โปรแกรมผ่อนชำระ</span>
+											</label>
+										</div>
+										<div class="hp-toggle-tag">
+											<input v-model="paymentType" id="payment-ibank" type="radio" name="payment-type" value="IBANK" >
+											<label for="payment-ibank">
+												<img src="https://static.homepro.co.th/assets/images/payment/INTERNET_BANKING.svg" alt="IBANK" height="24">
+												<span>&nbsp;อินเทอร์เน็ตแบงค์กิ้ง</span>
+											</label>
+										</div>
+										<div class="hp-toggle-tag">
+											<input v-model="paymentType" id="payment-atm" type="radio" name="payment-type" value="ATM" >
+											<label for="payment-atm">
+												<img src="https://static.homepro.co.th/assets/images/payment/COUNTER_ATM.svg" alt="ATM" height="24">
+												<span>&nbsp;ธนาคาร/เอทีเอ็ม</span>
+											</label>
+										</div>
+									</div>
+
+									<div class="payment-section">
+										<div v-if="paymentType === 'CREDIT'" class="payment-slate">
+											<div class="payment-slate-section">
+												<div class="u-font-fancy"><strong>เลือกบัตรเครดิตธนาคาร</strong></div>
+												<div class="u-font-color-secondary">
+													<small>รับส่วนลดพิเศษเมื่อชำระด้วยบัตรเครดิตธนาคารที่ร่วมรายการ</small>
+												</div>
+
+												<div class="payment-item-container">
+													<div v-for="i in 10" class="payment-item">
+														<img src="https://static.homepro.co.th/payment/creditcard/krungsri.jpg" alt="krungsri">
+														<div class="payment-item-info">
+															<div class="before-discount-price">991,750 บาท</div>
+															<div class="discounted-price">991,750 บาท</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="payment-slate-section">
+												<div class="u-font-fancy"><strong>เลือกบัตรเครดิตอื่นๆ หรือ บัตรเดบิต</strong></div>
+
+												<div class="payment-item-container">
+													<div class="payment-item is-active">
+														<img src="https://static.homepro.co.th/payment/creditcard/krungsri.jpg" alt="krungsri">
+														<div class="payment-item-info">
+															<div class="before-discount-price">991,750 บาท</div>
+															<div class="discounted-price">991,750 บาท</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div v-if="paymentType === 'INSTALLMENT'" class="payment-slate">
+											<div class="payment-slate-section">
+												<div class="u-font-fancy"><strong>เลือกประเภทบัตรและการผ่อนชำระ</strong></div>
+												<div class="u-font-color-secondary">
+													<small>การผ่อนชำระจะต้องมียอดการสั่งซื้อขั้นต่ำ 5,000 บาท เว็บไซต์จะนำท่านไปยังหน้าของธนาคารผู้ออกบัตร เพื่อดำเนินการชำระเงิน</small>
+												</div>
+
+												<div class="payment-item-container">
+													<div v-for="i in 6" class="payment-item">
+														<img src="https://static.homepro.co.th/payment/bankinstall/hpvisa.jpg" alt="visa">
+														<div class="payment-item-info">
+															<div class="normal-text">991,750 บาท</div>
+															<div class="normal-text">4 เดือน</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div v-if="paymentType === 'IBANK'" class="payment-slate">
+											<div class="payment-slate-section">
+												<div class="u-font-fancy"><strong>เลือกธนาคาร</strong></div>
+												<div class="u-font-color-secondary">
+													<small>การผ่อนชำระจะต้องมียอดการสั่งซื้อขั้นต่ำ 5,000 บาท เว็บไซต์จะนำท่านไปยังหน้าของธนาคารผู้ออกบัตร เพื่อดำเนินการชำระเงินเว็บไซต์จะนำท่านไปยังหน้า Internet Banking ของธนาคารที่ท่านเลือก ซึ่งอาจจะมีค่าธรรมเนียมการจ่ายเงินจากธนาคารของท่าน</small>
+												</div>
+
+												<div class="payment-item-container">
+													<div v-for="i in 6" class="payment-item">
+														<img src="https://static.homepro.co.th/payment/internetbanking/logo_kbank_83x55.jpg" alt="Kbank">
+														<div class="payment-item-info">
+															<div class="normal-text">991,750 บาท</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div v-if="paymentType === 'ATM'" class="payment-slate">
+											<div class="payment-slate-section">
+												<div class="u-font-fancy"><strong>เลือกช่องทางการชำระเงิน</strong></div>
+												<div class="u-font-color-secondary">
+													<small>เลือกช่องทางการชำระเงินที่ท่านต้องการ เพื่อสั่งพิมพ์ใบแจ้งยอด และนำไปชำระเงินตามช่องทางที่ท่านเลือกไว้</small>
+												</div>
+
+												<div class="payment-item-container">
+													<div v-for="i in 5" class="payment-item">
+														<img src="https://static.homepro.co.th/payment/bankatm/kbank.jpg" alt="Kbank">
+														<div class="payment-item-info">
+															<div class="normal-text">991,750 บาท</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- ===================
+									Product Panel
+								=====================-->
+								<div class="products-panel hp-panel is-error">
+									<div class="success-check">
+										<i class="far fa-check"></i>
+									</div>
+
+									<div class="error-check">
+										<i class="far fa-exclamation-triangle"></i>
+									</div>
+
+									<h2 class="panel-title"><span class="title-bullet">3</span> จัดการรายการสินค้า</h2>
+
+									<div class="products-container">
+										<div class="hp-card-product-list">
+											<div class="photo">
+												<img src="https://static.homepro.co.th/product/200000/160x160/22122019_221847$Imagex1.jpg">
+											</div>
+											<div class="info">
+												<div class="title">น้ำยาทำความสะอาดห้องน้ำ เป็ด 3.5ลิตร</div>
+												<div class="sku">SKU: 1050726</div>
+											</div>
+											<div class="quantity">
+												<div class="hp-number-input">
+													<div @click="decreaseQuantityProduct('aaa')" class="hp-button button-inc">-</div>
+													<div class="hp-input">
+														<input product-id="aaa" type="number" value="1" step="1" min="0">
+													</div>
+													<div @click="increaseQuantityProduct('aaa')" class="hp-button button-dec">+</div>
+												</div>
+											</div>
+											<div class="price">
+												<div class="price-before-discount">99,000 บาท</div>
+												<div class="discounted-discount">999,000 บาท</div>
+												<div class="remove-button">
+													<div>
+														<i class="far fa-trash-alt"></i>&nbsp; ลบ
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="hp-card-product-list is-error">
+											<div class="photo">
+												<img src="https://static.homepro.co.th/product/200000/160x160/22122019_221847$Imagex1.jpg">
+											</div>
+											<div class="info">
+												<div class="title">น้ำยาทำความสะอาดห้องน้ำ เป็ด 3.5ลิตร</div>
+												<div class="sku">SKU: 1050726</div>
+												<div class="option hp-field">
+													<div class="hp-checkbox">
+														<input id="remove-service-2" type="checkbox">
+														<label for="remove-service-2">ค่ารื้อถอนแอร์</label>
+													</div>
+												</div>
+												<div class="error-text">
+													จำนวนสินค้าไม่เพียงพอในสาขาที่ท่านเลือก
+												</div>
+											</div>
+											<div class="quantity">
+												<div class="hp-number-input">
+													<div @click="decreaseQuantityProduct('bbb')" class="hp-button button-inc">-</div>
+													<div class="hp-input">
+														<input product-id="bbb" type="number" value="1" step="1" min="0">
+													</div>
+													<div @click="increaseQuantityProduct('bbb')" class="hp-button button-dec">+</div>
+												</div>
+												<strong>สต๊อกคงเหลือ: 0</strong>
+											</div>
+											<div class="price">
+												<div class="price-before-discount">99,000 บาท</div>
+												<div class="discounted-discount">999,000 บาท</div>
+												<div class="remove-button">
+													<div>
+														<i class="far fa-trash-alt"></i>&nbsp; ลบ
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="hp-card-product-list">
+											<div class="photo">
+												<img src="https://static.homepro.co.th/product/200000/160x160/22122019_221847$Imagex1.jpg">
+											</div>
+											<div class="info">
+												<div class="title">น้ำยาทำความสะอาดห้องน้ำ เป็ด 3.5ลิตร</div>
+												<div class="sku">SKU: 1050726</div>
+												<div class="option hp-field">
+													<div class="hp-checkbox">
+														<input id="remove-service-3" type="checkbox">
+														<label for="remove-service-3">ค่ารื้อถอนแอร์</label>
+													</div>
+												</div>
+											</div>
+											<div class="quantity">
+												<div class="hp-number-input">
+													<div @click="decreaseQuantityProduct('ccc')" class="hp-button button-inc">-</div>
+													<div class="hp-input">
+														<input product-id="ccc" type="number" value="1" step="1" min="0">
+													</div>
+													<div @click="increaseQuantityProduct('ccc')" class="hp-button button-dec">+</div>
+												</div>
+											</div>
+											<div class="price">
+												<div class="normal-text">999,000 บาท</div>
+												<div class="remove-button">
+													<div>
+														<i class="far fa-trash-alt"></i>&nbsp; ลบ
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="hp-card-product-list">
+											<div class="photo">
+												<img src="https://static.homepro.co.th/product/200000/160x160/22122019_221847$Imagex1.jpg">
+											</div>
+											<div class="info">
+												<div class="title">น้ำยาทำความสะอาดห้องน้ำ เป็ด 3.5ลิตร</div>
+												<div class="sku">SKU: 1050726</div>
+												<div class="option hp-field">
+													<div class="hp-checkbox">
+														<input id="remove-service-4" type="checkbox">
+														<label for="remove-service-4">ค่ารื้อถอนแอร์</label>
+													</div>
+												</div>
+												<div class="discount">
+													<strong>รับส่วนลดเพิ่มเติมเมื่อชำระเต็มจำนวนด้วยบัตรเครดิต:</strong>
+													<div class="discount-container">
+														<div v-for="i in 10" class="discount-badge">
+															<img src="https://static.homepro.co.th/payment/creditcard/citi.jpg" alt="Discount">
+															<div class="label">
+																4%
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="quantity">
+												<div class="hp-number-input">
+													<div @click="decreaseQuantityProduct('ddd')" class="hp-button button-inc">-</div>
+													<div class="hp-input">
+														<input product-id="ddd" type="number" value="1" step="1" min="0">
+													</div>
+													<div @click="increaseQuantityProduct('ddd')" class="hp-button button-dec">+</div>
+												</div>
+											</div>
+											<div class="price">
+												<div class="normal-text">999,000 บาท</div>
+												<div class="remove-button">
+													<div>
+														<i class="far fa-trash-alt"></i>&nbsp; ลบ
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</main>
-						<aside>
-							<div class="summary-panel hp-panel">
-								<h3 class="u-font-fancy u-font-bold">สรุปรายการสั่งซื้อ</h3>
-								<div class="price-info">
-									<div class="item">
-										<div>ยอดรวมสินค้า</div>
-										<div>120,000 บาท</div>
+
+							<aside ref="aside" :class="{ 'is-sticky': isAsideSticky }" class="aside">
+								<div class="summary-panel hp-panel">
+									<h3 class="u-font-fancy u-font-bold">สรุปรายการสั่งซื้อ</h3>
+
+                                    <div class="price-info">
+										<div class="item">
+											<div>ยอดรวมสินค้า</div>
+											<div>120,000 บาท</div>
+										</div>
+										<div class="item">
+											<div>ส่วนลด</div>
+											<div>19,000 บาท</div>
+										</div>
+										<div class="item">
+											<div>ค่าจัดส่ง</div>
+											<div>ฟรี</div>
+										</div>
 									</div>
-									<div class="item">
-										<div>ส่วนลด</div>
-										<div>19,000 บาท</div>
+
+                                    <hr>
+
+                                    <div class="coupon-info">
+                                        <form class="hp-field">
+											<div class="hp-input with-button">
+												<input id="coupon" name="coupon" placeholder="กรอกโค๊ดส่วนลด">
+												<button class="hp-button">
+													ใช้โค๊ด
+												</button>
+											</div>
+										</form>
+										<div class="hp-tags-container">
+											<div class="hp-tag">
+												<span class="label">KBANK</span>
+												<span class="icon"><i class="far fa-times"></i></span>
+											</div>
+											<div class="hp-tag">
+												<span class="label">KBANK</span>
+												<span class="icon"><i class="far fa-times"></i></span>
+											</div>
+										</div>
+                                    </div>
+
+									<hr>
+
+									<div>
+										<div class="price-info">
+											<div class="item center">
+												<div><img src="https://static.homepro.co.th/assets/images/account/homecard-template.png" alt="" height="30"></div>
+												<a href="#" class="hp-link" >
+													ตั้งค่า HomeCard
+												</a>
+											</div>
+										</div>
 									</div>
-									<div class="item">
-										<div>ค่าจัดส่ง</div>
-										<div>ฟรี</div>
+
+									<hr>
+
+									<div class="price-summary">
+										<div class="item">
+											<div><strong>ราคารวม</strong></div>
+											<div class="u-font-bold">18,130 บาท</div>
+										</div>
 									</div>
+									<button disabled class="hp-button -disabled u-fluid">
+										ชำระเงิน
+									</button>
 								</div>
-								<hr>
-								<div class="price-summary">
-									<div class="item">
-										<div>ราคารวม</div>
-										<div class="u-font-bold">18,130 บาท</div>
-									</div>
-								</div>
-								<button class="hp-button u-fluid">
-									ชำระเงิน
-								</button>
-							</div>
-						</aside>
+							</aside>
+						</div>
 					</div>
 				</div>
-			</main>
+			</div>
 
 			<!-- ===========================================
 				Footer
@@ -228,58 +610,47 @@
 		<script src="__fixtures__/mock-products.js"></script>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-		<script src="https://cdn.jsdelivr.net/npm/vue-agile@1.1.3/dist/VueAgile.umd.min.js"></script>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-agile@1.1.3/dist/VueAgile.css">
 
 		<script>
-			Vue.use(VueAgile)
-
 			var app = new Vue({
 				el: '#js-app',
-
-				components: {
-					carousel: VueAgile,
-				},
 
 				data: {
 					categories: categories,
 					products: products,
-					openedNavMenu: null,
-					isShowCategory: true,
-					isNavbarSticky: false,
+					deliveryType: 'PICKUP', // set default deliveryType to 'c'
+					paymentType: 'CREDIT', // set default deliveryType to 'c'
+					isInvoice: false,
+					isAsideSticky: false,
 				},
 
-				mounted () {
-					const $navbar = this.$refs.navBar
-					const pos = $navbar && $navbar.offsetTop
-					const offsetTop = 800
+				mounted: function () {
+					const $aside = this.$refs.aside
+					const pos = $aside && $aside.offsetTop
+					const offsetTop = -24
 
-					document.addEventListener('scroll', () => {
-						if (!this.isNavbarSticky && window.pageYOffset >= pos + offsetTop) {
-							this.isNavbarSticky = true
-							this.isShowCategory = false
-						} else if (this.isNavbarSticky && !(window.pageYOffset >= pos + offsetTop)) {
-							this.isNavbarSticky = false
-							this.isShowCategory = true
+					document.addEventListener('scroll', (function () {
+						if (!this.isAsideSticky && window.pageYOffset >= pos + offsetTop) {
+							this.isAsideSticky = true
+						} else if (this.isAsideSticky && !(window.pageYOffset >= pos + offsetTop)) {
+							this.isAsideSticky = false
 						}
-					})
+					}).bind(this))
 				},
 
 				methods: {
-					openNavMenuPanel(menu) {
-						this.openedNavMenu = menu
-					},
-					checkSlide({ currentSlide }, ref) {
-						if (currentSlide === 0) {
-							this.$refs[ref].$refs.prevButton.classList.add('disabled')
-						} else {
-							this.$refs[ref].$refs.prevButton.classList.remove('disabled')
-						}
+					increaseQuantityProduct: function (productId) {
+						var $input = document.querySelector('[product-id=' + productId + ']')
 
-						if (currentSlide === 6) {
-							this.$refs[ref].$refs.nextButton.classList.add('disabled')
-						} else {
-							this.$refs[ref].$refs.nextButton.classList.remove('disabled')
+						if ($input) {
+							$input.value++
+						}
+					},
+					decreaseQuantityProduct: function (productId) {
+						var $input = document.querySelector('[product-id=' + productId + ']')
+
+						if ($input && $input.value > 0) {
+							$input.value--
 						}
 					}
 				}

@@ -116,7 +116,7 @@
 	}
 
 	.info {
-		flex: 1;
+		flex-grow: 1;
 
 		.title {
 			word-break: break-word;
@@ -126,6 +126,7 @@
 
 			font-weight: 500;
 			font-size: $font-size-300;
+			font-family: $font-family-secondary;
 		}
 
 		.amount {
@@ -144,6 +145,11 @@
 
 .hp-card-product-list {
 	display: flex;
+	padding: 0 8px;
+
+	&.is-error {
+		background: $color-error-100;
+	}
 
 	.photo {
 		margin-right: 12px;
@@ -156,10 +162,11 @@
 	}
 
 	.info {
-		flex: 1;
+		flex-grow: 1;
+		margin-right: 12px;
 
 		.title {
-
+			font-family: $font-family-secondary;
 		}
 
 		.sku {
@@ -173,6 +180,109 @@
 			label {
 				color: $color-text-dark-secondary;
 				margin-bottom: 0;
+			}
+		}
+
+		.error-text {
+			font-size: $font-size-500;
+			color: $color-error-500;
+			font-weight: 600;
+			margin-top: 12px;
+			font-family: $font-family-secondary;
+		}
+
+		.discount {
+			margin-top: 12px;
+			background: $color-gray-100;
+			padding: 12px;
+
+			strong {
+				font-family: $font-family-secondary;
+			}
+
+			.discount-container {
+				display: flex;
+				flex-wrap: wrap;
+				width: 420px;
+				margin-top: 8px;
+				margin-right: 0;
+
+				.discount-badge {
+					display: inline-flex;
+					align-items: center;
+					margin-right: 6px;
+					margin-bottom: 6px;
+					font-size: $font-size-300;
+
+					border: 1px solid $color-gray-200;
+					border-radius: 2px;
+
+					img {
+						height: 20px;
+					}
+
+					.label {
+						padding: 0 4px;
+						color: $color-text-dark-secondary;
+						background: white;
+						height: 100%;
+						font-style: italic;
+					}
+				}
+			}
+		}
+	}
+
+	.quantity {
+		text-align: center;
+
+		strong {
+			display: inline-block;
+			margin-top: 4px;
+			color: $color-error-500;
+		}
+	}
+
+	.price {
+		width: 200px;
+		text-align: right;
+
+		.price-before-discount {
+			font-family: $font-family-secondary;
+			text-decoration: line-through;
+		}
+
+		.discounted-discount {
+			font-size: $font-size-600;
+			font-family: $font-family-secondary;
+			font-weight: 600;
+			color: $color-price-500;
+		}
+
+		.normal-text {
+			font-size: $font-size-600;
+			font-family: $font-family-secondary;
+			font-weight: 600;
+		}
+
+		.remove-button {
+			margin-top: 12px;
+
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+
+			// width: 40px;
+			padding: 0 8px;
+			height: 40px;
+
+			cursor: pointer;
+			color: $color-error-500;
+
+			white-space: nowrap;
+
+			&:hover {
+				background: $color-error-100;
 			}
 		}
 	}

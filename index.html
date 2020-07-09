@@ -720,10 +720,8 @@
 					document.addEventListener('scroll', (function () {
 						if (!this.isNavbarSticky && window.pageYOffset >= pos + offsetTop) {
 							this.isNavbarSticky = true
-							this.isShowCategory = false
 						} else if (this.isNavbarSticky && !(window.pageYOffset >= pos + offsetTop)) {
 							this.isNavbarSticky = false
-							this.isShowCategory = true
 						}
 					}).bind(this))
 				},

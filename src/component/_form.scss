@@ -166,6 +166,25 @@ $components-colors: ("positive", "negative", "warning", "info");
 	}
 }
 
+.hp-input {
+	&.with-button {
+		display: flex;
+		min-height: 46px;
+
+		input {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			width: auto;
+		}
+
+		.hp-button {
+			white-space: nowrap;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+}
+
 .hp-input,
 .hp-textarea,
 .hp-select {

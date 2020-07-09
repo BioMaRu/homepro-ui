@@ -1,5 +1,9 @@
 .u-font-fancy {
-	font-family: var(--font-family-secondary);
+	font-family: $font-family-secondary;
+}
+
+.u-font-color-secondary {
+	color: $color-text-dark-secondary;
 }
 
 .u-font-bold {
